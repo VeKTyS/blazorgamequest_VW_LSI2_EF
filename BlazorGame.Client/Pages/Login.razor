@@ -1,0 +1,37 @@
+@page "/login"
+@inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject NavigationManager Nav
+
+<h3>Choisir un joueur</h3>
+
+<div>
+    <label>Joueurs disponibles:</label>
+    <select @bind="selectedId">
+        @foreach (var p in players)
+        {
+            <option value="@p.Id">@p.Username</option>
+        }
+    </select>
+    <button @onclick="Enter">Entrer</button>
+    <div>@status</div>
+</div>
+
+@code {
+    private List<SharedModels.Models.Player> players = new();
+    private Guid selectedId;
+    private string status = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        players = PlayerService.GetAllPlayers().ToList();
+        if (players.Any()) selectedId = players.First().Id;
+    }
+
+    void Enter()
+    {
+        var p = PlayerService.GetPlayerById(selectedId);
+        if (p == null) { status = "Joueur introuvable"; return; }
+        // navigation to adventure - in absence of backend we pass id as query param
+        Nav.NavigateTo($"/adventure?playerId={p.Id}");
+    }
+}

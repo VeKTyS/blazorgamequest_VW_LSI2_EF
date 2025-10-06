@@ -1,0 +1,63 @@
+@page "/admin"
+@inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject NavigationManager Nav
+
+<h3>Administration (client-side demo)</h3>
+
+<div>
+    <h4>Créer un joueur</h4>
+    <input placeholder="Nom" @bind="newUsername" />
+    <input placeholder="Mot de passe" type="password" @bind="newPassword" />
+    <button @onclick="Create">Créer</button>
+    <div class="status">@createStatus</div>
+    <hr />
+    <h4>Joueurs existants</h4>
+    <table>
+        <thead><tr><th>Nom</th><th>Score</th><th>Actions</th></tr></thead>
+        <tbody>
+            @foreach (var p in players)
+            {
+                <tr>
+                    <td>@p.Username</td>
+                    <td>@p.TotalScore</td>
+                    <td>
+                        <button @onclick="() => Delete(p.Id)">Supprimer</button>
+                        <button @onclick="() => SelectPlayer(p.Id)">Se connecter</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private List<SharedModels.Models.Player> players = new();
+    private string newUsername = string.Empty;
+    private string newPassword = string.Empty;
+    private string createStatus = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        players = PlayerService.GetAllPlayers().ToList();
+    }
+
+    void Create()
+    {
+        if (string.IsNullOrWhiteSpace(newUsername)) { createStatus = "Nom requis"; return; }
+        PlayerService.CreatePlayer(newUsername, newPassword);
+        players = PlayerService.GetAllPlayers().ToList();
+        createStatus = "Créé";
+        newUsername = string.Empty; newPassword = string.Empty;
+    }
+
+    void Delete(Guid id)
+    {
+        PlayerService.DeletePlayer(id);
+        players = PlayerService.GetAllPlayers().ToList();
+    }
+
+    void SelectPlayer(Guid id)
+    {
+        Nav.NavigateTo($"/adventure?playerId={id}");
+    }
+}

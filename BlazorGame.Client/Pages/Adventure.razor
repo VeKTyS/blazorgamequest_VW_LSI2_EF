@@ -1,9 +1,18 @@
 @page "/adventure"
+@inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject NavigationManager Nav
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "playerId")]
+    public Guid? PlayerId { get; set; }
+}
 
 <h3>Aventure en cours (composant statique V1)</h3>
 <div class="adventure-card">
     <p>Pour l'instant les boutons n'appellent aucune API — version statique destinée aux tests UI et au routing.</p>
     <p>Vous êtes dans la salle 1 d'un donjon généré (statique pour V1).</p>
+    <p>Joueur courant: <b>@currentPlayer?.Username ?? "(aucun)"</b> — Score: @currentPlayer?.TotalScore</p>
     <p>Un gobelin apparaît. Actions possibles:</p>
     <ul>
         <li><button @onclick="AttackGoblin">Attaquer le gobelin</button></li>
@@ -17,14 +26,34 @@
 <div>@status</div>
 @code {
     private string status = "Prêt"; // État initial
+    private SharedModels.Models.Player? currentPlayer;
+
+    protected override void OnInitialized()
+    {
+        if (PlayerId.HasValue)
+        {
+            currentPlayer = PlayerService.GetPlayerById(PlayerId.Value);
+        }
+    }
+
     void AttackGoblin()
     {
         status = "Vous avez attaqué le gobelin ! (simulation pour V1, pas de logique métier)";
+        if (currentPlayer != null)
+        {
+            currentPlayer.TotalScore += 10; // mini simulation
+            PlayerService.AddOrUpdate(currentPlayer);
+        }
     }
 
     void Flee()
     {
         status = "Vous avez fui le combat ! (simulation pour V1, pas de logique métier)";
+        if (currentPlayer != null)
+        {
+            currentPlayer.TotalScore += 1;
+            PlayerService.AddOrUpdate(currentPlayer);
+        }
     }
 
 }
