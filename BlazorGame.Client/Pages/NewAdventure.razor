@@ -3,40 +3,27 @@
 
 <h3>Nouvelle aventure (composant statique V1)</h3>
 
-
-<div class="adventure-card">
-<p>Donjon généré (statique pour V1) — 3 salles</p>
-<ol>
-<li>Salle 1: Un gobelin apparaît. Actions: <em>Combattre</em>, <em>Fouiller</em>, <em>Fuir</em></li>
-<li>Salle 2: Un coffre mystérieux. Actions: <em>Ouvrir</em>, <em>Ignorer</em></li>
-<li>Salle 3: Une énigme. Actions: <em>Résoudre</em>, <em>Passer</em></li>
-</ol>
-
-
-<p>Pour l'instant les boutons n'appellent aucune API — version statique destinée aux tests UI et au routing.</p>
-
-
 <div>
-<button @onclick="StartDemo">Commencer (demo)</button>
+@*     <button @onclick="StartDemo">Commencer (demo)</button> *@
+    <a class="btn" href="/adventure">Commencer (démonstration)</a>
 </div>
-
-
-<div>@status</div>
-</div>
-
-
-@code {
-private string status = "Prêt";
-
-
-void StartDemo()
-{
-status = "Aventure démarrée — simulation pour V1 (pas de logique métier)";
-}
-}
 
 
 <style>
-.adventure-card { padding: 1rem; border: 1px dashed #ccc; border-radius: 8px; }
-button { padding: .4rem .8rem; margin-top: .6rem; }
+    .adventure-card {
+        padding: 1rem;
+        border: 1px dashed #ccc;
+        border-radius: 8px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: .5rem 1rem;
+        background: #0078d4;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+    }
+
 </style>
+

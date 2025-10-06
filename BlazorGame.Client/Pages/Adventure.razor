@@ -1,0 +1,43 @@
+@page "/adventure"
+
+<h3>Aventure en cours (composant statique V1)</h3>
+<div class="adventure-card">
+    <p>Pour l'instant les boutons n'appellent aucune API — version statique destinée aux tests UI et au routing.</p>
+    <p>Vous êtes dans la salle 1 d'un donjon généré (statique pour V1).</p>
+    <p>Un gobelin apparaît. Actions possibles:</p>
+    <ul>
+        <li><button @onclick="AttackGoblin">Attaquer le gobelin</button></li>
+        <li><button @onclick="Flee">Fuir</button></li>
+    </ul>
+    
+
+    <NavLink href="/">Quitter</NavLink>
+</div>
+
+<div>@status</div>
+@code {
+    private string status = "Prêt"; // État initial
+    void AttackGoblin()
+    {
+        status = "Vous avez attaqué le gobelin ! (simulation pour V1, pas de logique métier)";
+    }
+
+    void Flee()
+    {
+        status = "Vous avez fui le combat ! (simulation pour V1, pas de logique métier)";
+    }
+
+}
+
+<style>
+
+button {
+    display: inline-block;
+    padding: .5rem 1rem;
+    background: #0078d4;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+</style>
