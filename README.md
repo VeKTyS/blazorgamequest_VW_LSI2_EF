@@ -1,6 +1,11 @@
 # blazorgamequest_VW_LSI2_EF
 BlazorGameQuest - Jeu d’aventure - Projet en continu – Développement Agile (Environnement DOTNET et C#)
 
+# Membres
+
+VONG Lucas
+WATINE David
+
 # Lancer le projet 
 
 - Cloner le projet
