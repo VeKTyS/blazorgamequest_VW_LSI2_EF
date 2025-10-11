@@ -1,0 +1,44 @@
+﻿<div class="pixel-nav-header">
+    <div class="nav-brand">
+        <a href="">BlazorGameQuest</a>
+    </div>
+    <button class="nav-toggle pixel-btn" @onclick="ToggleNavMenu">
+        @if (collapseNavMenu) { <text>☰</text> } else { <text>✕</text> }
+    </button>
+</div>
+
+<div class="@NavMenuCssClass pixel-nav-menu">
+    <nav class="pixel-nav">
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="" Match="NavLinkMatch.All">
+                Accueil
+            </NavLink>
+        </div>
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="/adventure">
+                Aventure
+            </NavLink>
+        </div>
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="/scores">
+                Scores
+            </NavLink>
+        </div>
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="/admin">
+                Admin
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
