@@ -1,27 +1,33 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">BlazorGame.Client</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+﻿<div class="pixel-nav-header">
+    <div class="nav-brand">
+        <a href="">BlazorGameQuest</a>
     </div>
+    <button class="nav-toggle pixel-btn" @onclick="ToggleNavMenu">
+        @if (collapseNavMenu) { <text>☰</text> } else { <text>✕</text> }
+    </button>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+<div class="@NavMenuCssClass pixel-nav-menu">
+    <nav class="pixel-nav">
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="" Match="NavLinkMatch.All">
+                Accueil
             </NavLink>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/login">Jouer</NavLink>
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="/adventure">
+                Aventure
+            </NavLink>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/admin">Admin</NavLink>
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="/scores">
+                Scores
+            </NavLink>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/scores">Scores</NavLink>
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="/admin">
+                Admin
+            </NavLink>
         </div>
     </nav>
 </div>

@@ -1,15 +1,149 @@
 @page "/"
+@inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject NavigationManager Nav
 
+<div class="pixel-container">
+    <div class="pixel-header">
+        <h1>BlazorGameQuest</h1>
+        <p>Bienvenue dans votre aventure pixelisée !</p>
+    </div>
 
-<h2>Bienvenue sur BlazorGameQuest</h2>
-<p>Ce projet est la version 1 — structure et pages de base.</p>
+    @if (currentPlayer == null)
+    {
+        <div class="login-section">
+            <h3>Connexion</h3>
+            
+            <div class="login-form">
+                <input class="pixel-input" placeholder="Nom d'utilisateur" @bind="username" />
+                <input class="pixel-input" placeholder="Mot de passe" type="password" @bind="password" />
+                
+                <div class="button-group">
+                    <button class="pixel-btn primary" @onclick="LoginAsPlayer">
+                        Connexion Joueur
+                    </button>
+                    <button class="pixel-btn gold" @onclick="LoginAsAdmin">
+                        Connexion Admin
+                    </button>
+                </div>
+            </div>
 
+            @if (!string.IsNullOrEmpty(loginMessage))
+            {
+                <div class="status-message @(loginSuccess ? "success" : "error")">
+                    @loginMessage
+                </div>
+            }
 
-<p>
-<a class="btn" href="/new-adventure">Créer une nouvelle aventure</a>
-</p>
+            <div class="demo-info">
+                <h4>Comptes de démonstration :</h4>
+                <p>Joueur: <strong>demo_player</strong> / <strong>pass</strong></p>
+                <p>Admin: <strong>admin</strong> / <strong>admin</strong></p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="welcome-section">
+            <h3>Bienvenue, @currentPlayer.Username !</h3>
+            
+            <div class="player-stats">
+                <div>
+                    <span>Vie: @currentPlayer.Health/100</span>
+                    <div class="health-bar">
+                        <div class="health-fill" style="width: @currentPlayer.Health%"></div>
+                        <div class="health-text">@currentPlayer.Health/100</div>
+                    </div>
+                </div>
+                <div>
+                    <span>Score: @currentPlayer.TotalScore</span>
+                </div>
+                <div>
+                    <span>Objets: @currentPlayer.Inventory.Count</span>
+                </div>
+            </div>
 
+            <div class="action-buttons">
+                @if (currentPlayer.IsAdmin)
+                {
+                    <a class="pixel-btn gold" href="/admin">Administration</a>
+                }
+                <a class="pixel-btn primary" href="/adventure?playerId=@currentPlayer.Id">Aventure</a>
+                <a class="pixel-btn" href="/scores">Scores</a>
+                <button class="pixel-btn danger" @onclick="Logout">Déconnexion</button>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private string username = string.Empty;
+    private string password = string.Empty;
+    private string loginMessage = string.Empty;
+    private bool loginSuccess = false;
+    private SharedModels.Models.Player? currentPlayer;
+
+    void LoginAsPlayer()
+    {
+        Login(false);
+    }
+
+    void LoginAsAdmin()
+    {
+        Login(true);
+    }
+
+    void Login(bool requireAdmin)
+    {
+        // Simulation statique pour les tests UI
+        currentPlayer = new SharedModels.Models.Player 
+        { 
+            Username = requireAdmin ? "Admin Test" : "Joueur Test",
+            IsAdmin = requireAdmin,
+            Health = 100, 
+            TotalScore = 200,
+            Inventory = new List<SharedModels.Models.Item>()
+        };
+        loginMessage = $"Connexion réussie !";
+        loginSuccess = true;
+    }
+
+    void Logout()
+    {
+        currentPlayer = null;
+        loginMessage = string.Empty;
+        username = string.Empty;
+        password = string.Empty;
+    }
+}
 
 <style>
-.btn { display:inline-block; padding: .5rem 1rem; background: #0078d4; color: white; border-radius: 6px; text-decoration:none; }
+    .login-section {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .login-form {
+        margin: 20px 0;
+    }
+
+    .button-group {
+        margin: 20px 0;
+    }
+
+    .demo-info {
+        background: var(--pixel-brown);
+        color: var(--pixel-light);
+        padding: 15px;
+        border: 3px solid var(--pixel-dark);
+        margin: 20px 0;
+    }
+
+    .welcome-section {
+        text-align: center;
+    }
+
+    .action-buttons {
+        margin: 20px 0;
+    }
 </style>

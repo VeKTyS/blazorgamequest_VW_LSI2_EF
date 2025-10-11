@@ -1,63 +1,312 @@
 @page "/admin"
-@inject BlazorGame.Client.Services.IPlayerService PlayerService
 @inject NavigationManager Nav
 
-<h3>Administration (client-side demo)</h3>
+<div class="pixel-container">
+    <div class="pixel-header">
+        <h1>Administration du Jeu</h1>
+        <p>Panneau de contrôle pour gérer les joueurs et les objets</p>
+    </div>
 
-<div>
-    <h4>Créer un joueur</h4>
-    <input placeholder="Nom" @bind="newUsername" />
-    <input placeholder="Mot de passe" type="password" @bind="newPassword" />
-    <button @onclick="Create">Créer</button>
-    <div class="status">@createStatus</div>
-    <hr />
-    <h4>Joueurs existants</h4>
-    <table>
-        <thead><tr><th>Nom</th><th>Score</th><th>Actions</th></tr></thead>
-        <tbody>
-            @foreach (var p in players)
-            {
-                <tr>
-                    <td>@p.Username</td>
-                    <td>@p.TotalScore</td>
-                    <td>
-                        <button @onclick="() => Delete(p.Id)">Supprimer</button>
-                        <button @onclick="() => SelectPlayer(p.Id)">Se connecter</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+    <div class="admin-tabs">
+        <button class="pixel-btn @(activeTab == "players" ? "primary" : "")" @onclick='() => SetActiveTab("players")'>
+            Gestion des Joueurs
+        </button>
+        <button class="pixel-btn @(activeTab == "items" ? "primary" : "")" @onclick='() => SetActiveTab("items")'>
+            Gestion des Objets
+        </button>
+    </div>
+
+    @if (activeTab == "players")
+    {
+        <div class="admin-section">
+            <div class="create-section">
+                <h3>Créer un nouveau joueur</h3>
+                <div class="form-group">
+                    <input class="pixel-input" placeholder="Nom d'utilisateur" @bind="newUsername" />
+                    <input class="pixel-input" placeholder="Mot de passe" type="password" @bind="newPassword" />
+                    <label>
+                        <input type="checkbox" @bind="newIsAdmin" /> Est administrateur
+                    </label>
+                    <button class="pixel-btn primary" @onclick="CreatePlayer">Créer Joueur</button>
+                </div>
+                @if (!string.IsNullOrEmpty(playerStatus))
+                {
+                    <div class="status-message @(playerSuccess ? "success" : "error")">
+                        @playerStatus
+                    </div>
+                }
+            </div>
+
+            <div class="players-section">
+                <h3>Joueurs existants (@players.Count)</h3>
+                <table class="pixel-table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Vie</th>
+                            <th>Score</th>
+                            <th>Objets</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var player in players)
+                        {
+                            <tr>
+                                <td>@player.Username</td>
+                                <td>@(player.IsAdmin ? "Admin" : "Joueur")</td>
+                                <td>@player.Health/100</td>
+                                <td>@player.TotalScore</td>
+                                <td>@player.Inventory.Count</td>
+                                <td>
+                                    <button class="pixel-btn" @onclick="() => SelectPlayer(player.Id)">
+                                        Jouer
+                                    </button>
+                                    <button class="pixel-btn danger" @onclick="() => DeletePlayer(player.Id)">
+                                        Supprimer
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+    @if (activeTab == "items")
+    {
+        <div class="admin-section">
+            <div class="create-section">
+                <h3>Créer un nouvel objet</h3>
+                <div class="form-group">
+                    <input class="pixel-input" placeholder="Nom de l'objet" @bind="newItemName" />
+                    <input class="pixel-input" placeholder="Description" @bind="newItemDescription" />
+                    <input class="pixel-input" type="number" placeholder="Effet sur la vie" @bind="newItemHealthEffect" />
+                    <input class="pixel-input" type="number" placeholder="Effet sur le score" @bind="newItemScoreEffect" />
+                    <button class="pixel-btn primary" @onclick="CreateItem">Créer Objet</button>
+                </div>
+                @if (!string.IsNullOrEmpty(itemStatus))
+                {
+                    <div class="status-message @(itemSuccess ? "success" : "error")">
+                        @itemStatus
+                    </div>
+                }
+            </div>
+
+            <div class="items-section">
+                <h3>Objets disponibles (@items.Count)</h3>
+                <div class="item-grid">
+                    @foreach (var item in items)
+                    {
+                        <div class="item-card">
+                            <h4>@item.Name</h4>
+                            <p>@item.Description</p>
+                            <div class="item-effects">
+                                @if (item.HealthEffect != 0)
+                                {
+                                    <span class="effect @(item.HealthEffect > 0 ? "positive" : "negative")">
+                                        Vie: @(item.HealthEffect > 0 ? "+" : "")@item.HealthEffect
+                                    </span>
+                                }
+                                @if (item.ScoreEffect != 0)
+                                {
+                                    <span class="effect @(item.ScoreEffect > 0 ? "positive" : "negative")">
+                                        Score: @(item.ScoreEffect > 0 ? "+" : "")@item.ScoreEffect
+                                    </span>
+                                }
+                            </div>
+                            <button class="pixel-btn danger" @onclick="() => DeleteItem(item.Id)">
+                                Supprimer
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="navigation">
+        <a class="pixel-btn" href="/">Retour à l'accueil</a>
+        <a class="pixel-btn" href="/scores">Voir les scores</a>
+    </div>
 
 @code {
     private List<SharedModels.Models.Player> players = new();
+    private List<SharedModels.Models.Item> items = new();
+    private string activeTab = "players";
+
+    // Player creation
     private string newUsername = string.Empty;
     private string newPassword = string.Empty;
-    private string createStatus = string.Empty;
+    private bool newIsAdmin = false;
+    private string playerStatus = string.Empty;
+    private bool playerSuccess = false;
+
+    // Item creation
+    private string newItemName = string.Empty;
+    private string newItemDescription = string.Empty;
+    private int newItemHealthEffect = 0;
+    private int newItemScoreEffect = 0;
+    private string itemStatus = string.Empty;
+    private bool itemSuccess = false;
 
     protected override void OnInitialized()
     {
-        players = PlayerService.GetAllPlayers().ToList();
+        // Initialisation avec des données statiques
+        players = new List<SharedModels.Models.Player>
+        {
+            new SharedModels.Models.Player { Username = "admin", IsAdmin = true, Health = 100, TotalScore = 500, Inventory = new List<SharedModels.Models.Item>() },
+            new SharedModels.Models.Player { Username = "demo_player", IsAdmin = false, Health = 75, TotalScore = 250, Inventory = new List<SharedModels.Models.Item>() }
+        };
+        
+        items = new List<SharedModels.Models.Item>
+        {
+            new SharedModels.Models.Item { Name = "Potion de soin", Description = "Restaure 30 points de vie", HealthEffect = 30, ScoreEffect = 5 },
+            new SharedModels.Models.Item { Name = "Épée", Description = "Une épée tranchante", HealthEffect = 0, ScoreEffect = 25 }
+        };
     }
 
-    void Create()
+    void RefreshData()
     {
-        if (string.IsNullOrWhiteSpace(newUsername)) { createStatus = "Nom requis"; return; }
-        PlayerService.CreatePlayer(newUsername, newPassword);
-        players = PlayerService.GetAllPlayers().ToList();
-        createStatus = "Créé";
-        newUsername = string.Empty; newPassword = string.Empty;
+        // Simule le rafraîchissement des données depuis les "services"
+        StateHasChanged();
     }
 
-    void Delete(Guid id)
+    void SetActiveTab(string tab)
     {
-        PlayerService.DeletePlayer(id);
-        players = PlayerService.GetAllPlayers().ToList();
+        activeTab = tab;
+        playerStatus = string.Empty;
+        itemStatus = string.Empty;
+    }
+
+    void CreatePlayer()
+    {
+        playerStatus = $"Création du joueur '{(string.IsNullOrWhiteSpace(newUsername) ? "[nom requis]" : newUsername)}' en tant qu'{(newIsAdmin ? "administrateur" : "joueur")}'";
+        playerSuccess = true;
+        
+        // Reset form
+        newUsername = string.Empty;
+        newPassword = string.Empty;
+        newIsAdmin = false;
+    }
+
+    void DeletePlayer(Guid id)
+    {
+        var player = players.FirstOrDefault(p => p.Id == id);
+        playerStatus = $"Suppression du joueur '{(player?.Username ?? "inconnu")}'";
+        playerSuccess = true;
     }
 
     void SelectPlayer(Guid id)
     {
-        Nav.NavigateTo($"/adventure?playerId={id}");
+        var player = players.FirstOrDefault(p => p.Id == id);
+        playerStatus = $"Sélection du joueur '{(player?.Username ?? "inconnu")}' pour jouer";
+        playerSuccess = true;
+    }
+
+    void CreateItem()
+    {
+        itemStatus = $"Création de l'objet '{(string.IsNullOrWhiteSpace(newItemName) ? "[nom requis]" : newItemName)}' avec effets Vie: {newItemHealthEffect}, Score: {newItemScoreEffect}";
+        itemSuccess = true;
+        
+        // Reset form
+        newItemName = string.Empty;
+        newItemDescription = string.Empty;
+        newItemHealthEffect = 0;
+        newItemScoreEffect = 0;
+    }
+
+    void DeleteItem(Guid id)
+    {
+        var item = items.FirstOrDefault(i => i.Id == id);
+        itemStatus = $"Suppression de l'objet '{(item?.Name ?? "inconnu")}'";
+        itemSuccess = true;
     }
 }
+
+<style>
+    .admin-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+
+    .admin-section {
+        margin-bottom: 30px;
+    }
+
+    .create-section {
+        background: var(--pixel-light);
+        border: 3px solid var(--pixel-dark);
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 10px;
+    }
+
+    .players-section, .items-section {
+        background: var(--pixel-brown);
+        color: var(--pixel-light);
+        padding: 20px;
+        border: 3px solid var(--pixel-dark);
+    }
+
+    .item-effects {
+        margin: 10px 0;
+    }
+
+    .effect {
+        display: inline-block;
+        padding: 3px 8px;
+        margin: 2px;
+        border: 1px solid var(--pixel-dark);
+        font-size: 8px;
+    }
+
+    .effect.positive {
+        background: var(--pixel-green);
+        color: white;
+    }
+
+    .effect.negative {
+        background: var(--pixel-red);
+        color: white;
+    }
+
+    .navigation {
+        text-align: center;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 3px solid var(--pixel-dark);
+    }
+
+    @@media (max-width: 768px) {
+        .form-group {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .admin-tabs {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+
+</div>

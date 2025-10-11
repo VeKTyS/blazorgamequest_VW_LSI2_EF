@@ -8,14 +8,14 @@ public class InMemoryPlayerService : IPlayerService
 
     public InMemoryPlayerService()
     {
-        // seed with a demo admin and a player
-        _players.Add(new Player { Username = "demo_player", Password = "pass", TotalScore = 0 });
-        _players.Add(new Player { Username = "admin", Password = "admin" });
+
+        _players.Add(new Player { Username = "demo_player", Password = "pass", TotalScore = 0, Health = 100, IsAdmin = false });
+        _players.Add(new Player { Username = "admin", Password = "admin", TotalScore = 0, Health = 100, IsAdmin = true });
     }
 
     public Player CreatePlayer(string username, string password)
     {
-        var p = new Player { Username = username, Password = password, TotalScore = 0 };
+        var p = new Player { Username = username, Password = password, TotalScore = 0, Health = 100, IsAdmin = false };
         _players.Add(p);
         return p;
     }
@@ -48,5 +48,8 @@ public class InMemoryPlayerService : IPlayerService
         existing.Username = player.Username;
         existing.Password = player.Password;
         existing.TotalScore = player.TotalScore;
+        existing.Health = player.Health;
+        existing.IsAdmin = player.IsAdmin;
+        existing.Inventory = player.Inventory;
     }
 }

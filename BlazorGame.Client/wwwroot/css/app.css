@@ -1,27 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --pixel-green: #4CAF50;
+    --pixel-brown: #8B4513;
+    --pixel-gold: #FFD700;
+    --pixel-red: #F44336;
+    --pixel-blue: #2196F3;
+    --pixel-dark: #2C3E50;
+    --pixel-light: #ECF0F1;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Press Start 2P', monospace;
+    background: linear-gradient(45deg, #87CEEB, #98FB98);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-size: 12px;
+    line-height: 1.6;
 }
 
 h1:focus {
     outline: none;
 }
 
-a, .btn-link {
-    color: #0071c1;
+/* Pixel Art Buttons */
+.pixel-btn {
+    background: var(--pixel-green);
+    color: white;
+    border: 3px solid #45a049;
+    padding: 10px 20px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+    position: relative;
+    transition: all 0.1s;
+    box-shadow: 3px 3px 0px var(--shadow-color);
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+.pixel-btn:hover {
+    background: #45a049;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.pixel-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+.pixel-btn.danger {
+    background: var(--pixel-red);
+    border-color: #d32f2f;
+}
+
+.pixel-btn.danger:hover {
+    background: #d32f2f;
+}
+
+.pixel-btn.primary {
+    background: var(--pixel-blue);
+    border-color: #1976d2;
+}
+
+.pixel-btn.primary:hover {
+    background: #1976d2;
+}
+
+.pixel-btn.gold {
+    background: var(--pixel-gold);
+    border-color: #ffb300;
+    color: var(--pixel-dark);
+}
+
+.pixel-btn.gold:hover {
+    background: #ffb300;
+}
+
+a, .btn-link {
+    color: var(--pixel-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1976d2;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+/* Pixel Containers */
+.pixel-container {
+    background: var(--pixel-light);
+    border: 4px solid var(--pixel-dark);
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 4px 4px 0px var(--shadow-color);
+    position: relative;
+}
+
+.pixel-container::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: var(--pixel-dark);
+    z-index: -1;
+}
+
+.pixel-header {
+    background: var(--pixel-brown);
+    color: var(--pixel-light);
+    padding: 15px;
+    margin: -20px -20px 20px -20px;
+    border-bottom: 3px solid var(--pixel-dark);
+    text-align: center;
+}
+
 .content {
-    padding-top: 1.1rem;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Pixel Forms */
+.pixel-input {
+    background: white;
+    border: 3px solid var(--pixel-dark);
+    padding: 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    margin: 5px;
+    box-shadow: inset 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+.pixel-input:focus {
+    outline: none;
+    border-color: var(--pixel-blue);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+}
+
+/* Game Stats */
+.player-stats {
+    background: var(--pixel-dark);
+    color: var(--pixel-light);
+    padding: 15px;
+    border: 3px solid var(--pixel-gold);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.health-bar {
+    background: #333;
+    border: 2px solid var(--pixel-dark);
+    height: 20px;
+    width: 200px;
+    position: relative;
+    margin: 5px 0;
+}
+
+.health-fill {
+    background: linear-gradient(90deg, var(--pixel-green), #45a049);
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.health-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 8px;
+    text-shadow: 1px 1px 0px black;
+}
+
+/* Item styles */
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.item-card {
+    background: var(--pixel-light);
+    border: 3px solid var(--pixel-dark);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.item-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.inventory {
+    background: var(--pixel-brown);
+    color: var(--pixel-light);
+    padding: 15px;
+    border: 3px solid var(--pixel-dark);
+    margin: 10px 0;
+}
+
+.inventory-item {
+    display: inline-block;
+    background: var(--pixel-light);
+    color: var(--pixel-dark);
+    padding: 8px;
+    margin: 5px;
+    border: 2px solid var(--pixel-dark);
+    font-size: 10px;
+}
+
+/* Table styles */
+.pixel-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--pixel-light);
+    border: 3px solid var(--pixel-dark);
+    margin: 20px 0;
+}
+
+.pixel-table th {
+    background: var(--pixel-brown);
+    color: var(--pixel-light);
+    padding: 12px;
+    border-bottom: 3px solid var(--pixel-dark);
+    text-align: left;
+}
+
+.pixel-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ccc;
+}
+
+.pixel-table tr:nth-child(even) {
+    background: rgba(0,0,0,0.05);
+}
+
+/* Messages */
+.status-message {
+    background: var(--pixel-gold);
+    color: var(--pixel-dark);
+    padding: 10px;
+    border: 2px solid var(--pixel-dark);
+    margin: 10px 0;
+    text-align: center;
+}
+
+.status-message.error {
+    background: var(--pixel-red);
+    color: white;
+}
+
+.status-message.success {
+    background: var(--pixel-green);
+    color: white;
 }
 
 .valid.modified:not([type=checkbox]) {
