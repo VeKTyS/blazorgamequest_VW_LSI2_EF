@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OaNj/9Ykkh4=",
+  "dgSpecHash": "2fkg5NL6SMw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\blazorgame.client\\BlazorGame.Client.csproj",
+  "projectFilePath": "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\BlazorGame.Client\\BlazorGame.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\supra\\.nuget\\packages\\microsoft.aspnetcore.authorization\\9.0.9\\microsoft.aspnetcore.authorization.9.0.9.nupkg.sha512",
     "C:\\Users\\supra\\.nuget\\packages\\microsoft.aspnetcore.components\\9.0.9\\microsoft.aspnetcore.components.9.0.9.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\blazorgame.client\\BlazorGame.Client.csproj": {}
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\BlazorGame.Client\\BlazorGame.Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\blazorgame.client\\BlazorGame.Client.csproj": {
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\BlazorGame.Client\\BlazorGame.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\blazorgame.client\\BlazorGame.Client.csproj",
+        "projectUniqueName": "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\BlazorGame.Client\\BlazorGame.Client.csproj",
         "projectName": "BlazorGame.Client",
-        "projectPath": "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\blazorgame.client\\BlazorGame.Client.csproj",
+        "projectPath": "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\BlazorGame.Client\\BlazorGame.Client.csproj",
         "packagesPath": "C:\\Users\\supra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\blazorgame.client\\obj\\",
+        "outputPath": "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF-1\\BlazorGame.Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\supra\\AppData\\Roaming\\NuGet\\NuGet.Config"
