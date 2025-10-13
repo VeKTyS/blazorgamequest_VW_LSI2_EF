@@ -1,3 +1,4 @@
 bin/
 obj/
 AuthenticationServices/obj/
+BlazorGame.Client/obj/
