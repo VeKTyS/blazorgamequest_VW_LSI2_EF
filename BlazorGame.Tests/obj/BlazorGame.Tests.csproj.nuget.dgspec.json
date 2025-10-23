@@ -1,35 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\BlazorGame.Tests.csproj": {}
+    "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\BlazorGame.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj": {
+    "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj",
+        "projectUniqueName": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj",
         "projectName": "BlazorGame.Client",
-        "projectPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\obj\\",
+        "projectPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj",
+        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj": {
-                "projectPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj"
+              "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj"
               }
             }
           }
@@ -61,11 +59,11 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
@@ -111,35 +109,33 @@
         }
       }
     },
-    "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\BlazorGame.Tests.csproj": {
+    "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\BlazorGame.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\BlazorGame.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\BlazorGame.Tests.csproj",
         "projectName": "BlazorGame.Tests",
-        "projectPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\BlazorGame.Tests.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\obj\\",
+        "projectPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\BlazorGame.Tests.csproj",
+        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj": {
-                "projectPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj"
+              "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj": {
+                "projectPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\BlazorGame.Client.csproj"
               },
-              "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj": {
-                "projectPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj"
+              "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj"
               }
             }
           }
@@ -160,6 +156,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.12.0, )"
@@ -197,24 +197,22 @@
         }
       }
     },
-    "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj": {
+    "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj",
+        "projectUniqueName": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj",
         "projectName": "SharedModels",
-        "projectPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\A TRIER\\blazorgamequest_VW_LSI2_EF\\SharedModels\\obj\\",
+        "projectPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\SharedModels\\SharedModels.csproj",
+        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\david\\cours\\I2\\C#\\blazorgamequest_VW_LSI2_EF\\SharedModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
