@@ -1,5 +1,6 @@
 @page "/admin"
 @inject NavigationManager Nav
+@inject BlazorGame.Client.Services.IPlayerService PlayerService
 
 <div class="pixel-container">
     <div class="pixel-header">
@@ -154,23 +155,12 @@
 
     protected override void OnInitialized()
     {
-        // Initialisation avec des données statiques
-        players = new List<SharedModels.Models.Player>
-        {
-            new SharedModels.Models.Player { Username = "admin", IsAdmin = true, Health = 100, TotalScore = 500, Inventory = new List<SharedModels.Models.Item>() },
-            new SharedModels.Models.Player { Username = "demo_player", IsAdmin = false, Health = 75, TotalScore = 250, Inventory = new List<SharedModels.Models.Item>() }
-        };
-        
-        items = new List<SharedModels.Models.Item>
-        {
-            new SharedModels.Models.Item { Name = "Potion de soin", Description = "Restaure 30 points de vie", HealthEffect = 30, ScoreEffect = 5 },
-            new SharedModels.Models.Item { Name = "Épée", Description = "Une épée tranchante", HealthEffect = 0, ScoreEffect = 25 }
-        };
+        players = PlayerService.GetAllPlayers().ToList();
     }
 
     void RefreshData()
     {
-        // Simule le rafraîchissement des données depuis les "services"
+        players = PlayerService.GetAllPlayers().ToList();
         StateHasChanged();
     }
 
@@ -183,8 +173,18 @@
 
     void CreatePlayer()
     {
-        playerStatus = $"Création du joueur '{(string.IsNullOrWhiteSpace(newUsername) ? "[nom requis]" : newUsername)}' en tant qu'{(newIsAdmin ? "administrateur" : "joueur")}'";
+        if (string.IsNullOrWhiteSpace(newUsername) || string.IsNullOrWhiteSpace(newPassword))
+        {
+            playerSuccess = false;
+            playerStatus = "Nom d'utilisateur et mot de passe requis.";
+            return;
+        }
+        var p = PlayerService.CreatePlayer(newUsername, newPassword);
+        p.IsAdmin = newIsAdmin;
+        PlayerService.AddOrUpdate(p);
         playerSuccess = true;
+        playerStatus = $"Joueur '{p.Username}' créé.";
+        RefreshData();
         
         // Reset form
         newUsername = string.Empty;
@@ -194,16 +194,15 @@
 
     void DeletePlayer(Guid id)
     {
-        var player = players.FirstOrDefault(p => p.Id == id);
-        playerStatus = $"Suppression du joueur '{(player?.Username ?? "inconnu")}'";
-        playerSuccess = true;
+        var ok = PlayerService.DeletePlayer(id);
+        playerStatus = ok ? "Joueur supprimé." : "Joueur introuvable.";
+        playerSuccess = ok;
+        RefreshData();
     }
 
     void SelectPlayer(Guid id)
     {
-        var player = players.FirstOrDefault(p => p.Id == id);
-        playerStatus = $"Sélection du joueur '{(player?.Username ?? "inconnu")}' pour jouer";
-        playerSuccess = true;
+        Nav.NavigateTo($"/adventure?playerId={id}");
     }
 
     void CreateItem()

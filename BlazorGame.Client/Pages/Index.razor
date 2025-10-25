@@ -36,8 +36,11 @@
 
             <div class="demo-info">
                 <h4>Comptes de démonstration :</h4>
-                <p>Joueur: <strong>demo_player</strong> / <strong>pass</strong></p>
-                <p>Admin: <strong>admin</strong> / <strong>admin</strong></p>
+                <p>Utilisez les comptes suivants :</p>
+                <ul>
+                    <li>Admin: <b>admin</b> / <b>admin123</b></li>
+                    <li>Joueur: <b>player1</b> / <b>password123</b></li>
+                </ul>
             </div>
         </div>
     }
@@ -94,16 +97,30 @@
 
     void Login(bool requireAdmin)
     {
-        // Simulation statique pour les tests UI
-        currentPlayer = new SharedModels.Models.Player 
-        { 
-            Username = requireAdmin ? "Admin Test" : "Joueur Test",
-            IsAdmin = requireAdmin,
-            Health = 100, 
-            TotalScore = 200,
-            Inventory = new List<SharedModels.Models.Item>()
-        };
-        loginMessage = $"Connexion réussie !";
+        loginMessage = string.Empty;
+        loginSuccess = false;
+
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+        {
+            loginMessage = "Veuillez saisir un nom d'utilisateur et un mot de passe.";
+            return;
+        }
+
+        var player = PlayerService.Authenticate(username, password);
+        if (player is null)
+        {
+            loginMessage = "Identifiants incorrects.";
+            return;
+        }
+
+        if (requireAdmin && !player.IsAdmin)
+        {
+            loginMessage = "Droits insuffisants: administrateur requis.";
+            return;
+        }
+
+        currentPlayer = player;
+        loginMessage = "Connexion réussie !";
         loginSuccess = true;
     }
 

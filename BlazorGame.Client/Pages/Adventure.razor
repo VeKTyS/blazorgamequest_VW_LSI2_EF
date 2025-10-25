@@ -146,20 +146,22 @@
         "Liche Maléfique"
     };
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
-        // Simulation statique pour les tests UI
-        currentPlayer = new SharedModels.Models.Player 
-        { 
-            Username = "Joueur Test", 
-            Health = 75, 
-            TotalScore = 150,
-            Inventory = new List<SharedModels.Models.Item>
+        if (PlayerId.HasValue)
+        {
+            currentPlayer = PlayerService.GetPlayerById(PlayerId.Value);
+            if (currentPlayer is null)
             {
-                new SharedModels.Models.Item { Name = "Potion", Description = "Potion de soin" },
-                new SharedModels.Models.Item { Name = "Épée", Description = "Épée en fer" }
+                // Si l'id n'existe pas, retour à l'accueil
+                Nav.NavigateTo("/");
             }
-        };
+        }
+        else
+        {
+            // Pas d'id => retour à l'accueil
+            Nav.NavigateTo("/");
+        }
     }
 
     void AttackEnemy()
