@@ -5,7 +5,9 @@ namespace AuthenticationServices.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
 
         public DbSet<Player> Players { get; set; }
         public DbSet<Item> Items { get; set; }
@@ -13,20 +15,6 @@ namespace AuthenticationServices.Data
         public DbSet<Donjon> Donjons { get; set; }
         public DbSet<Salle> Salles { get; set; }
         public DbSet<AdventureResult> AdventureResults { get; set; }
-
-        // Ajout : RoomTemplate
         public DbSet<RoomTemplate> RoomTemplates { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Player>()
-                .HasMany(p => p.Inventory)
-                .WithOne()
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // autres configurations éventuelles...
-        }
     }
 }

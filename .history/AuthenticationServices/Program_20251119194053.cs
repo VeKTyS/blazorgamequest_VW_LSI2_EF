@@ -12,15 +12,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 // register DungeonGenerator
 builder.Services.AddScoped<DungeonGenerator>();
 
-// Allow Blazor client to call the API
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-    });
-});
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -37,8 +28,8 @@ using (var scope = app.Services.CreateScope())
         {
             context.Players.AddRange(new[]
             {
-                new Player { Username = "player1", Password = "password123", TotalScore = 0, Health = 100, IsAdmin = false },
-                new Player { Username = "admin", Password = "admin123", TotalScore = 0, Health = 100, IsAdmin = true }
+                new Player { Username = "player1", Password = ""password123", TotalScore = 0, Health = 100, IsAdmin = false },
+                new Player { Username = "admin", Password = "admin", TotalScore = 0, Health = 100, IsAdmin = true }
             });
         }
 
@@ -88,10 +79,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// enable CORS
-app.UseCors("AllowAll");
-
 app.UseAuthorization();
 
 app.MapControllers();

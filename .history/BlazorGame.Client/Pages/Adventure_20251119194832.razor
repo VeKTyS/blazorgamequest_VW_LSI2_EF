@@ -1,0 +1,311 @@
+@page "/adventure"
+@inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject BlazorGame.Client.Services.DonjonService DonjonService
+@inject NavigationManager Nav
+
+@code {
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "playerId")]
+    public Guid? PlayerId { get; set; }
+}
+
+<div class="pixel-container">
+    <div class="pixel-header">
+        <h1>L'Aventure de @(currentPlayer?.Username ?? "Héros Inconnu")</h1>
+    </div>
+
+    @if (currentPlayer != null)
+    {
+        <div class="player-stats">
+            <div>
+                <span>Vie: @currentPlayer.Health/100</span>
+                <div class="health-bar">
+                    <div class="health-fill" style="width: @currentPlayer.Health%"></div>
+                    <div class="health-text">@currentPlayer.Health/100</div>
+                </div>
+            </div>
+            <div>
+                <span>Score: @currentPlayer.TotalScore</span>
+            </div>
+            <div>
+                <span>Objets: @currentPlayer.Inventory.Count</span>
+            </div>
+        </div>
+
+        @if (currentPlayer.Inventory.Any())
+        {
+            <div class="inventory">
+                <h4>Inventaire:</h4>
+                @foreach (var item in currentPlayer.Inventory)
+                {
+                    <div class="inventory-item">
+                        <span>@item.Name</span>
+                        <button class="pixel-btn" style="font-size: 8px; padding: 5px;" @onclick="() => UseItem(item)">
+                            Utiliser
+                        </button>
+                    </div>
+                }
+            </div>
+        }
+
+        <div class="adventure-scene">
+            <div class="scene-description">
+                <h3>@currentLocation</h3>
+                <p>@sceneDescription</p>
+                
+                @if (!string.IsNullOrEmpty(enemyName))
+                {
+                    <div class="enemy-info">
+                        <h4>@enemyName apparaît !</h4>
+                        <p>@enemyDescription</p>
+                    </div>
+                }
+            </div>
+
+            <div class="action-buttons">
+                @if (!string.IsNullOrEmpty(enemyName))
+                {
+                    <button class="pixel-btn primary" @onclick="AttackEnemy">
+                        Attaquer @enemyName
+                    </button>
+                    <button class="pixel-btn" @onclick="Flee">
+                        Fuir
+                    </button>
+                }
+                else
+                {
+                    <button class="pixel-btn" @onclick="ExploreNext">
+                        Explorer plus loin
+                    </button>
+                }
+                
+                <button class="pixel-btn gold" @onclick="Search">
+                    Fouiller
+                </button>
+                
+                <button class="pixel-btn danger" @onclick="Rest">
+                    Se reposer (+10 Vie)
+                </button>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(actionMessage))
+        {
+            <div class="status-message @(actionSuccess ? "success" : "error")">
+                @actionMessage
+            </div>
+        }
+
+        <div class="navigation">
+            <a class="pixel-btn" href="/">Retour à l'accueil</a>
+            <a class="pixel-btn" href="/scores">Voir les scores</a>
+        </div>
+
+        <div class="adventure-controls">
+            <button class="pixel-btn" @onclick="GenerateDonjon">Générer donjon (10 salles)</button>
+        </div>
+
+        @if (currentDungeon != null)
+        {
+            <div class="donjon-preview">
+                <h4>@currentDungeon.Name</h4>
+                <ol>
+                    @foreach (var s in currentDungeon.Salles)
+                    {
+                        <li>@s.Name - @s.Description</li>
+                    }
+                </ol>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="error-message">
+            <h3>Erreur</h3>
+            <p>Joueur non trouvé. Veuillez vous connecter d'abord.</p>
+            <a class="pixel-btn primary" href="/">Retour à l'accueil</a>
+        </div>
+    }
+</div>
+
+@code {
+    private SharedModels.Models.Player? currentPlayer;
+    private string actionMessage = string.Empty;
+    private bool actionSuccess = false;
+    private string currentLocation = "Entrée du Donjon";
+    private string sceneDescription = "Vous vous trouvez à l'entrée d'un donjon sombre et mystérieux. Des torches vacillantes éclairent faiblement les murs de pierre.";
+    private string enemyName = "Gobelin";
+    private string enemyDescription = "Un petit gobelin verdâtre vous regarde avec des yeux malveillants, brandissant une dague rouillée.";
+
+    private readonly string[] locations = {
+        "Entrée du Donjon",
+        "Couloir des Ombres",
+        "Salle du Trésor",
+        "Crypte Ancienne",
+        "Sanctuaire Oublié",
+        "Chambre du Boss Final"
+    };
+
+    private readonly string[] descriptions = {
+        "Vous vous trouvez à l'entrée d'un donjon sombre et mystérieux. Des torches vacillantes éclairent faiblement les murs de pierre.",
+        "Un long couloir s'étend devant vous, jonché de débris et de toiles d'araignée. L'air est vicié.",
+        "Une salle remplie de coffres et d'artefacts brillants. L'or scintille dans la lumière tamisée.",
+        "D'anciens sarcophages tapissent les murs de cette crypte. Une atmosphère sinistre règne ici.",
+        "Un sanctuaire abandonné aux dieux anciens. Des ruines mystiques parsèment la pièce.",
+        "La salle finale du donjon. Une présence maléfique vous observe depuis les ombres."
+    };
+
+    private readonly string[] enemies = {
+        "Gobelin",
+        "Squelette",
+        "Orc",
+        "Sorcier Noir",
+        "Dragon Ancien",
+        "Liche Maléfique"
+    };
+
+    private Donjon? currentDungeon;
+
+    protected override void OnParametersSet()
+    {
+        if (PlayerId.HasValue)
+        {
+            currentPlayer = PlayerService.GetPlayerById(PlayerId.Value);
+            if (currentPlayer is null)
+            {
+                // Si l'id n'existe pas, retour à l'accueil
+                Nav.NavigateTo("/");
+            }
+        }
+        else
+        {
+            // Pas d'id => retour à l'accueil
+            Nav.NavigateTo("/");
+        }
+    }
+
+    void AttackEnemy()
+    {
+        actionMessage = "Vous attaquez l'ennemi !";
+        actionSuccess = true;
+    }
+
+    void Flee()
+    {
+        actionMessage = "Vous tentez de fuir !";
+        actionSuccess = true;
+    }
+
+    void Search()
+    {
+        actionMessage = "Vous fouillez les environs !";
+        actionSuccess = true;
+    }
+
+    void Rest()
+    {
+        actionMessage = "Vous vous reposez !";
+        actionSuccess = true;
+    }
+
+    void ExploreNext()
+    {
+        actionMessage = "Vous explorez plus loin !";
+        actionSuccess = true;
+    }
+
+    void UseItem(SharedModels.Models.Item item)
+    {
+        actionMessage = $"Vous utilisez {item.Name} !";
+        actionSuccess = true;
+    }
+
+    private async Task GenerateDonjon()
+    {
+        actionMessage = "Génération en cours...";
+        actionSuccess = false;
+        StateHasChanged();
+
+        // demande au backend de générer 10 salles
+        currentDungeon = await DonjonService.GenerateAsync(10);
+        if (currentDungeon != null)
+        {
+            actionMessage = "Donjon généré.";
+            actionSuccess = true;
+            // vous pouvez aussi initialiser currentLocation, enemyName, etc. à partir de la première salle
+            currentLocation = currentDungeon.Salles.FirstOrDefault()?.Name ?? currentLocation;
+            sceneDescription = currentDungeon.Salles.FirstOrDefault()?.Description ?? sceneDescription;
+        }
+        else
+        {
+            actionMessage = "Échec de la génération.";
+            actionSuccess = false;
+        }
+    }
+}
+
+<style>
+    .adventure-scene {
+        background: var(--pixel-brown);
+        color: var(--pixel-light);
+        padding: 20px;
+        border: 3px solid var(--pixel-dark);
+        margin: 20px 0;
+    }
+
+    .scene-description {
+        margin-bottom: 20px;
+        line-height: 1.8;
+    }
+
+    .enemy-info {
+        background: var(--pixel-red);
+        color: white;
+        padding: 15px;
+        border: 2px solid var(--pixel-dark);
+        margin: 15px 0;
+    }
+
+    .action-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .navigation {
+        text-align: center;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 3px solid var(--pixel-dark);
+    }
+
+    .error-message {
+        text-align: center;
+        background: var(--pixel-red);
+        color: white;
+        padding: 20px;
+        border: 3px solid var(--pixel-dark);
+    }
+
+    .donjon-preview {
+        background: var(--pixel-dark);
+        color: var(--pixel-light);
+        padding: 15px;
+        border: 2px solid var(--pixel-red);
+        margin: 20px 0;
+    }
+
+    @@media (max-width: 768px) {
+        .action-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .pixel-btn {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+</style>

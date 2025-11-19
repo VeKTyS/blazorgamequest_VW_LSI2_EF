@@ -6,5 +6,5 @@ public class Item
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public int HealthEffect { get; set; } // Positif pour soigner, négatif pour blesser
-    public int ScoreValue  { get; set; } // Points de score donnés
+    public int ScoreValue { get; set; } // Points de score donnés
 }
