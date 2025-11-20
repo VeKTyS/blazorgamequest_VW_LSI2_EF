@@ -150,8 +150,8 @@
     // Item creation
     private string newItemName = string.Empty;
     private string newItemDescription = string.Empty;
-    private int newItemHealthEffect = 0;
-    private int newItemScoreEffect = 0;
+    private int? newItemHealthEffect = null;
+    private int? newItemScoreEffect = null;
     private string itemStatus = string.Empty;
     private bool itemSuccess = false;
 
@@ -231,8 +231,8 @@
         {
             Name = newItemName,
             Description = newItemDescription,
-            HealthEffect = newItemHealthEffect,
-            ScoreEffect = newItemScoreEffect
+            HealthEffect = newItemHealthEffect ?? 0,
+            ScoreEffect = newItemScoreEffect ?? 0
         };
 
         ItemService.AddItem(it);
@@ -243,8 +243,8 @@
         // Reset form
         newItemName = string.Empty;
         newItemDescription = string.Empty;
-        newItemHealthEffect = 0;
-        newItemScoreEffect = 0;
+        newItemHealthEffect = null;
+        newItemScoreEffect = null;
     }
 
     void DeleteItem(Guid id)
