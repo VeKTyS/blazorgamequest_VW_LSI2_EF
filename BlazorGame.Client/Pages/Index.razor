@@ -2,6 +2,7 @@
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
 @inject BlazorGame.Client.Services.IPlayerStateService PlayerState
 @inject NavigationManager Nav
+@inject IJSRuntime JS
 
 <div class="pixel-container">
     <div class="pixel-header">
@@ -86,17 +87,39 @@
     private bool loginSuccess = false;
     private SharedModels.Models.Player? currentPlayer;
 
-    void LoginAsPlayer()
+    protected override async Task OnInitializedAsync()
     {
-        Login(false);
+        // Try to restore session from localStorage
+        try
+        {
+            var idStr = await JS.InvokeAsync<string>("localStorage.getItem", "bg_currentPlayerId");
+            if (!string.IsNullOrEmpty(idStr) && Guid.TryParse(idStr, out var id))
+            {
+                var p = PlayerService.GetPlayerById(id);
+                if (p != null)
+                {
+                    currentPlayer = p;
+                    PlayerState.SetCurrent(p);
+                }
+            }
+        }
+        catch
+        {
+            // ignore JS errors
+        }
     }
 
-    void LoginAsAdmin()
+    async Task LoginAsPlayer()
     {
-        Login(true);
+        await Login(false);
     }
 
-    void Login(bool requireAdmin)
+    async Task LoginAsAdmin()
+    {
+        await Login(true);
+    }
+
+    async Task Login(bool requireAdmin)
     {
         loginMessage = string.Empty;
         loginSuccess = false;
@@ -122,14 +145,28 @@
 
         currentPlayer = player;
         PlayerState.SetCurrent(player);
+        // persist player id to localStorage so session survives refresh
+        try
+        {
+            await JS.InvokeVoidAsync("localStorage.setItem", "bg_currentPlayerId", player.Id.ToString());
+        }
+        catch
+        {
+            // ignore
+        }
         loginMessage = "Connexion réussie !";
         loginSuccess = true;
     }
 
-    void Logout()
+    async Task Logout()
     {
         currentPlayer = null;
         PlayerState.Clear();
+        try
+        {
+            await JS.InvokeVoidAsync("localStorage.removeItem", "bg_currentPlayerId");
+        }
+        catch { }
         loginMessage = string.Empty;
         username = string.Empty;
         password = string.Empty;

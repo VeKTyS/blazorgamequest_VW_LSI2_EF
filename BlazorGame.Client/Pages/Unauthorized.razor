@@ -1,0 +1,32 @@
+@page "/unauthorized"
+@inject NavigationManager Nav
+
+<div class="pixel-container">
+    <div class="pixel-header">
+        <h1>Accès non autorisé</h1>
+    </div>
+
+    <div class="error-message">
+        <h3>Vous n'êtes pas autorisé à accéder à cette page.</h3>
+        <p>Cette section est réservée aux administrateurs. Si vous pensez que c'est une erreur, reconnectez-vous avec un compte ayant les droits appropriés.</p>
+        <div style="margin-top:20px; text-align:center;">
+            <button class="pixel-btn primary" @onclick="GoHome">Retour à l'accueil</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    void GoHome() => Nav.NavigateTo("/");
+}
+
+<style>
+    .error-message {
+        text-align: center;
+        background: var(--pixel-red);
+        color: white;
+        padding: 20px;
+        border: 3px solid var(--pixel-dark);
+        max-width: 800px;
+        margin: 30px auto;
+    }
+</style>

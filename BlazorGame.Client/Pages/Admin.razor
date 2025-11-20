@@ -166,7 +166,7 @@
         // Only allow admins
         if (PlayerState.CurrentPlayer == null || !PlayerState.CurrentPlayer.IsAdmin)
         {
-            Nav.NavigateTo("/");
+            Nav.NavigateTo("/unauthorized");
         }
     }
 
