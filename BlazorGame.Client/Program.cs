@@ -19,6 +19,10 @@ builder.Services.AddDbContextFactory<GameDbContext>(options =>
 // Register the EF-based player service
 builder.Services.AddScoped<IPlayerService, EFPlayerService>();
 
+// Register dungeon & adventure services
+builder.Services.AddScoped<IDungeonGenerator, DungeonGeneratorService>();
+builder.Services.AddScoped<IAdventureService, AdventureService>();
+
 var host = builder.Build();
 
 // Seed the database with initial data
