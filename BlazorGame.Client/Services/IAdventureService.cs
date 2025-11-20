@@ -14,5 +14,6 @@ public interface IAdventureService
     void Rest();
     void Attack();
     void Flee();
-    Task<AdventureResult> EndAndSaveAsync();
+    Task<(AdventureResult result, bool saved)> EndAndSaveAsync();
+    Task<bool> SaveResultAsync();
 }

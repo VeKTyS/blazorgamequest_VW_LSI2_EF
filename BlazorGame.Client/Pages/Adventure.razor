@@ -222,10 +222,23 @@
             actionMessage = "Aventure terminée. Sauvegarde en cours...";
         }
 
-        var result = await AdventureService.EndAndSaveAsync();
+        // Save only the result and then go home
+        var saved = await AdventureService.SaveResultAsync();
         currentPlayer = AdventureService.CurrentPlayer;
-        actionMessage = $"Partie sauvegardée. Score: {result.Score} - Mort: {result.IsDead}";
-        actionSuccess = true;
+        if (saved)
+        {
+            actionMessage = "Partie sauvegardée. Retour à l'accueil...";
+            actionSuccess = true;
+        }
+        else
+        {
+            actionMessage = $"Échec de la sauvegarde. Détail: {AdventureService.LastEvent}";
+            actionSuccess = false;
+        }
+
+        // redirect home after short pause
+        await Task.Delay(500);
+        Nav.NavigateTo("/");
     }
 
     void UseItem(SharedModels.Models.Item item)

@@ -1,4 +1,6 @@
 using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using SharedModels.Models;
 
 namespace BlazorGame.Client.Services;
@@ -163,7 +165,7 @@ public class AdventureService : IAdventureService
         }
     }
 
-    public async Task<AdventureResult> EndAndSaveAsync()
+    public async Task<(AdventureResult result, bool saved)> EndAndSaveAsync()
     {
         IsFinished = true;
 
@@ -175,22 +177,68 @@ public class AdventureService : IAdventureService
             Events = new[] { LastEvent }
         };
 
+        bool saved = false;
+
         try
         {
             // Post adventure result
-            await _http.PostAsJsonAsync("api/AdventureResults", result);
+            var options = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.Preserve,
+                MaxDepth = 128,
+                WriteIndented = false
+            };
+
+            var content = JsonContent.Create(result, options: options);
+            var resp = await _http.PostAsync("api/AdventureResults", content);
+            saved = resp.IsSuccessStatusCode;
 
             // Optionally save dungeon
             if (_currentDonjon != null)
             {
-                await _http.PostAsJsonAsync("api/Donjons", _currentDonjon);
+                var content2 = JsonContent.Create(_currentDonjon, options: options);
+                var resp2 = await _http.PostAsync("api/Donjons", content2);
+                saved = saved && resp2.IsSuccessStatusCode;
             }
         }
-        catch
+        catch (Exception ex)
         {
-            // ignore network errors in client mode
+            // surface the error in LastEvent so UI can display it
+            AddEvent($"Échec de la sauvegarde: {ex.Message}");
+            saved = false;
         }
 
-        return result;
+        return (result, saved);
+    }
+
+    // Save only the AdventureResult (no Donjon) and return success flag
+    public async Task<bool> SaveResultAsync()
+    {
+        var result = new AdventureResult
+        {
+            PlayerId = CurrentPlayer.Id,
+            Score = CurrentPlayer.TotalScore,
+            IsDead = CurrentPlayer.Health <= 0,
+            Events = new[] { LastEvent }
+        };
+
+        try
+        {
+            var options = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.Preserve,
+                MaxDepth = 128,
+                WriteIndented = false
+            };
+
+            var content = JsonContent.Create(result, options: options);
+            var resp = await _http.PostAsync("api/AdventureResults", content);
+            return resp.IsSuccessStatusCode;
+        }
+        catch (Exception ex)
+        {
+            AddEvent($"Échec de la sauvegarde: {ex.Message}");
+            return false;
+        }
     }
 }
