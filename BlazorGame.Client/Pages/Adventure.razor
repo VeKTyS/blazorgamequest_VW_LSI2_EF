@@ -79,19 +79,31 @@
                 </div>
 
                 <div class="action-buttons">
-                    @if (AdventureService.CurrentRoom.Monstres.Any())
+                    @if (AdventureService.IsFinished)
                     {
-                        <button class="pixel-btn primary" @onclick="OnAttack">Attaquer</button>
-                        <button class="pixel-btn" @onclick="OnFlee">Fuir</button>
+                        <div class="final-panel">
+                            <h3>Donjon terminé !</h3>
+                            <button class="pixel-btn primary" @onclick="RestartAdventure">Relancer l'aventure</button>
+                            <button class="pixel-btn" @onclick="GoHome">Retour à l'accueil</button>
+                            <button class="pixel-btn" @onclick="ViewScores">Voir le classement</button>
+                        </div>
                     }
                     else
                     {
-                        <button class="pixel-btn" @onclick="OnExplore">Explorer</button>
-                    }
+                        @if (AdventureService.CurrentRoom.Monstres.Any())
+                        {
+                            <button class="pixel-btn primary" @onclick="OnAttack">Attaquer</button>
+                            <button class="pixel-btn" @onclick="OnFlee">Fuir</button>
+                        }
+                        else
+                        {
+                            <button class="pixel-btn" @onclick="OnExplore">Explorer</button>
+                        }
 
-                    <button class="pixel-btn gold" @onclick="OnSearch">Fouiller</button>
-                    <button class="pixel-btn danger" @onclick="OnRest">Se reposer</button>
-                    <button class="pixel-btn" @onclick="OnEnd">Terminer & Sauvegarder</button>
+                        <button class="pixel-btn gold" @onclick="OnSearch">Fouiller</button>
+                        <button class="pixel-btn danger" @onclick="OnRest">Se reposer</button>
+                        <button class="pixel-btn" @onclick="OnEnd">Terminer & Sauvegarder</button>
+                    }
                 </div>
             }
             else
@@ -224,6 +236,24 @@
         currentPlayer.Inventory.Remove(item);
         actionMessage = $"Vous utilisez {item.Name}. PV: {currentPlayer.Health}, Score: {currentPlayer.TotalScore}";
         actionSuccess = true;
+    }
+
+    void RestartAdventure()
+    {
+        if (currentPlayer == null) return;
+        StartAdventure();
+        actionMessage = AdventureService.LastEvent;
+        actionSuccess = true;
+    }
+
+    void GoHome()
+    {
+        Nav.NavigateTo("/");
+    }
+
+    void ViewScores()
+    {
+        Nav.NavigateTo("/scores");
     }
 }
 
