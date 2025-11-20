@@ -9,8 +9,13 @@ WATINE David
 # Lancer le projet 
 
 - Cloner le projet
+- Deplacez vous dans le dossier AuthenticationServices
+- Exécutez avec dotnet run
+- Ouvrez un autre terminal
 - Deplacez vous dans le dossier blazorgame.Client
 - Exécutez avec dotnet run
+
+
 
 # Tests unitaires prévisionnels
 
