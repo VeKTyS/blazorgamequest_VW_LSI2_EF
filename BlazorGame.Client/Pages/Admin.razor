@@ -1,6 +1,7 @@
 @page "/admin"
 @inject NavigationManager Nav
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject BlazorGame.Client.Services.IItemService ItemService
 
 <div class="pixel-container">
     <div class="pixel-header">
@@ -156,11 +157,13 @@
     protected override void OnInitialized()
     {
         players = PlayerService.GetAllPlayers().ToList();
+        items = ItemService.GetAllItems().ToList();
     }
 
     void RefreshData()
     {
         players = PlayerService.GetAllPlayers().ToList();
+        items = ItemService.GetAllItems().ToList();
         StateHasChanged();
     }
 
@@ -207,9 +210,26 @@
 
     void CreateItem()
     {
-        itemStatus = $"Création de l'objet '{(string.IsNullOrWhiteSpace(newItemName) ? "[nom requis]" : newItemName)}' avec effets Vie: {newItemHealthEffect}, Score: {newItemScoreEffect}";
+        if (string.IsNullOrWhiteSpace(newItemName))
+        {
+            itemSuccess = false;
+            itemStatus = "Nom d'objet requis.";
+            return;
+        }
+
+        var it = new SharedModels.Models.Item
+        {
+            Name = newItemName,
+            Description = newItemDescription,
+            HealthEffect = newItemHealthEffect,
+            ScoreEffect = newItemScoreEffect
+        };
+
+        ItemService.AddItem(it);
         itemSuccess = true;
-        
+        itemStatus = $"Objet '{it.Name}' créé.";
+        RefreshData();
+
         // Reset form
         newItemName = string.Empty;
         newItemDescription = string.Empty;
@@ -219,9 +239,11 @@
 
     void DeleteItem(Guid id)
     {
+        var ok = ItemService.RemoveItem(id);
         var item = items.FirstOrDefault(i => i.Id == id);
-        itemStatus = $"Suppression de l'objet '{(item?.Name ?? "inconnu")}'";
-        itemSuccess = true;
+        itemStatus = ok ? $"Suppression de l'objet '{(item?.Name ?? "inconnu")}'" : "Objet introuvable.";
+        itemSuccess = ok;
+        RefreshData();
     }
 }
 

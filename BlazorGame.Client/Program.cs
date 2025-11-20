@@ -22,6 +22,8 @@ builder.Services.AddScoped<IPlayerService, EFPlayerService>();
 // Register dungeon & adventure services
 builder.Services.AddScoped<IDungeonGenerator, DungeonGeneratorService>();
 builder.Services.AddScoped<IAdventureService, AdventureService>();
+// Register item service
+builder.Services.AddScoped<IItemService, EFItemService>();
 
 var host = builder.Build();
 
@@ -52,6 +54,16 @@ await using (var scope = host.Services.CreateAsyncScope())
 				Health = 100,
 				TotalScore = 50
 			}
+		);
+		await context.SaveChangesAsync();
+	}
+
+	// Seed default items
+	if (!context.Items.Any())
+	{
+		context.Items.AddRange(
+			new Item { Name = "Potion Mineure", Description = "Soigne 10 PV", HealthEffect = 10, ScoreEffect = 5 },
+			new Item { Name = "Petit Trésor", Description = "Un petit sac de pièces", HealthEffect = 0, ScoreEffect = 25 }
 		);
 		await context.SaveChangesAsync();
 	}

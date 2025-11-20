@@ -7,14 +7,16 @@ public class AdventureService : IAdventureService
 {
     private readonly IDungeonGenerator _generator;
     private readonly HttpClient _http;
+    private readonly IItemService _itemService;
     private Donjon? _currentDonjon;
     private int _currentIndex = 0;
     private string _lastEvent = string.Empty;
 
-    public AdventureService(IDungeonGenerator generator, HttpClient http)
+    public AdventureService(IDungeonGenerator generator, HttpClient http, IItemService itemService)
     {
         _generator = generator;
         _http = http;
+        _itemService = itemService;
     }
 
     public Player CurrentPlayer { get; private set; } = new Player();
@@ -57,14 +59,13 @@ public class AdventureService : IAdventureService
         var room = CurrentRoom;
         if (room == null) return;
 
-        // take first item if exists
-        var item = room.Items.FirstOrDefault();
+        // Try to take an item from the global EF item store (shared inventory)
+        var item = _itemService.TakeRandomItem();
         if (item != null)
         {
             CurrentPlayer.Inventory.Add(item);
             CurrentPlayer.TotalScore += item.ScoreEffect;
             AddEvent($"Vous récupérez {item.Name} (+{item.ScoreEffect} pts, {item.HealthEffect} PV).");
-            room.Items.Remove(item);
             return;
         }
 
