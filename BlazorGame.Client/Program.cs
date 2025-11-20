@@ -19,6 +19,9 @@ builder.Services.AddDbContextFactory<GameDbContext>(options =>
 // Register the EF-based player service
 builder.Services.AddScoped<IPlayerService, EFPlayerService>();
 
+// Player state (keeps logged-in player across pages)
+builder.Services.AddScoped<IPlayerStateService, PlayerStateService>();
+
 // Register dungeon & adventure services
 builder.Services.AddScoped<IDungeonGenerator, DungeonGeneratorService>();
 builder.Services.AddScoped<IAdventureService, AdventureService>();

@@ -2,6 +2,7 @@
 @inject NavigationManager Nav
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
 @inject BlazorGame.Client.Services.IItemService ItemService
+@inject BlazorGame.Client.Services.IPlayerStateService PlayerState
 
 <div class="pixel-container">
     <div class="pixel-header">
@@ -130,7 +131,7 @@
     }
 
     <div class="navigation">
-        <a class="pixel-btn" href="/">Retour à l'accueil</a>
+        <a class="pixel-btn" href="/">Déconnexion</a>
         <a class="pixel-btn" href="/scores">Voir les scores</a>
     </div>
 
@@ -158,6 +159,15 @@
     {
         players = PlayerService.GetAllPlayers().ToList();
         items = ItemService.GetAllItems().ToList();
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Only allow admins
+        if (PlayerState.CurrentPlayer == null || !PlayerState.CurrentPlayer.IsAdmin)
+        {
+            Nav.NavigateTo("/");
+        }
     }
 
     void RefreshData()

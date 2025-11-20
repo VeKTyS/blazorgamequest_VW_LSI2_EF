@@ -1,5 +1,6 @@
 @page "/"
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject BlazorGame.Client.Services.IPlayerStateService PlayerState
 @inject NavigationManager Nav
 
 <div class="pixel-container">
@@ -120,6 +121,7 @@
         }
 
         currentPlayer = player;
+        PlayerState.SetCurrent(player);
         loginMessage = "Connexion réussie !";
         loginSuccess = true;
     }
@@ -127,6 +129,7 @@
     void Logout()
     {
         currentPlayer = null;
+        PlayerState.Clear();
         loginMessage = string.Empty;
         username = string.Empty;
         password = string.Empty;
