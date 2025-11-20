@@ -59,7 +59,19 @@ public class AdventureService : IAdventureService
         var room = CurrentRoom;
         if (room == null) return;
 
-        // Try to take an item from the global EF item store (shared inventory)
+        // First check for items lying in the current room (e.g. dropped by monsters)
+        var roomItem = room.Items.FirstOrDefault();
+        if (roomItem != null)
+        {
+            // take the item from the room
+            room.Items.Remove(roomItem);
+            CurrentPlayer.Inventory.Add(roomItem);
+            CurrentPlayer.TotalScore += roomItem.ScoreEffect;
+            AddEvent($"Vous récupérez {roomItem.Name} (+{roomItem.ScoreEffect} pts, {roomItem.HealthEffect} PV) dans la salle.");
+            return;
+        }
+
+        // If no room item, try to take an item from the global EF item store (shared inventory)
         var item = _itemService.TakeRandomItem();
         if (item != null)
         {
@@ -106,10 +118,11 @@ public class AdventureService : IAdventureService
         if (monster.Health <= 0)
         {
             CurrentPlayer.TotalScore += monster.ScoreValue;
-            // drop item
+            // if the monster had a dropped item, place it in the room (player must search to pick it up)
             if (monster.droppedItem != null)
             {
-                CurrentPlayer.Inventory.Add(monster.droppedItem);
+                room.Items.Add(monster.droppedItem);
+                AddEvent($"{monster.Name} laisse tomber {monster.droppedItem.Name}.");
             }
             room.Monstres.Remove(monster);
             AddEvent($"{monster.Name} vaincu ! +{monster.ScoreValue} pts.");
