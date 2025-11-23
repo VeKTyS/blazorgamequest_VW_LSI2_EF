@@ -1,19 +1,52 @@
-# blazorgamequest_VW_LSI2_EF
-BlazorGameQuest - Jeu d’aventure - Projet en continu – Développement Agile (Environnement DOTNET et C#)
+# BlazorGameQuest (blazorgamequest_VW_LSI2_EF)
 
-# Membres
+Jeu d'aventure développé en Blazor WebAssembly (client) + ASP.NET Core Web API (AuthenticationServices).
 
-VONG Lucas
-WATINE David
+Contributeurs
+- VONG Lucas
+- WATINE David
 
-# Lancer le projet 
+Résumé des fonctionnalités développées
+- Génération aléatoire de donjons (suite de salles) via `IDungeonGenerator` / `DungeonGeneratorService`.
+- Mécanique d'aventure interactive (`IAdventureService` / `AdventureService`) : exploration, attaque, fuite, repos, fouille, utilisation d'objets.
+- Gestion d'objets persistants côté client (`IItemService` / `EFItemService`) et administration via `Pages/Admin.razor`.
+- État joueur stocké en session client via `PlayerStateService` et `localStorage` (clé `bg_currentPlayerId`).
+- Sauvegarde des résultats d'aventure : `AdventureResult` POSTé vers `api/AdventureResults` (score, date, événements).
+- UI : pages `Index`, `Adventure`, `Admin`, `Scores`, `Unauthorized`.
 
-- Cloner le projet
-- Deplacez vous dans le dossier AuthenticationServices
-- Exécutez avec dotnet run
-- Ouvrez un autre terminal
-- Deplacez vous dans le dossier blazorgame.Client
-- Exécutez avec dotnet run
+Tests unitaires
+- Emplacement : `BlazorGame.Tests`
+- Tests ajoutés (xUnit) dans `UnitTest1.cs` :
+	- Création d'un joueur via `InMemoryPlayerService` et vérification des valeurs par défaut.
+	- Vérification de l'augmentation du score d'un joueur.
+	- Tests de `DungeonGeneratorService` : nombre de salles, unicité des identifiants, connexions.
+	- Tests de `Salle` : présence de monstres.
+	- Tests d'inventaire : ajout d'objet.
+	- Test basique d'`AdventureService.Attack()` en mode contrôlé (générateur de test et `TestItemService`) pour valider que la santé change après combat.
+
+Comment lancer le projet (développement local)
+1) Cloner le dépôt
+
+2) Lancer l'API (AuthenticationServices)
+	 - Ouvrir un terminal et se placer dans :
+		 `./AuthenticationServices`
+	 - Lancer :
+```
+dotnet run
+```
+
+3) Lancer le client Blazor
+	 - Ouvrir un autre terminal et se placer dans :
+		 `.\BlazorGame.Client`
+	 - Lancer :
+```
+dotnet run
+```
+
+4) Exécuter les tests unitaires
+```
+dotnet test
+```
 
 
 
