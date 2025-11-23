@@ -1,5 +1,7 @@
 @page "/adventure"
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject BlazorGame.Client.Services.IAdventureService AdventureService
+@inject BlazorGame.Client.Services.IPlayerStateService PlayerState
 @inject NavigationManager Nav
 
 @code {
@@ -48,44 +50,69 @@
         }
 
         <div class="adventure-scene">
-            <div class="scene-description">
-                <h3>@currentLocation</h3>
-                <p>@sceneDescription</p>
-                
-                @if (!string.IsNullOrEmpty(enemyName))
-                {
-                    <div class="enemy-info">
-                        <h4>@enemyName apparaît !</h4>
-                        <p>@enemyDescription</p>
-                    </div>
-                }
-            </div>
+            @if (AdventureService.CurrentRoom is not null)
+            {
+                <div class="scene-description">
+                    <h3>@AdventureService.CurrentRoom.Name</h3>
+                    <p>@AdventureService.CurrentRoom.Description</p>
 
-            <div class="action-buttons">
-                @if (!string.IsNullOrEmpty(enemyName))
-                {
-                    <button class="pixel-btn primary" @onclick="AttackEnemy">
-                        Attaquer @enemyName
-                    </button>
-                    <button class="pixel-btn" @onclick="Flee">
-                        Fuir
-                    </button>
-                }
-                else
-                {
-                    <button class="pixel-btn" @onclick="ExploreNext">
-                        Explorer plus loin
-                    </button>
-                }
-                
-                <button class="pixel-btn gold" @onclick="Search">
-                    Fouiller
-                </button>
-                
-                <button class="pixel-btn danger" @onclick="Rest">
-                    Se reposer (+10 Vie)
-                </button>
-            </div>
+                    @if (AdventureService.CurrentRoom.Monstres.Any())
+                    {
+                        <div class="enemy-info">
+                            <h4>Ennemi: @AdventureService.CurrentRoom.Monstres.First().Name</h4>
+                            <p>PV: @AdventureService.CurrentRoom.Monstres.First().Health - Attaque: @AdventureService.CurrentRoom.Monstres.First().AttackPower</p>
+                        </div>
+                    }
+
+                    @if (AdventureService.CurrentRoom.Items.Any())
+                    {
+                        <div class="items-info">
+                            <h4>Objets dans la salle:</h4>
+                            <ul>
+                                @foreach (var it in AdventureService.CurrentRoom.Items)
+                                {
+                                    <li>@it.Name (@it.ScoreEffect pts, @it.HealthEffect PV)</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+
+                <div class="action-buttons">
+                    @if (AdventureService.IsFinished)
+                    {
+                        <div class="final-panel">
+                            <h3>Donjon terminé !</h3>
+                            <button class="pixel-btn primary" @onclick="RestartAdventure">Relancer l'aventure</button>
+                            <button class="pixel-btn" @onclick="GoHome">Retour à l'accueil</button>
+                            <button class="pixel-btn" @onclick="ViewScores">Voir le classement</button>
+                        </div>
+                    }
+                    else
+                    {
+                        @if (AdventureService.CurrentRoom.Monstres.Any())
+                        {
+                            <button class="pixel-btn primary" @onclick="OnAttack">Attaquer</button>
+                            <button class="pixel-btn" @onclick="OnFlee">Fuir</button>
+                        }
+                        else
+                        {
+                            <button class="pixel-btn" @onclick="OnExplore">Explorer</button>
+                        }
+
+                        <button class="pixel-btn gold" @onclick="OnSearch">Fouiller</button>
+                        <button class="pixel-btn danger" @onclick="OnRest">Se reposer</button>
+                        <button class="pixel-btn" @onclick="OnEnd">Sauvegarder</button>
+                    }
+                </div>
+            }
+            else
+            {
+                <div>Pas de donjon en cours. Cliquez sur <b>Commencer</b>.</div>
+                <div class="action-buttons">
+                    <button class="pixel-btn primary" @onclick="StartAdventure">Commencer l'aventure</button>
+                </div>
+            }
         </div>
 
         @if (!string.IsNullOrEmpty(actionMessage))
@@ -114,90 +141,132 @@
     private SharedModels.Models.Player? currentPlayer;
     private string actionMessage = string.Empty;
     private bool actionSuccess = false;
-    private string currentLocation = "Entrée du Donjon";
-    private string sceneDescription = "Vous vous trouvez à l'entrée d'un donjon sombre et mystérieux. Des torches vacillantes éclairent faiblement les murs de pierre.";
-    private string enemyName = "Gobelin";
-    private string enemyDescription = "Un petit gobelin verdâtre vous regarde avec des yeux malveillants, brandissant une dague rouillée.";
-
-    private readonly string[] locations = {
-        "Entrée du Donjon",
-        "Couloir des Ombres",
-        "Salle du Trésor",
-        "Crypte Ancienne",
-        "Sanctuaire Oublié",
-        "Chambre du Boss Final"
-    };
-
-    private readonly string[] descriptions = {
-        "Vous vous trouvez à l'entrée d'un donjon sombre et mystérieux. Des torches vacillantes éclairent faiblement les murs de pierre.",
-        "Un long couloir s'étend devant vous, jonché de débris et de toiles d'araignée. L'air est vicié.",
-        "Une salle remplie de coffres et d'artefacts brillants. L'or scintille dans la lumière tamisée.",
-        "D'anciens sarcophages tapissent les murs de cette crypte. Une atmosphère sinistre règne ici.",
-        "Un sanctuaire abandonné aux dieux anciens. Des ruines mystiques parsèment la pièce.",
-        "La salle finale du donjon. Une présence maléfique vous observe depuis les ombres."
-    };
-
-    private readonly string[] enemies = {
-        "Gobelin",
-        "Squelette",
-        "Orc",
-        "Sorcier Noir",
-        "Dragon Ancien",
-        "Liche Maléfique"
-    };
 
     protected override void OnParametersSet()
     {
+        // Prefer player from querystring (explicit) else use logged-in player state
         if (PlayerId.HasValue)
         {
             currentPlayer = PlayerService.GetPlayerById(PlayerId.Value);
-            if (currentPlayer is null)
-            {
-                // Si l'id n'existe pas, retour à l'accueil
-                Nav.NavigateTo("/");
-            }
+        }
+        else if (PlayerState.CurrentPlayer != null)
+        {
+            currentPlayer = PlayerState.CurrentPlayer;
+        }
+
+        if (currentPlayer == null)
+        {
+            Nav.NavigateTo("/");
+            return;
+        }
+
+        // initialize adventure service with the selected/logged player
+        AdventureService.StartAdventure(currentPlayer, rooms: 6);
+        currentPlayer = AdventureService.CurrentPlayer;
+        actionMessage = AdventureService.LastEvent;
+    }
+
+    void StartAdventure()
+    {
+        if (currentPlayer == null) return;
+        AdventureService.StartAdventure(currentPlayer, rooms: 6);
+        currentPlayer = AdventureService.CurrentPlayer;
+        actionMessage = AdventureService.LastEvent;
+        StateHasChanged();
+    }
+
+    void OnExplore()
+    {
+        AdventureService.Explore();
+        currentPlayer = AdventureService.CurrentPlayer;
+        actionMessage = AdventureService.LastEvent;
+        actionSuccess = !AdventureService.IsFinished;
+    }
+
+    void OnSearch()
+    {
+        AdventureService.Search();
+        currentPlayer = AdventureService.CurrentPlayer;
+        actionMessage = AdventureService.LastEvent;
+        actionSuccess = true;
+    }
+
+    void OnRest()
+    {
+        AdventureService.Rest();
+        currentPlayer = AdventureService.CurrentPlayer;
+        actionMessage = AdventureService.LastEvent;
+        actionSuccess = true;
+    }
+
+    void OnAttack()
+    {
+        AdventureService.Attack();
+        currentPlayer = AdventureService.CurrentPlayer;
+        actionMessage = AdventureService.LastEvent;
+        actionSuccess = !AdventureService.IsFinished;
+    }
+
+    void OnFlee()
+    {
+        AdventureService.Flee();
+        currentPlayer = AdventureService.CurrentPlayer;
+        actionMessage = AdventureService.LastEvent;
+        actionSuccess = !AdventureService.IsFinished;
+    }
+
+    async Task OnEnd()
+    {
+        if (AdventureService.IsFinished)
+        {
+            actionMessage = "Aventure terminée. Sauvegarde en cours...";
+        }
+
+        // Save only the result and then go home
+        var saved = await AdventureService.SaveResultAsync();
+        currentPlayer = AdventureService.CurrentPlayer;
+        if (saved)
+        {
+            actionMessage = "Partie sauvegardée. Retour à l'accueil...";
+            actionSuccess = true;
         }
         else
         {
-            // Pas d'id => retour à l'accueil
-            Nav.NavigateTo("/");
+            actionMessage = $"Échec de la sauvegarde. Détail: {AdventureService.LastEvent}";
+            actionSuccess = false;
         }
-    }
 
-    void AttackEnemy()
-    {
-        actionMessage = "Vous attaquez l'ennemi !";
-        actionSuccess = true;
-    }
-
-    void Flee()
-    {
-        actionMessage = "Vous tentez de fuir !";
-        actionSuccess = true;
-    }
-
-    void Search()
-    {
-        actionMessage = "Vous fouillez les environs !";
-        actionSuccess = true;
-    }
-
-    void Rest()
-    {
-        actionMessage = "Vous vous reposez !";
-        actionSuccess = true;
-    }
-
-    void ExploreNext()
-    {
-        actionMessage = "Vous explorez plus loin !";
-        actionSuccess = true;
+        // redirect home after short pause
+        await Task.Delay(500);
+        Nav.NavigateTo("/");
     }
 
     void UseItem(SharedModels.Models.Item item)
     {
-        actionMessage = $"Vous utilisez {item.Name} !";
+        if (currentPlayer == null) return;
+        currentPlayer.Health = Math.Min(100, currentPlayer.Health + item.HealthEffect);
+        currentPlayer.TotalScore += item.ScoreEffect;
+        currentPlayer.Inventory.Remove(item);
+        actionMessage = $"Vous utilisez {item.Name}. PV: {currentPlayer.Health}, Score: {currentPlayer.TotalScore}";
         actionSuccess = true;
+    }
+
+    void RestartAdventure()
+    {
+        if (currentPlayer == null) return;
+        StartAdventure();
+        actionMessage = AdventureService.LastEvent;
+        actionSuccess = true;
+    }
+
+    void GoHome()
+    {
+        Nav.NavigateTo("/");
+    }
+
+    void ViewScores()
+    {
+        Nav.NavigateTo("/scores");
     }
 }
 

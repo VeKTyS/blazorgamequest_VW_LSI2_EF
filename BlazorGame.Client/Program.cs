@@ -19,6 +19,15 @@ builder.Services.AddDbContextFactory<GameDbContext>(options =>
 // Register the EF-based player service
 builder.Services.AddScoped<IPlayerService, EFPlayerService>();
 
+// Player state (keeps logged-in player across pages)
+builder.Services.AddScoped<IPlayerStateService, PlayerStateService>();
+
+// Register dungeon & adventure services
+builder.Services.AddScoped<IDungeonGenerator, DungeonGeneratorService>();
+builder.Services.AddScoped<IAdventureService, AdventureService>();
+// Register item service
+builder.Services.AddScoped<IItemService, EFItemService>();
+
 var host = builder.Build();
 
 // Seed the database with initial data
@@ -48,6 +57,16 @@ await using (var scope = host.Services.CreateAsyncScope())
 				Health = 100,
 				TotalScore = 50
 			}
+		);
+		await context.SaveChangesAsync();
+	}
+
+	// Seed default items
+	if (!context.Items.Any())
+	{
+		context.Items.AddRange(
+			new Item { Name = "Potion Mineure", Description = "Soigne 10 PV", HealthEffect = 10, ScoreEffect = 5 },
+			new Item { Name = "Petit Trésor", Description = "Un petit sac de pièces", HealthEffect = 0, ScoreEffect = 25 }
 		);
 		await context.SaveChangesAsync();
 	}

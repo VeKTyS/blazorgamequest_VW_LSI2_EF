@@ -1,6 +1,8 @@
 @page "/admin"
 @inject NavigationManager Nav
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject BlazorGame.Client.Services.IItemService ItemService
+@inject BlazorGame.Client.Services.IPlayerStateService PlayerState
 
 <div class="pixel-container">
     <div class="pixel-header">
@@ -129,7 +131,7 @@
     }
 
     <div class="navigation">
-        <a class="pixel-btn" href="/">Retour à l'accueil</a>
+        <a class="pixel-btn" href="/">Déconnexion</a>
         <a class="pixel-btn" href="/scores">Voir les scores</a>
     </div>
 
@@ -148,19 +150,30 @@
     // Item creation
     private string newItemName = string.Empty;
     private string newItemDescription = string.Empty;
-    private int newItemHealthEffect = 0;
-    private int newItemScoreEffect = 0;
+    private int? newItemHealthEffect = null;
+    private int? newItemScoreEffect = null;
     private string itemStatus = string.Empty;
     private bool itemSuccess = false;
 
     protected override void OnInitialized()
     {
         players = PlayerService.GetAllPlayers().ToList();
+        items = ItemService.GetAllItems().ToList();
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Only allow admins
+        if (PlayerState.CurrentPlayer == null || !PlayerState.CurrentPlayer.IsAdmin)
+        {
+            Nav.NavigateTo("/unauthorized");
+        }
     }
 
     void RefreshData()
     {
         players = PlayerService.GetAllPlayers().ToList();
+        items = ItemService.GetAllItems().ToList();
         StateHasChanged();
     }
 
@@ -207,21 +220,40 @@
 
     void CreateItem()
     {
-        itemStatus = $"Création de l'objet '{(string.IsNullOrWhiteSpace(newItemName) ? "[nom requis]" : newItemName)}' avec effets Vie: {newItemHealthEffect}, Score: {newItemScoreEffect}";
+        if (string.IsNullOrWhiteSpace(newItemName))
+        {
+            itemSuccess = false;
+            itemStatus = "Nom d'objet requis.";
+            return;
+        }
+
+        var it = new SharedModels.Models.Item
+        {
+            Name = newItemName,
+            Description = newItemDescription,
+            HealthEffect = newItemHealthEffect ?? 0,
+            ScoreEffect = newItemScoreEffect ?? 0
+        };
+
+        ItemService.AddItem(it);
         itemSuccess = true;
-        
+        itemStatus = $"Objet '{it.Name}' créé.";
+        RefreshData();
+
         // Reset form
         newItemName = string.Empty;
         newItemDescription = string.Empty;
-        newItemHealthEffect = 0;
-        newItemScoreEffect = 0;
+        newItemHealthEffect = null;
+        newItemScoreEffect = null;
     }
 
     void DeleteItem(Guid id)
     {
+        var ok = ItemService.RemoveItem(id);
         var item = items.FirstOrDefault(i => i.Id == id);
-        itemStatus = $"Suppression de l'objet '{(item?.Name ?? "inconnu")}'";
-        itemSuccess = true;
+        itemStatus = ok ? $"Suppression de l'objet '{(item?.Name ?? "inconnu")}'" : "Objet introuvable.";
+        itemSuccess = ok;
+        RefreshData();
     }
 }
 

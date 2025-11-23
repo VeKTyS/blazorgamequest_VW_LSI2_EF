@@ -1,6 +1,9 @@
 @page "/"
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject BlazorGame.Client.Services.IPlayerStateService PlayerState
 @inject NavigationManager Nav
+@inject IJSRuntime JS
+@inject HttpClient Http
 
 <div class="pixel-container">
     <div class="pixel-header">
@@ -65,6 +68,28 @@
                 </div>
             </div>
 
+            @if (latestSave != null)
+            {
+                <div class="latest-save">
+                    <h4>Dernière sauvegarde</h4>
+                    <p><strong>Date:</strong> @latestSave.PlayedAt.ToLocalTime().ToString("g")</p>
+                    <p><strong>Score:</strong> @latestSave.Score</p>
+                    <p><strong>Mort:</strong> @(latestSave.IsDead ? "Oui" : "Non")</p>
+                    @if (latestSave.Events != null && latestSave.Events.Any())
+                    {
+                        <div>
+                            <strong>Événements récents:</strong>
+                            <ul>
+                                @foreach (var ev in latestSave.Events)
+                                {
+                                    <li>@ev</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            }
+
             <div class="action-buttons">
                 @if (currentPlayer.IsAdmin)
                 {
@@ -84,18 +109,42 @@
     private string loginMessage = string.Empty;
     private bool loginSuccess = false;
     private SharedModels.Models.Player? currentPlayer;
+    private SharedModels.Models.AdventureResult? latestSave;
 
-    void LoginAsPlayer()
+    protected override async Task OnInitializedAsync()
     {
-        Login(false);
+        // Try to restore session from localStorage
+        try
+        {
+            var idStr = await JS.InvokeAsync<string>("localStorage.getItem", "bg_currentPlayerId");
+            if (!string.IsNullOrEmpty(idStr) && Guid.TryParse(idStr, out var id))
+            {
+                var p = PlayerService.GetPlayerById(id);
+                    if (p != null)
+                    {
+                        currentPlayer = p;
+                        PlayerState.SetCurrent(p);
+                        await LoadLatestSaveAsync();
+                    }
+            }
+        }
+        catch
+        {
+            // ignore JS errors
+        }
     }
 
-    void LoginAsAdmin()
+    async Task LoginAsPlayer()
     {
-        Login(true);
+        await Login(false);
     }
 
-    void Login(bool requireAdmin)
+    async Task LoginAsAdmin()
+    {
+        await Login(true);
+    }
+
+    async Task Login(bool requireAdmin)
     {
         loginMessage = string.Empty;
         loginSuccess = false;
@@ -120,16 +169,52 @@
         }
 
         currentPlayer = player;
+        PlayerState.SetCurrent(player);
+        // persist player id to localStorage so session survives refresh
+        try
+        {
+            await JS.InvokeVoidAsync("localStorage.setItem", "bg_currentPlayerId", player.Id.ToString());
+        }
+        catch
+        {
+            // ignore
+        }
         loginMessage = "Connexion réussie !";
         loginSuccess = true;
     }
 
-    void Logout()
+    async Task Logout()
     {
         currentPlayer = null;
+        PlayerState.Clear();
+        try
+        {
+            await JS.InvokeVoidAsync("localStorage.removeItem", "bg_currentPlayerId");
+        }
+        catch { }
         loginMessage = string.Empty;
         username = string.Empty;
         password = string.Empty;
+    }
+
+    private async Task LoadLatestSaveAsync()
+    {
+        if (currentPlayer == null) return;
+
+        try
+        {
+            var res = await Http.GetFromJsonAsync<List<SharedModels.Models.AdventureResult>>("api/AdventureResults");
+            if (res != null && res.Any())
+            {
+                latestSave = res.Where(r => r.PlayerId == currentPlayer.Id)
+                                 .OrderByDescending(r => r.PlayedAt)
+                                 .FirstOrDefault();
+            }
+        }
+        catch
+        {
+            // ignore load errors for now
+        }
     }
 }
 
