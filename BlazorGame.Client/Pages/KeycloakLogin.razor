@@ -1,0 +1,54 @@
+@page "/"
+@page "/login"
+@using Microsoft.AspNetCore.Components.Authorization
+@inject NavigationManager Nav
+@inject Microsoft.Extensions.Configuration.IConfiguration Config
+
+<h3>Connexion via Keycloak</h3>
+
+<div class="auth-banner">
+    <AuthorizeView>
+        <Authorized>
+            <div class="status">
+                Connecté en tant que <strong>@context.User.Identity?.Name</strong>
+            </div>
+        </Authorized>
+        <NotAuthorized>
+            <div class="status">Non connecté</div>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
+
+<div class="button-group">
+    <button class="pixel-btn primary" @onclick="LoginToKeycloak">Se connecter</button>
+    <button class="pixel-btn danger" @onclick="LogoutToKeycloak">Se déconnecter</button>
+    <a class="pixel-btn" href="/home">Page locale</a>
+</div>
+
+<style>
+    .button-group { margin: 20px 0; }
+    .auth-banner { padding: 10px; border: 2px solid var(--pixel-dark); background: var(--pixel-light); margin-bottom: 10px; }
+    .status { font-size: 0.95rem; }
+    .pixel-btn { margin-right: 10px; }
+</style>
+
+@code {
+    [Inject] private IJSRuntime Js { get; set; } = default!;
+
+    private void LoginToKeycloak()
+    {
+        // Use SPA navigation to RemoteAuthenticatorView login (library handles redirect)
+        Nav.NavigateTo("authentication/login");
+    }
+
+    private async Task LogoutToKeycloak()
+    {
+        // Build the Keycloak end-session URL and perform a browser POST via JS interop
+        var authority = (Config["Oidc:Authority"] ?? string.Empty).TrimEnd('/');
+        var clientId = Config["Oidc:ClientId"] ?? string.Empty;
+        var postLogout = Nav.BaseUri.TrimEnd('/') + "/loggedout";
+        var logoutUrl = $"{authority}/protocol/openid-connect/logout";
+        // Use JS helper to POST (form submit) so it's a full browser navigation and not XHR
+        await Js.InvokeVoidAsync("keycloakPostLogout", logoutUrl, postLogout, clientId);
+    }
+}

@@ -29,6 +29,22 @@
                 Admin
             </NavLink>
         </div>
+        <div class="nav-section">
+            <NavLink class="pixel-nav-link" href="/">
+                Connexion Keycloak
+            </NavLink>
+        </div>
+        <div class="nav-section" style="margin-left:auto">
+            <AuthorizeView>
+                <Authorized>
+                    <span class="pixel-nav-link">@context.User.Identity?.Name</span>
+                    <button class="pixel-nav-link" @onclick="LogoutToKeycloak">Se déconnecter</button>
+                </Authorized>
+                <NotAuthorized>
+                    <button class="pixel-nav-link" @onclick="LoginToKeycloak">Se connecter</button>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
     </nav>
 </div>
 
@@ -40,5 +56,23 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    [Inject] private Microsoft.Extensions.Configuration.IConfiguration Config { get; set; } = default!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = default!;
+    [Inject] private IJSRuntime Js { get; set; } = default!;
+
+    private void LoginToKeycloak()
+    {
+        NavigationManager.NavigateTo("authentication/login");
+    }
+
+    private async Task LogoutToKeycloak()
+    {
+        var authority = (Config["Oidc:Authority"] ?? string.Empty).TrimEnd('/');
+        var clientId = Config["Oidc:ClientId"] ?? string.Empty;
+        var postLogout = NavigationManager.BaseUri.TrimEnd('/') + "/loggedout";
+        var logoutUrl = $"{authority}/protocol/openid-connect/logout";
+        await Js.InvokeVoidAsync("keycloakPostLogout", logoutUrl, postLogout, clientId);
     }
 }

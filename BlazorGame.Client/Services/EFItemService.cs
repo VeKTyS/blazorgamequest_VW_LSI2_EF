@@ -1,4 +1,6 @@
 using BlazorGame.Client.Data;
+using System.Net.Http;
+using System.Net.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using SharedModels.Models;
 
@@ -7,11 +9,13 @@ namespace BlazorGame.Client.Services;
 public class EFItemService : IItemService
 {
     private readonly IDbContextFactory<GameDbContext> _factory;
+    private readonly IHttpClientFactory _httpFactory;
     private readonly Random _rnd = new();
 
-    public EFItemService(IDbContextFactory<GameDbContext> factory)
+    public EFItemService(IDbContextFactory<GameDbContext> factory, IHttpClientFactory httpFactory)
     {
         _factory = factory;
+        _httpFactory = httpFactory;
     }
 
     public IReadOnlyList<Item> GetAllItems()
@@ -28,6 +32,20 @@ public class EFItemService : IItemService
 
     public Item AddItem(Item item)
     {
+        // Prefer calling API to persist with auth if available
+        try
+        {
+            var client = _httpFactory.CreateClient("api");
+            var resp = client.PostAsJsonAsync("api/Items", item).GetAwaiter().GetResult();
+            if (resp.IsSuccessStatusCode)
+            {
+                return item;
+            }
+        }
+        catch
+        {
+            // fallback to local in-memory for offline/demo
+        }
         using var ctx = _factory.CreateDbContext();
         ctx.Items.Add(item);
         ctx.SaveChanges();
@@ -36,6 +54,15 @@ public class EFItemService : IItemService
 
     public bool RemoveItem(Guid id)
     {
+        try
+        {
+            var client = _httpFactory.CreateClient("api");
+            var resp = client.DeleteAsync($"api/Items/{id}").GetAwaiter().GetResult();
+            if (resp.IsSuccessStatusCode) return true;
+        }
+        catch
+        {
+        }
         using var ctx = _factory.CreateDbContext();
         var it = ctx.Items.Find(id);
         if (it == null) return false;

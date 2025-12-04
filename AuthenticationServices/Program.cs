@@ -14,12 +14,50 @@ builder.Services
         options.Authority = builder.Configuration["Authentication:Authority"];
         options.Audience = builder.Configuration["Authentication:ClientId"];
         options.RequireHttpsMetadata = false;
+        // Map Keycloak realm roles to ASP.NET Core roles
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            NameClaimType = "preferred_username",
+            RoleClaimType = "roles"
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnTokenValidated = ctx =>
+            {
+                // If roles are under realm_access.roles, copy them into 'roles'
+                var realmAccess = ctx.Principal?.FindFirst("realm_access");
+                if (realmAccess != null)
+                {
+                    var json = System.Text.Json.JsonDocument.Parse(realmAccess.Value);
+                    if (json.RootElement.TryGetProperty("roles", out var rolesEl) && rolesEl.ValueKind == System.Text.Json.JsonValueKind.Array)
+                    {
+                        var identity = (System.Security.Claims.ClaimsIdentity)ctx.Principal!.Identity!;
+                        foreach (var r in rolesEl.EnumerateArray())
+                        {
+                            identity.AddClaim(new System.Security.Claims.Claim("roles", r.GetString()!));
+                        }
+                    }
+                }
+                return System.Threading.Tasks.Task.CompletedTask;
+            }
+        };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("admin"));
+    options.AddPolicy("PlayerOnly", policy => policy.RequireRole("joueur"));
+});
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+        policy.WithOrigins("http://localhost:5001")
+              .AllowAnyHeader()
+              .AllowAnyMethod());
+});
 
 // Configure EF Core with InMemory database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -73,6 +111,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();

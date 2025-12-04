@@ -14,10 +14,19 @@ public class AdventureService : IAdventureService
     private int _currentIndex = 0;
     private string _lastEvent = string.Empty;
 
-    public AdventureService(IDungeonGenerator generator, HttpClient http, IItemService itemService)
+    // Production constructor: uses named API client with auth token
+    public AdventureService(IDungeonGenerator generator, IHttpClientFactory httpFactory, IItemService itemService)
     {
         _generator = generator;
-        _http = http;
+        _http = httpFactory.CreateClient("api");
+        _itemService = itemService;
+    }
+
+    // Test-friendly constructor: accept a raw HttpClient
+    public AdventureService(IDungeonGenerator generator, HttpClient httpClient, IItemService itemService)
+    {
+        _generator = generator;
+        _http = httpClient;
         _itemService = itemService;
     }
 
