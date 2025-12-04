@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Microsoft.Extensions.DependencyInjection;
+
 using BlazorGame.Client;
 using Microsoft.EntityFrameworkCore;
 using BlazorGame.Client.Data;
@@ -27,6 +30,10 @@ builder.Services.AddScoped<IDungeonGenerator, DungeonGeneratorService>();
 builder.Services.AddScoped<IAdventureService, AdventureService>();
 // Register item service
 builder.Services.AddScoped<IItemService, EFItemService>();
+builder.Services.AddOidcAuthentication(options =>
+{
+	builder.Configuration.Bind("Oidc", options.ProviderOptions);
+});
 
 var host = builder.Build();
 
@@ -35,7 +42,7 @@ await using (var scope = host.Services.CreateAsyncScope())
 {
 	var contextFactory = scope.ServiceProvider.GetRequiredService<IDbContextFactory<GameDbContext>>();
 	await using var context = await contextFactory.CreateDbContextAsync();
-    
+
 	if (!context.Players.Any())
 	{
 		context.Players.AddRange(
