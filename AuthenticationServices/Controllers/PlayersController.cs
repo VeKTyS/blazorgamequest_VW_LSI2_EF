@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using AuthenticationServices.Data;
 using SharedModels.Models;
@@ -25,6 +26,7 @@ namespace AuthenticationServices.Controllers
             return await _context.Players.ToListAsync();
         }
 
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost]
         public async Task<ActionResult<Player>> PostPlayer(Player player)
         {

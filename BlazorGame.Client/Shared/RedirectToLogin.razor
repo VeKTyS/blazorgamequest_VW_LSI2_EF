@@ -1,0 +1,9 @@
+@inject NavigationManager Nav
+
+@code {
+    protected override void OnInitialized()
+    {
+        // SPA navigation so auth JS recognizes in-page initiation
+        Nav.NavigateTo("authentication/login");
+    }
+}
