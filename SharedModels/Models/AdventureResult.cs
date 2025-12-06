@@ -6,6 +6,10 @@ namespace SharedModels.Models
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public Guid PlayerId { get; set; }
+
+        // propriétés ajoutées pour correspondre à EFPlayerService
+        public DateTime Date { get; set; }
+        public string? Details { get; set; }
         public DateTimeOffset PlayedAt { get; set; } = DateTimeOffset.UtcNow;
         public int Score { get; set; }
         public bool IsDead { get; set; }

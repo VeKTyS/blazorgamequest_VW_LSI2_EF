@@ -1,5 +1,10 @@
 @page "/scores"
+@using System.Linq
+@using SharedModels.Models
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
+@inject BlazorGame.Client.Services.IPlayerStateService PlayerStateService
+@inject NavigationManager Nav
+@inject IJSRuntime JS
 
 <div class="pixel-container">
     <div class="pixel-header">
@@ -8,6 +13,7 @@
     </div>
 
     <div class="scoreboard-section">
+        <!-- Section des statistiques -->
         <div class="stats-summary">
             <div class="stat-card">
                 <div class="stat-number">@totalPlayers</div>
@@ -23,9 +29,9 @@
             </div>
         </div>
 
+        <!-- Section du classement général  -->
         <div class="top-players">
             <h3>Top 10 des Héros</h3>
-            
             @if (topPlayers.Any())
             {
                 <table class="pixel-table">
@@ -34,16 +40,14 @@
                             <th>Rang</th>
                             <th>Aventurier</th>
                             <th>Type</th>
-                            <th>Vie</th>
                             <th>Score</th>
-                            <th>Objets</th>
                             <th>Titre</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for (int i = 0; i < topPlayers.Count; i++)
+                        @for (int i = 0; i < topPlayers.Count && i < 10; i++)
                         {
-                            var player = topPlayers[i];
+                            var playerVm = topPlayers[i];
                             var rank = i + 1;
                             <tr class="@GetRankClass(rank)">
                                 <td>
@@ -54,17 +58,16 @@
                                         else { <text>@rank</text> }
                                     </span>
                                 </td>
-                                <td class="player-name">@player.Username</td>
-                                <td>@(player.IsAdmin ? "Admin" : "Joueur")</td>
-                                <td>
+                                <td class="player-name">@playerVm.Player.Username</td>
+                                <td>@(playerVm.Player.IsAdmin ? "Admin" : "Joueur")</td>
+                                @* <td>
                                     <div class="mini-health-bar">
-                                        <div class="mini-health-fill" style="width: @player.Health%"></div>
-                                        <span class="health-text">@player.Health</span>
+                                        <div class="mini-health-fill" style="width: @playerVm.Player.Health%"></div>
+                                        <span class="health-text">@playerVm.Player.Health</span>
                                     </div>
-                                </td>
-                                <td class="score">@player.TotalScore.ToString("N0")</td>
-                                <td>@player.Inventory.Count</td>
-                                <td class="title">@GetPlayerTitle(player.TotalScore)</td>
+                                </td> *@
+                                <td class="score">@playerVm.BestScore.ToString("N0")</td>
+                                <td class="title">@GetPlayerTitle(playerVm.BestScore)</td>
                             </tr>
                         }
                     </tbody>
@@ -79,76 +82,137 @@
             }
         </div>
 
-        @if (recentActivity.Any())
-        {
-            <div class="recent-activity">
-                <h3>Activité Récente</h3>
-                <div class="activity-list">
-                    @foreach (var activity in recentActivity.Take(5))
-                    {
-                        <div class="activity-item">
-                            <span class="activity-icon">@GetActivityIcon(activity)</span>
-                            <span class="activity-text">@activity</span>
-                        </div>
-                    }
-                </div>
-            </div>
-        }
+        <!-- Section de l'historique personnel -->
+        <div class="recent-activity">
+            <h3>Mon Historique de Parties</h3>
+            @if (currentPlayer == null)
+            {
+                <p>Aucun joueur connecté.</p>
+            }
+            else if (loadingHistory)
+            {
+                <p>Chargement de l'historique...</p>
+            }
+            else if (!playerGames.Any())
+            {
+                <p>Aucune partie enregistrée pour <strong>@currentPlayer.Username</strong>.</p>
+            }
+            else
+            {
+                <table class="pixel-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Score</th>
+                            <th>Détails</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var game in playerGames)
+                        {
+                            <tr>
+                                <td class="history-text">@game.Date.ToLocalTime().ToString("g")</td>
+                                <td class="score">@game.Score</td>
+                                <td class="history-text">@game.Details</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
     </div>
 
     <div class="navigation">
         <a class="pixel-btn" href="/">Retour à l'accueil</a>
         <a class="pixel-btn primary" href="/adventure">Partir à l'aventure</a>
-        <button class="pixel-btn gold">Actualiser</button>
+        <button class="pixel-btn gold" @onclick="Reload">Actualiser</button>
     </div>
 </div>
 
-
 @code {
-    private List<SharedModels.Models.Player> topPlayers = new();
+    // Classe interne pour combiner les données du joueur et son meilleur score
+    private class PlayerScoreViewModel
+    {
+        public Player Player { get; set; } = new();
+        public int BestScore { get; set; }
+    }
+
+    // La liste des meilleurs joueurs utilisera notre nouveau modèle
+    private List<PlayerScoreViewModel> topPlayers = new();
     private int totalPlayers = 0;
     private int totalScore = 0;
     private double averageScore = 0;
-    private List<string> recentActivity = new();
 
-    protected override void OnInitialized()
+    // Propriétés pour l'historique du joueur
+    private Player? currentPlayer;
+    private List<AdventureResult> playerGames = new();
+    private bool loadingHistory = true;
+
+    protected override async Task OnInitializedAsync()
     {
-        // Données statiques pour les tests UI
-        topPlayers = new List<SharedModels.Models.Player>
-        {
-            new SharedModels.Models.Player { Username = "Héros Légendaire", IsAdmin = false, Health = 100, TotalScore = 1500, Inventory = new List<SharedModels.Models.Item>() },
-            new SharedModels.Models.Player { Username = "Maître Aventurier", IsAdmin = false, Health = 95, TotalScore = 1200, Inventory = new List<SharedModels.Models.Item>() },
-            new SharedModels.Models.Player { Username = "Guerrier Brave", IsAdmin = false, Health = 80, TotalScore = 800, Inventory = new List<SharedModels.Models.Item>() }
-        };
-        
-        totalPlayers = 15;
-        totalScore = 5000;
-        averageScore = 333.3;
-        
-        recentActivity = new List<string>
-        {
-            "Héros Légendaire a atteint 1500 points !",
-            "Un joueur a vaincu un Dragon Ancien !",
-            "Quelqu'un a trouvé une Épée légendaire !",
-            "Un trésor caché a été découvert !",
-            "L'aventure continue dans les donjons mystérieux..."
-        };
+        await Task.WhenAll(LoadGeneralScoreboardAsync(), LoadPlayerHistoryAsync());
     }
 
-    string GetRankClass(int rank)
+    // Charge le classement général en se basant sur le MEILLEUR score
+    private async Task LoadGeneralScoreboardAsync()
     {
-        return rank switch
+        // 1. Récupérer tous les joueurs et tous les résultats de parties
+        var players = await Task.Run(() => PlayerService.GetAllPlayers());
+        var allResults = await PlayerService.GetAllGameResultsAsync();
+
+        // 2. Créer une liste de modèles de vue avec le meilleur score de chaque joueur
+        var playerScores = players.Select(p => new PlayerScoreViewModel
+        {
+            Player = p,
+            // On cherche le score maximum dans les résultats pour ce joueur. Si pas de résultat, 0.
+            BestScore = allResults.Where(r => r.PlayerId == p.Id).Max(r => (int?)r.Score) ?? 0
+        }).ToList();
+
+        // 3. Trier les joueurs par leur meilleur score
+        topPlayers = playerScores.OrderByDescending(p => p.BestScore).ToList();
+
+        // Les statistiques globales peuvent rester basées sur le score total si vous le souhaitez
+        totalPlayers = players.Count;
+        totalScore = players.Sum(p => p.TotalScore);
+        averageScore = players.Any() ? players.Average(p => p.TotalScore) : 0;
+    }
+
+    // Charge l'historique personnel du joueur connecté
+    private async Task LoadPlayerHistoryAsync()
+    {
+        loadingHistory = true;
+        
+        // Appel direct et simple à la propriété du service
+        currentPlayer = PlayerStateService.CurrentPlayer;
+
+        if (currentPlayer != null)
+        {
+            // Appel direct et simple à la méthode du service
+            var results = await PlayerService.GetGameResultsForPlayerAsync(currentPlayer.Id);
+            playerGames = results.ToList();
+        }
+        
+        loadingHistory = false;
+    }
+
+    private async Task Reload()
+    {
+        await OnInitializedAsync();
+        StateHasChanged();
+    }
+
+    // Les méthodes de style restent inchangées
+    string GetRankClass(int rank) =>
+        rank switch
         {
             1 => "gold-rank",
             2 => "silver-rank",
             3 => "bronze-rank",
             _ => ""
         };
-    }
 
-    string GetPlayerTitle(int score)
-    {
-        return score switch
+    string GetPlayerTitle(int score) =>
+        score switch
         {
             >= 1000 => "Tueur de Dragons",
             >= 500 => "Maître Guerrier",
@@ -158,19 +222,7 @@
             >= 10 => "Novice",
             _ => "Débutant"
         };
-    }
-
-    string GetActivityIcon(string activity)
-    {
-        if (activity.Contains("score")) return "*";
-        if (activity.Contains("vaincu")) return "+";
-        if (activity.Contains("trouvé")) return "#";
-        if (activity.Contains("trésor")) return "@";
-        return "-";
-    }
-
 }
-
 <style>
     .scoreboard-section {
         margin-bottom: 30px;
@@ -283,6 +335,10 @@
         color: var(--pixel-light);
         border: 3px solid var(--pixel-dark);
         padding: 20px;
+    }
+
+    .history-text {
+        color: var(--pixel-dark); /* Met le texte en noir/foncé */
     }
 
     .activity-list {

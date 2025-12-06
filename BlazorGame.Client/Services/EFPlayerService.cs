@@ -77,4 +77,40 @@ public class EFPlayerService : IPlayerService
         
         context.SaveChanges();
     }
+
+    // NOUVELLE MÉTHODE : récupérer l'historique du joueur
+    public async Task<IReadOnlyList<AdventureResult>> GetGameResultsForPlayerAsync(Guid playerId)
+    {
+        using var context = _contextFactory.CreateDbContext();
+        return await context.AdventureResults
+            .Where(r => r.PlayerId == playerId)
+            .OrderByDescending(r => r.Date)
+            .ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<AdventureResult>> GetAllGameResultsAsync()
+    {
+        using var context = _contextFactory.CreateDbContext();
+        return await context.AdventureResults.ToListAsync();
+    }
+
+    public async Task EndAndSaveAsync(Guid playerId, int score, string details)
+    {
+        using var context = _contextFactory.CreateDbContext();
+
+        var player = await context.Players.FindAsync(playerId);
+        if (player == null) return;
+
+        var result = new AdventureResult
+        {
+            Id = Guid.NewGuid(),
+            PlayerId = playerId,
+            Score = score,
+            Date = DateTime.UtcNow,
+            Details = details,
+        };
+
+        context.AdventureResults.Add(result);
+        await context.SaveChangesAsync();
+    }
 }
