@@ -13,6 +13,8 @@ Résumé des fonctionnalités développées
 - État joueur stocké en session client via `PlayerStateService` et `localStorage` (clé `bg_currentPlayerId`).
 - Sauvegarde des résultats d'aventure : `AdventureResult` POSTé vers `api/AdventureResults` (score, date, événements).
 - UI : pages `Index`, `Adventure`, `Admin`, `Scores`, `Unauthorized`.
+- Affichage de l'historique du joueur connecter ainsi que du tableau des scores prenant le meilleur score de chaque utilisateur (`EFPlayerService` / `InMemoryService` / `IPlayerService`)
+- Visualisation des API du fichier `Controler` via Swagger (`AuthenticationServices/Program.cs`) 
 
 Tests unitaires
 - Emplacement : `BlazorGame.Tests`
@@ -47,6 +49,10 @@ dotnet run
 ```
 dotnet test
 ```
+
+5) Accerder au Swagger 
+	- Une fois AuthenticationService lancé aller a :
+		`http://localhost:5247/Swagger`
 
 
 
