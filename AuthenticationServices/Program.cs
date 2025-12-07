@@ -3,6 +3,7 @@ using AuthenticationServices.Data;
 using SharedModels.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,10 +48,40 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("admin"));
     options.AddPolicy("PlayerOnly", policy => policy.RequireRole("joueur"));
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
 });
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "AuthenticationServices API", Version = "v1" });
+    // Enable JWT bearer auth in Swagger UI
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT"
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -66,7 +97,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 var app = builder.Build();
 
 app.UseAuthentication();
-app.UseAuthorization();
 
 // Seed the database with initial data
 using (var scope = app.Services.CreateScope())
@@ -107,7 +137,15 @@ void SeedData(ApplicationDbContext context)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "AuthenticationServices API v1");
+        c.RoutePrefix = "swagger";
+        // Optional: pre-fill OAuth config for the Authorize button (Keycloak)
+        c.OAuthClientId(builder.Configuration["Authentication:ClientId"] ?? "blazorgame-client");
+        c.OAuthAppName("AuthenticationServices Swagger");
+        c.OAuthUsePkce();
+    });
 }
 
 app.UseHttpsRedirection();

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using AuthenticationServices.Data;
 using SharedModels.Models;
@@ -7,6 +8,7 @@ namespace AuthenticationServices.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class DonjonsController : ControllerBase
 {
     private readonly ApplicationDbContext _db;

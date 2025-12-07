@@ -11,6 +11,7 @@ namespace AuthenticationServices.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PlayersController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

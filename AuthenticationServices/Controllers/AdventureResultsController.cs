@@ -8,6 +8,7 @@ namespace AuthenticationServices.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class AdventureResultsController : ControllerBase
 {
     private readonly ApplicationDbContext _db;
