@@ -54,9 +54,9 @@ builder.Services.AddOidcAuthentication(options =>
 {
 	builder.Configuration.Bind("Oidc", options.ProviderOptions);
 	// Redirect back into the SPA after login/logout
-	var baseUri = new Uri(builder.HostEnvironment.BaseAddress).ToString();
-	options.ProviderOptions.RedirectUri = baseUri;
-	options.ProviderOptions.PostLogoutRedirectUri = baseUri + "loggedout";
+	var baseUri = new Uri(builder.HostEnvironment.BaseAddress).ToString().TrimEnd('/');
+	options.ProviderOptions.RedirectUri = baseUri + "/authentication/login-callback";
+	options.ProviderOptions.PostLogoutRedirectUri = baseUri + "/";
 });
 
 // Log configured OIDC settings to browser console

@@ -12,7 +12,7 @@ public class InMemoryPlayerService : IPlayerService
 {
     private readonly List<Player> _players = new();
     private readonly List<AdventureResult> _results = new();
-    private readonly IJSRuntime _js;
+    private readonly IJSRuntime? _js;
 
     private const string StorageKey = "blazorgame_adventure_results_all";
 
@@ -24,6 +24,10 @@ public class InMemoryPlayerService : IPlayerService
         var admin = new Player { Username = "admin", Password = "admin", TotalScore = 0, Health = 100, IsAdmin = true };
         _players.Add(demo);
         _players.Add(admin);
+    }
+
+    public InMemoryPlayerService()
+    {
     }
 
     public Player CreatePlayer(string username, string password)
@@ -86,6 +90,7 @@ public class InMemoryPlayerService : IPlayerService
     {
         try
         {
+            if (_js == null) return; // parameterless constructor case
             var json = JsonSerializer.Serialize(_results);
             await _js.InvokeVoidAsync("localStorage.setItem", StorageKey, json);
         }
@@ -100,6 +105,7 @@ public class InMemoryPlayerService : IPlayerService
     {
         try
         {
+            if (_js == null) return; // parameterless constructor case
             var json = await _js.InvokeAsync<string>("localStorage.getItem", StorageKey);
             if (!string.IsNullOrEmpty(json))
             {

@@ -147,7 +147,7 @@ public class AdventureService : IAdventureService
             AddEvent($"{monster.Name} vaincu ! +{monster.ScoreValue} pts.");
 
             // a tester ------------------------------------------------------------------------
-            if (!room.Monstres.Any() && _currentIndex == _currentDonjon.Salles.Count - 1)
+            if (_currentDonjon != null && !room.Monstres.Any() && _currentIndex == _currentDonjon.Salles.Count - 1)
             {
                 IsFinished = true;
 

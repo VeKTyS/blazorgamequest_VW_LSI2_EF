@@ -10,7 +10,7 @@
     <AuthorizeView>
         <Authorized>
             <div class="status">
-                Connecté en tant que <strong>@context.User.Identity?.Name</strong>
+                Connecté<strong>@context.User.Identity?.Name</strong>
             </div>
         </Authorized>
         <NotAuthorized>
@@ -20,9 +20,15 @@
 </div>
 
 <div class="button-group">
-    <button class="pixel-btn primary" @onclick="LoginToKeycloak">Se connecter</button>
-    <button class="pixel-btn danger" @onclick="LogoutToKeycloak">Se déconnecter</button>
-    <a class="pixel-btn" href="/home">Page locale</a>
+    <AuthorizeView>
+        <NotAuthorized>
+            <button class="pixel-btn primary" @onclick="LoginToKeycloak">Se connecter</button>
+        </NotAuthorized>
+        <Authorized>
+            <button class="pixel-btn danger" @onclick="LogoutToKeycloak">Se déconnecter</button>
+            <a class="pixel-btn" href="/home">Jouer</a>
+        </Authorized>
+    </AuthorizeView>
 </div>
 
 <style>
@@ -46,7 +52,7 @@
         // Build the Keycloak end-session URL and perform a browser POST via JS interop
         var authority = (Config["Oidc:Authority"] ?? string.Empty).TrimEnd('/');
         var clientId = Config["Oidc:ClientId"] ?? string.Empty;
-        var postLogout = Nav.BaseUri.TrimEnd('/') + "/loggedout";
+        var postLogout = Nav.BaseUri.TrimEnd('/') + "/"; // Use root "/" which is registered in Keycloak
         var logoutUrl = $"{authority}/protocol/openid-connect/logout";
         // Use JS helper to POST (form submit) so it's a full browser navigation and not XHR
         await Js.InvokeVoidAsync("keycloakPostLogout", logoutUrl, postLogout, clientId);

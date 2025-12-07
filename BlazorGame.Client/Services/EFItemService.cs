@@ -32,42 +32,42 @@ public class EFItemService : IItemService
 
     public Item AddItem(Item item)
     {
-        // Prefer calling API to persist with auth if available
-        try
-        {
-            var client = _httpFactory.CreateClient("api");
-            var resp = client.PostAsJsonAsync("api/Items", item).GetAwaiter().GetResult();
-            if (resp.IsSuccessStatusCode)
-            {
-                return item;
-            }
-        }
-        catch
-        {
-            // fallback to local in-memory for offline/demo
-        }
+        // Add to local database
         using var ctx = _factory.CreateDbContext();
         ctx.Items.Add(item);
         ctx.SaveChanges();
+        
+        // Try to call API without blocking (fire and forget)
+        try
+        {
+            var client = _httpFactory.CreateClient("api");
+            _ = client.PostAsJsonAsync("api/Items", item); // Fire and forget
+        }
+        catch
+        {
+            // Ignore API errors, local copy is saved
+        }
         return item;
     }
 
     public bool RemoveItem(Guid id)
     {
-        try
-        {
-            var client = _httpFactory.CreateClient("api");
-            var resp = client.DeleteAsync($"api/Items/{id}").GetAwaiter().GetResult();
-            if (resp.IsSuccessStatusCode) return true;
-        }
-        catch
-        {
-        }
         using var ctx = _factory.CreateDbContext();
         var it = ctx.Items.Find(id);
         if (it == null) return false;
         ctx.Items.Remove(it);
         ctx.SaveChanges();
+        
+        // Try to call API without blocking (fire and forget)
+        try
+        {
+            var client = _httpFactory.CreateClient("api");
+            _ = client.DeleteAsync($"api/Items/{id}"); // Fire and forget
+        }
+        catch
+        {
+            // Ignore API errors, local deletion is done
+        }
         return true;
     }
 

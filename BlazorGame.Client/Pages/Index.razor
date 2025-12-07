@@ -11,7 +11,7 @@
     <div class="auth-banner">
         <AuthorizeView>
             <Authorized>
-                <span>Connecté en tant que <strong>@context.User.Identity?.Name</strong></span>
+                <span>Connecté<strong>@context.User.Identity?.Name</strong></span>
                 <button class="pixel-btn danger" style="margin-left:10px" @onclick="LogoutToKeycloak">Se déconnecter</button>
             </Authorized>
             <NotAuthorized>
@@ -106,10 +106,55 @@
     private SharedModels.Models.Player? currentPlayer;
     private SharedModels.Models.AdventureResult? latestSave;
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        // Do not auto-bind to OIDC; show local login form by default
-        return Task.CompletedTask;
+        // If the user already authenticated via OIDC, map them to a local Player
+        try
+        {
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            await EnsurePlayerFromAuthAsync(authState.User);
+        }
+        catch { }
+
+        // Listen for future auth state changes (login/logout) and react accordingly
+        AuthStateProvider.AuthenticationStateChanged += async task =>
+        {
+            var state = await task;
+            if (state.User?.Identity?.IsAuthenticated == true)
+            {
+                await EnsurePlayerFromAuthAsync(state.User);
+            }
+            else
+            {
+                currentPlayer = null;
+                PlayerState.Clear();
+                StateHasChanged();
+            }
+        };
+    }
+
+    private async Task EnsurePlayerFromAuthAsync(System.Security.Claims.ClaimsPrincipal? user)
+    {
+        if (user == null || user.Identity == null || !user.Identity.IsAuthenticated) return;
+
+        // Preferred username is often present in 'preferred_username' claim, fall back to Identity.Name
+        var name = user.Identity?.Name ?? user.FindFirst("preferred_username")?.Value;
+        if (string.IsNullOrWhiteSpace(name)) return;
+
+        // Try to find an existing local player with that username
+        try
+        {
+            var players = PlayerService.GetAllPlayers();
+            var found = players.FirstOrDefault(p => string.Equals(p.Username, name, StringComparison.OrdinalIgnoreCase));
+            if (found != null)
+            {
+                currentPlayer = found;
+                PlayerState.SetCurrent(found);
+                await LoadLatestSaveAsync();
+                StateHasChanged();
+            }
+        }
+        catch { }
     }
 
     async Task LoginAsPlayer()
@@ -174,7 +219,7 @@
         // Build Keycloak logout URL and perform browser POST using JS helper
         var authority = (Config["Oidc:Authority"] ?? string.Empty).TrimEnd('/');
         var clientId = Config["Oidc:ClientId"] ?? string.Empty;
-        var postLogout = Nav.BaseUri.TrimEnd('/') + "/loggedout";
+        var postLogout = Nav.BaseUri.TrimEnd('/') + "/";
         var logoutUrl = $"{authority}/protocol/openid-connect/logout";
         await JS.InvokeVoidAsync("keycloakPostLogout", logoutUrl, postLogout, clientId);
     }
@@ -189,7 +234,7 @@
         password = string.Empty;
         var authority = (Config["Oidc:Authority"] ?? string.Empty).TrimEnd('/');
         var clientId = Config["Oidc:ClientId"] ?? string.Empty;
-        var postLogout = Nav.BaseUri.TrimEnd('/') + "/loggedout";
+        var postLogout = Nav.BaseUri.TrimEnd('/') + "/";
         var logoutUrl = $"{authority}/protocol/openid-connect/logout";
         await JS.InvokeVoidAsync("keycloakPostLogout", logoutUrl, postLogout, clientId);
     }

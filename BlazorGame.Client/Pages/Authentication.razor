@@ -1,7 +1,19 @@
 @page "/authentication/{Action}"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-<RemoteAuthenticatorView Action="@Action" />
+@inject NavigationManager Nav
+
+<RemoteAuthenticatorView Action="@Action" OnLogInSucceeded="@OnLoginSucceeded" />
 
 @code {
     [Parameter] public string? Action { get; set; }
+
+    private Task OnLoginSucceeded()
+    {
+        // After successful OIDC login, redirect to home
+        if (Action == "login-callback")
+        {
+            Nav.NavigateTo("/", true);
+        }
+        return Task.CompletedTask;
+    }
 }

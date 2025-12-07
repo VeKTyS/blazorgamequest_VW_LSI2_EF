@@ -30,7 +30,7 @@
                     <label>
                         <input type="checkbox" @bind="newIsAdmin" /> Est administrateur
                     </label>
-                    <button class="pixel-btn primary" @onclick="CreatePlayer">Créer Joueur</button>
+                    <button class="pixel-btn primary" @onclick="CreatePlayerAsync">Créer Joueur</button>
                 </div>
                 @if (!string.IsNullOrEmpty(playerStatus))
                 {
@@ -88,7 +88,7 @@
                     <input class="pixel-input" placeholder="Description" @bind="newItemDescription" />
                     <input class="pixel-input" type="number" placeholder="Effet sur la vie" @bind="newItemHealthEffect" />
                     <input class="pixel-input" type="number" placeholder="Effet sur le score" @bind="newItemScoreEffect" />
-                    <button class="pixel-btn primary" @onclick="CreateItem">Créer Objet</button>
+                    <button class="pixel-btn primary" @onclick="CreateItemAsync">Créer Objet</button>
                 </div>
                 @if (!string.IsNullOrEmpty(itemStatus))
                 {
@@ -184,7 +184,7 @@
         itemStatus = string.Empty;
     }
 
-    void CreatePlayer()
+    async Task CreatePlayerAsync()
     {
         if (string.IsNullOrWhiteSpace(newUsername) || string.IsNullOrWhiteSpace(newPassword))
         {
@@ -203,6 +203,35 @@
         newUsername = string.Empty;
         newPassword = string.Empty;
         newIsAdmin = false;
+    }
+
+    async Task CreateItemAsync()
+    {
+        if (string.IsNullOrWhiteSpace(newItemName))
+        {
+            itemSuccess = false;
+            itemStatus = "Nom d'objet requis.";
+            return;
+        }
+
+        var it = new SharedModels.Models.Item
+        {
+            Name = newItemName,
+            Description = newItemDescription,
+            HealthEffect = newItemHealthEffect ?? 0,
+            ScoreEffect = newItemScoreEffect ?? 0
+        };
+
+        ItemService.AddItem(it);
+        itemSuccess = true;
+        itemStatus = $"Objet '{it.Name}' créé.";
+        RefreshData();
+
+        // Reset form
+        newItemName = string.Empty;
+        newItemDescription = string.Empty;
+        newItemHealthEffect = null;
+        newItemScoreEffect = null;
     }
 
     void DeletePlayer(Guid id)

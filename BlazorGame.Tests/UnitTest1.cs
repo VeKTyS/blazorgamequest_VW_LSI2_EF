@@ -80,7 +80,9 @@ namespace BlazorGame.Tests
             var gen = new TestGenerator();
             var http = new System.Net.Http.HttpClient();
             var itemSvc = new TestItemService();
-            var adv = new AdventureService(gen, http, itemSvc);
+            var playerSvc = new BlazorGame.Client.Services.InMemoryPlayerService();
+            var playerState = new BlazorGame.Client.Services.PlayerStateService();
+            var adv = new AdventureService(gen, http, itemSvc, playerSvc, playerState);
 
             var player = new Player { Username = "fighter", Health = 100 };
             adv.StartAdventure(player, rooms: 1);
