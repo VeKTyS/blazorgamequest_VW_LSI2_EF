@@ -1,0 +1,5976 @@
+{
+  "AuthenticationServices.dll": {
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\AuthenticationServices\\Program.cs": {
+      "Program": {
+        "System.Void Program::<Main>$(System.String[])": {
+          "Lines": {
+            "8": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "94": 0,
+            "95": 0,
+            "97": 0,
+            "99": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "143": 0,
+            "144": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "148": 0,
+            "149": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "155": 0,
+            "157": 0
+          },
+          "Branches": [
+            {
+              "Line": 137,
+              "Offset": 395,
+              "EndOffset": 397,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 137,
+              "Offset": 395,
+              "EndOffset": 426,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 29,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 29,
+              "Offset": 8,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 31,
+              "EndOffset": 36,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 81,
+              "EndOffset": 83,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 81,
+              "EndOffset": 95,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 100,
+              "EndOffset": 102,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 185,
+              "EndOffset": 142,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 185,
+              "EndOffset": 187,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 100,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 31,
+              "EndOffset": 206,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 145,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 145,
+              "Offset": 53,
+              "EndOffset": 61,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Program::<<Main>$>g__SeedData|0_5(AuthenticationServices.Data.ApplicationDbContext)": {
+          "Lines": {
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0
+          },
+          "Branches": [
+            {
+              "Line": 110,
+              "Offset": 17,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 17,
+              "EndOffset": 188,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\AuthenticationServices\\Data\\ApplicationDbContext.cs": {
+      "AuthenticationServices.Data.ApplicationDbContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.Player> AuthenticationServices.Data.ApplicationDbContext::get_Players()": {
+          "Lines": {
+            "12": 65
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.Item> AuthenticationServices.Data.ApplicationDbContext::get_Items()": {
+          "Lines": {
+            "13": 69
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.Monstre> AuthenticationServices.Data.ApplicationDbContext::get_Monsters()": {
+          "Lines": {
+            "14": 66
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.Donjon> AuthenticationServices.Data.ApplicationDbContext::get_Donjons()": {
+          "Lines": {
+            "15": 68
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.Salle> AuthenticationServices.Data.ApplicationDbContext::get_Salles()": {
+          "Lines": {
+            "16": 65
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.AdventureResult> AuthenticationServices.Data.ApplicationDbContext::get_AdventureResults()": {
+          "Lines": {
+            "17": 62
+          },
+          "Branches": []
+        },
+        "System.Void AuthenticationServices.Data.ApplicationDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<AuthenticationServices.Data.ApplicationDbContext>)": {
+          "Lines": {
+            "8": 50,
+            "9": 50,
+            "10": 50
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\AuthenticationServices\\Controllers\\AdventureResultsController.cs": {
+      "AuthenticationServices.Controllers.AdventureResultsController": {
+        "System.Void AuthenticationServices.Controllers.AdventureResultsController::.ctor(AuthenticationServices.Data.ApplicationDbContext)": {
+          "Lines": {
+            "15": 6
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.AdventureResultsController/<Create>d__4": {
+        "System.Void AuthenticationServices.Controllers.AdventureResultsController/<Create>d__4::MoveNext()": {
+          "Lines": {
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "34": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.AdventureResultsController/<Get>d__3": {
+        "System.Void AuthenticationServices.Controllers.AdventureResultsController/<Get>d__3::MoveNext()": {
+          "Lines": {
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 180,
+              "EndOffset": 182,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 24,
+              "Offset": 180,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.AdventureResultsController/<GetAll>d__2": {
+        "System.Void AuthenticationServices.Controllers.AdventureResultsController/<GetAll>d__2::MoveNext()": {
+          "Lines": {
+            "18": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\AuthenticationServices\\Controllers\\DonjonsController.cs": {
+      "AuthenticationServices.Controllers.DonjonsController": {
+        "System.Void AuthenticationServices.Controllers.DonjonsController::.ctor(AuthenticationServices.Data.ApplicationDbContext)": {
+          "Lines": {
+            "15": 16
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.DonjonsController/<Create>d__4": {
+        "System.Void AuthenticationServices.Controllers.DonjonsController/<Create>d__4::MoveNext()": {
+          "Lines": {
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.DonjonsController/<Delete>d__6": {
+        "System.Void AuthenticationServices.Controllers.DonjonsController/<Delete>d__6::MoveNext()": {
+          "Lines": {
+            "48": 2,
+            "49": 2,
+            "50": 3,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "54": 2
+          },
+          "Branches": [
+            {
+              "Line": 50,
+              "Offset": 198,
+              "EndOffset": 200,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 50,
+              "Offset": 198,
+              "EndOffset": 217,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.DonjonsController/<Get>d__3": {
+        "System.Void AuthenticationServices.Controllers.DonjonsController/<Get>d__3::MoveNext()": {
+          "Lines": {
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 374,
+              "EndOffset": 376,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 24,
+              "Offset": 374,
+              "EndOffset": 399,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.DonjonsController/<GetAll>d__2": {
+        "System.Void AuthenticationServices.Controllers.DonjonsController/<GetAll>d__2::MoveNext()": {
+          "Lines": {
+            "18": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.DonjonsController/<Update>d__5": {
+        "System.Void AuthenticationServices.Controllers.DonjonsController/<Update>d__5::MoveNext()": {
+          "Lines": {
+            "37": 3,
+            "38": 4,
+            "39": 2,
+            "40": 3,
+            "41": 1,
+            "42": 1,
+            "43": 1,
+            "44": 3
+          },
+          "Branches": [
+            {
+              "Line": 38,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 38,
+              "Offset": 53,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 40,
+              "Offset": 245,
+              "EndOffset": 247,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 245,
+              "EndOffset": 264,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\AuthenticationServices\\Controllers\\ItemsController.cs": {
+      "AuthenticationServices.Controllers.ItemsController": {
+        "System.Void AuthenticationServices.Controllers.ItemsController::.ctor(AuthenticationServices.Data.ApplicationDbContext)": {
+          "Lines": {
+            "15": 16
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.ItemsController/<Create>d__4": {
+        "System.Void AuthenticationServices.Controllers.ItemsController/<Create>d__4::MoveNext()": {
+          "Lines": {
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "34": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.ItemsController/<Delete>d__6": {
+        "System.Void AuthenticationServices.Controllers.ItemsController/<Delete>d__6::MoveNext()": {
+          "Lines": {
+            "51": 2,
+            "52": 2,
+            "53": 3,
+            "54": 1,
+            "55": 1,
+            "56": 1,
+            "57": 2
+          },
+          "Branches": [
+            {
+              "Line": 53,
+              "Offset": 198,
+              "EndOffset": 200,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 53,
+              "Offset": 198,
+              "EndOffset": 217,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.ItemsController/<Get>d__3": {
+        "System.Void AuthenticationServices.Controllers.ItemsController/<Get>d__3::MoveNext()": {
+          "Lines": {
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 180,
+              "EndOffset": 182,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 24,
+              "Offset": 180,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.ItemsController/<GetAll>d__2": {
+        "System.Void AuthenticationServices.Controllers.ItemsController/<GetAll>d__2::MoveNext()": {
+          "Lines": {
+            "18": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.ItemsController/<Update>d__5": {
+        "System.Void AuthenticationServices.Controllers.ItemsController/<Update>d__5::MoveNext()": {
+          "Lines": {
+            "39": 3,
+            "40": 4,
+            "41": 2,
+            "42": 3,
+            "43": 1,
+            "44": 1,
+            "45": 1,
+            "46": 3
+          },
+          "Branches": [
+            {
+              "Line": 40,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 53,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 42,
+              "Offset": 245,
+              "EndOffset": 247,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 42,
+              "Offset": 245,
+              "EndOffset": 264,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\AuthenticationServices\\Controllers\\MonstersController.cs": {
+      "AuthenticationServices.Controllers.MonstersController": {
+        "System.Void AuthenticationServices.Controllers.MonstersController::.ctor(AuthenticationServices.Data.ApplicationDbContext)": {
+          "Lines": {
+            "15": 16
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.MonstersController/<Create>d__4": {
+        "System.Void AuthenticationServices.Controllers.MonstersController/<Create>d__4::MoveNext()": {
+          "Lines": {
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.MonstersController/<Delete>d__6": {
+        "System.Void AuthenticationServices.Controllers.MonstersController/<Delete>d__6::MoveNext()": {
+          "Lines": {
+            "48": 2,
+            "49": 2,
+            "50": 3,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "54": 2
+          },
+          "Branches": [
+            {
+              "Line": 50,
+              "Offset": 198,
+              "EndOffset": 200,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 50,
+              "Offset": 198,
+              "EndOffset": 217,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.MonstersController/<Get>d__3": {
+        "System.Void AuthenticationServices.Controllers.MonstersController/<Get>d__3::MoveNext()": {
+          "Lines": {
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 180,
+              "EndOffset": 182,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 24,
+              "Offset": 180,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.MonstersController/<GetAll>d__2": {
+        "System.Void AuthenticationServices.Controllers.MonstersController/<GetAll>d__2::MoveNext()": {
+          "Lines": {
+            "18": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.MonstersController/<Update>d__5": {
+        "System.Void AuthenticationServices.Controllers.MonstersController/<Update>d__5::MoveNext()": {
+          "Lines": {
+            "37": 3,
+            "38": 4,
+            "39": 2,
+            "40": 3,
+            "41": 1,
+            "42": 1,
+            "43": 1,
+            "44": 3
+          },
+          "Branches": [
+            {
+              "Line": 38,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 38,
+              "Offset": 53,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 40,
+              "Offset": 245,
+              "EndOffset": 247,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 245,
+              "EndOffset": 264,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\AuthenticationServices\\Controllers\\PlayersController.cs": {
+      "AuthenticationServices.Controllers.PlayersController": {
+        "System.Void AuthenticationServices.Controllers.PlayersController::.ctor(AuthenticationServices.Data.ApplicationDbContext)": {
+          "Lines": {
+            "19": 5,
+            "20": 5,
+            "21": 5,
+            "22": 5
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.PlayersController/<GetPlayerScores>d__5": {
+        "System.Void AuthenticationServices.Controllers.PlayersController/<GetPlayerScores>d__5::MoveNext()": {
+          "Lines": {
+            "58": 2,
+            "59": 2,
+            "60": 2,
+            "61": 2,
+            "62": 2,
+            "64": 2,
+            "65": 1,
+            "66": 1,
+            "69": 1,
+            "70": 2
+          },
+          "Branches": [
+            {
+              "Line": 64,
+              "Offset": 391,
+              "EndOffset": 393,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 64,
+              "Offset": 391,
+              "EndOffset": 413,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.PlayersController/<GetPlayers>d__2": {
+        "System.Void AuthenticationServices.Controllers.PlayersController/<GetPlayers>d__2::MoveNext()": {
+          "Lines": {
+            "26": 1,
+            "27": 1,
+            "28": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.PlayersController/<PostPlayer>d__3": {
+        "System.Void AuthenticationServices.Controllers.PlayersController/<PostPlayer>d__3::MoveNext()": {
+          "Lines": {
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "37": 1,
+            "38": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.PlayersController/<PutScore>d__4": {
+        "System.Void AuthenticationServices.Controllers.PlayersController/<PutScore>d__4::MoveNext()": {
+          "Lines": {
+            "43": 1,
+            "44": 1,
+            "46": 1,
+            "47": 1,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "53": 1,
+            "54": 1
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 40,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 47,
+              "Offset": 232,
+              "EndOffset": 234,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 232,
+              "EndOffset": 251,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.UpdateScoreDto": {
+        "System.Int32 AuthenticationServices.Controllers.UpdateScoreDto::get_Score()": {
+          "Lines": {
+            "76": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\AuthenticationServices\\Controllers\\SallesController.cs": {
+      "AuthenticationServices.Controllers.SallesController": {
+        "System.Void AuthenticationServices.Controllers.SallesController::.ctor(AuthenticationServices.Data.ApplicationDbContext)": {
+          "Lines": {
+            "15": 14
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.SallesController/<Create>d__4": {
+        "System.Void AuthenticationServices.Controllers.SallesController/<Create>d__4::MoveNext()": {
+          "Lines": {
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.SallesController/<Delete>d__6": {
+        "System.Void AuthenticationServices.Controllers.SallesController/<Delete>d__6::MoveNext()": {
+          "Lines": {
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "54": 1
+          },
+          "Branches": [
+            {
+              "Line": 50,
+              "Offset": 198,
+              "EndOffset": 200,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 50,
+              "Offset": 198,
+              "EndOffset": 217,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.SallesController/<Get>d__3": {
+        "System.Void AuthenticationServices.Controllers.SallesController/<Get>d__3::MoveNext()": {
+          "Lines": {
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 180,
+              "EndOffset": 182,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 24,
+              "Offset": 180,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "AuthenticationServices.Controllers.SallesController/<GetAll>d__2": {
+        "System.Void AuthenticationServices.Controllers.SallesController/<GetAll>d__2::MoveNext()": {
+          "Lines": {
+            "18": 1
+          },
+          "Branches": []
+        }
+      },
+      "AuthenticationServices.Controllers.SallesController/<Update>d__5": {
+        "System.Void AuthenticationServices.Controllers.SallesController/<Update>d__5::MoveNext()": {
+          "Lines": {
+            "37": 3,
+            "38": 4,
+            "39": 2,
+            "40": 3,
+            "41": 1,
+            "42": 1,
+            "43": 1,
+            "44": 3
+          },
+          "Branches": [
+            {
+              "Line": 38,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 38,
+              "Offset": 53,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 40,
+              "Offset": 245,
+              "EndOffset": 247,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 245,
+              "EndOffset": 264,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "BlazorGame.Client.dll": {
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Program.cs": {
+      "Program/<<Main>$>d__0": {
+        "System.Void Program/<<Main>$>d__0::MoveNext()": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "39": 0,
+            "40": 0,
+            "43": 0,
+            "46": 0,
+            "49": 0,
+            "50": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "63": 0,
+            "65": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "123": 0
+          },
+          "Branches": [
+            {
+              "Line": 87,
+              "Offset": 1007,
+              "EndOffset": 1012,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 1007,
+              "EndOffset": 1289,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 1312,
+              "EndOffset": 1317,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 1312,
+              "EndOffset": 1553,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 120,
+              "Offset": 1573,
+              "EndOffset": 1575,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 120,
+              "Offset": 1573,
+              "EndOffset": 1683,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Program/<>c/<<<Main>$>b__0_6>d": {
+        "System.Void Program/<>c/<<<Main>$>b__0_6>d::MoveNext()": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 73,
+              "Offset": 188,
+              "EndOffset": 190,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 188,
+              "EndOffset": 203,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 246,
+              "EndOffset": 248,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 246,
+              "EndOffset": 252,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 288,
+              "EndOffset": 290,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 288,
+              "EndOffset": 294,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 303,
+              "EndOffset": 305,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 303,
+              "EndOffset": 401,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Layout\\MainLayout.razor": {
+      "BlazorGame.Client.Layout.MainLayout": {
+        "System.Void BlazorGame.Client.Layout.MainLayout::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Layout\\NavMenu.razor": {
+      "BlazorGame.Client.Layout.NavMenu": {
+        "System.Void BlazorGame.Client.Layout.NavMenu::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": [
+            {
+              "Line": 6,
+              "Offset": 146,
+              "EndOffset": 148,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 146,
+              "EndOffset": 165,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String BlazorGame.Client.Layout.NavMenu::get_NavMenuCssClass()": {
+          "Lines": {
+            "64": 0
+          },
+          "Branches": [
+            {
+              "Line": 64,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 64,
+              "Offset": 6,
+              "EndOffset": 11,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Layout.NavMenu::ToggleNavMenu()": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.Configuration.IConfiguration BlazorGame.Client.Layout.NavMenu::get_Config()": {
+          "Lines": {
+            "71": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.NavigationManager BlazorGame.Client.Layout.NavMenu::get_NavigationManager()": {
+          "Lines": {
+            "72": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.JSInterop.IJSRuntime BlazorGame.Client.Layout.NavMenu::get_Js()": {
+          "Lines": {
+            "73": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Layout.NavMenu::LoginToKeycloak()": {
+          "Lines": {
+            "76": 0,
+            "77": 0,
+            "78": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Layout.NavMenu::.ctor()": {
+          "Lines": {
+            "62": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Layout.NavMenu/<>c__DisplayClass0_0": {
+        "System.Void BlazorGame.Client.Layout.NavMenu/<>c__DisplayClass0_0::<BuildRenderTree>b__10(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "45": 0
+          },
+          "Branches": [
+            {
+              "Line": 38,
+              "Offset": 13,
+              "EndOffset": 15,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 13,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 25,
+              "EndOffset": 31,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 48,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 48,
+              "EndOffset": 208,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Layout.NavMenu/<>c__DisplayClass0_1": {
+        "System.Void BlazorGame.Client.Layout.NavMenu/<>c__DisplayClass0_1::<BuildRenderTree>b__12(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "51": 0
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 68,
+              "EndOffset": 70,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 68,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Shared\\RedirectToLogin.razor": {
+      "BlazorGame.Client.Shared.RedirectToLogin": {
+        "System.Void BlazorGame.Client.Shared.RedirectToLogin::OnInitialized()": {
+          "Lines": {
+            "5": 0,
+            "7": 0,
+            "8": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Pages\\Admin.razor": {
+      "BlazorGame.Client.Pages.Admin": {
+        "System.Void BlazorGame.Client.Pages.Admin::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "35": 0,
+            "36": 0,
+            "38": 0,
+            "40": 0,
+            "44": 0,
+            "57": 0,
+            "58": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "74": 0,
+            "79": 0,
+            "81": 0,
+            "82": 0,
+            "93": 0,
+            "94": 0,
+            "96": 0,
+            "98": 0,
+            "102": 0,
+            "104": 0,
+            "105": 0,
+            "107": 0,
+            "108": 0,
+            "110": 0,
+            "111": 0,
+            "113": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "119": 0,
+            "121": 0,
+            "127": 0,
+            "131": 0
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 117,
+              "EndOffset": 119,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 117,
+              "EndOffset": 126,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 255,
+              "EndOffset": 257,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 255,
+              "EndOffset": 264,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 363,
+              "EndOffset": 368,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 1096,
+              "EndOffset": 1098,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 1132,
+              "EndOffset": 1134,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 1132,
+              "EndOffset": 1141,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 1096,
+              "EndOffset": 1180,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 1997,
+              "EndOffset": 1401,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 1525,
+              "EndOffset": 1527,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 1525,
+              "EndOffset": 1534,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 1997,
+              "EndOffset": 2002,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 363,
+              "EndOffset": 2048,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 2068,
+              "EndOffset": 2073,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 93,
+              "Offset": 2977,
+              "EndOffset": 2979,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 3013,
+              "EndOffset": 3015,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 3013,
+              "EndOffset": 3022,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 93,
+              "Offset": 2977,
+              "EndOffset": 3061,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 104,
+              "Offset": 4041,
+              "EndOffset": 3282,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 3539,
+              "EndOffset": 3544,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 3591,
+              "EndOffset": 3593,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 3591,
+              "EndOffset": 3600,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 3652,
+              "EndOffset": 3654,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 3652,
+              "EndOffset": 3661,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 3539,
+              "EndOffset": 3709,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 116,
+              "Offset": 3728,
+              "EndOffset": 3733,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 117,
+              "Offset": 3780,
+              "EndOffset": 3782,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 117,
+              "Offset": 3780,
+              "EndOffset": 3789,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 119,
+              "Offset": 3841,
+              "EndOffset": 3843,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 119,
+              "Offset": 3841,
+              "EndOffset": 3850,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 116,
+              "Offset": 3728,
+              "EndOffset": 3898,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 0
+            },
+            {
+              "Line": 104,
+              "Offset": 4041,
+              "EndOffset": 4046,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 2068,
+              "EndOffset": 4085,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::OnInitialized()": {
+          "Lines": {
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::OnParametersSet()": {
+          "Lines": {
+            "165": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0
+          },
+          "Branches": [
+            {
+              "Line": 167,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 12,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 38,
+              "EndOffset": 40,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 167,
+              "Offset": 38,
+              "EndOffset": 61,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::RefreshData()": {
+          "Lines": {
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::SetActiveTab(System.String)": {
+          "Lines": {
+            "181": 0,
+            "182": 0,
+            "183": 0,
+            "184": 0,
+            "185": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::DeletePlayer(System.Guid)": {
+          "Lines": {
+            "238": 0,
+            "239": 0,
+            "240": 0,
+            "241": 0,
+            "242": 0,
+            "243": 0
+          },
+          "Branches": [
+            {
+              "Line": 240,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 240,
+              "Offset": 16,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::SelectPlayer(System.Guid)": {
+          "Lines": {
+            "246": 0,
+            "247": 0,
+            "248": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::CreateItem()": {
+          "Lines": {
+            "251": 0,
+            "252": 0,
+            "253": 0,
+            "254": 0,
+            "255": 0,
+            "256": 0,
+            "259": 0,
+            "260": 0,
+            "261": 0,
+            "262": 0,
+            "263": 0,
+            "264": 0,
+            "265": 0,
+            "267": 0,
+            "268": 0,
+            "269": 0,
+            "270": 0,
+            "273": 0,
+            "274": 0,
+            "275": 0,
+            "276": 0,
+            "277": 0
+          },
+          "Branches": [
+            {
+              "Line": 252,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 252,
+              "Offset": 14,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::DeleteItem(System.Guid)": {
+          "Lines": {
+            "280": 0,
+            "281": 0,
+            "282": 0,
+            "283": 0,
+            "284": 0,
+            "285": 0,
+            "286": 0
+          },
+          "Branches": [
+            {
+              "Line": 283,
+              "Offset": 58,
+              "EndOffset": 60,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 283,
+              "Offset": 58,
+              "EndOffset": 67,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 283,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 283,
+              "Offset": 73,
+              "EndOffset": 78,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 283,
+              "Offset": 85,
+              "EndOffset": 87,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 283,
+              "Offset": 85,
+              "EndOffset": 93,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::<BuildRenderTree>b__0_0()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::<BuildRenderTree>b__0_1()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Admin::.ctor()": {
+          "Lines": {
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "144": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "148": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Admin/<>c__DisplayClass0_0": {
+        "System.Void BlazorGame.Client.Pages.Admin/<>c__DisplayClass0_0::<BuildRenderTree>b__9()": {
+          "Lines": {
+            "66": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Admin/<>c__DisplayClass0_0::<BuildRenderTree>b__10()": {
+          "Lines": {
+            "69": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Admin/<>c__DisplayClass0_1": {
+        "System.Void BlazorGame.Client.Pages.Admin/<>c__DisplayClass0_1::<BuildRenderTree>b__11()": {
+          "Lines": {
+            "123": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Admin/<CreateItemAsync>d__20": {
+        "System.Void BlazorGame.Client.Pages.Admin/<CreateItemAsync>d__20::MoveNext()": {
+          "Lines": {
+            "209": 0,
+            "210": 0,
+            "211": 0,
+            "212": 0,
+            "213": 0,
+            "214": 0,
+            "217": 0,
+            "218": 0,
+            "219": 0,
+            "220": 0,
+            "221": 0,
+            "222": 0,
+            "223": 0,
+            "225": 0,
+            "226": 0,
+            "227": 0,
+            "228": 0,
+            "231": 0,
+            "232": 0,
+            "233": 0,
+            "234": 0,
+            "235": 0
+          },
+          "Branches": [
+            {
+              "Line": 210,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 210,
+              "Offset": 26,
+              "EndOffset": 62,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Admin/<CreatePlayerAsync>d__19": {
+        "System.Void BlazorGame.Client.Pages.Admin/<CreatePlayerAsync>d__19::MoveNext()": {
+          "Lines": {
+            "188": 0,
+            "189": 0,
+            "190": 0,
+            "191": 0,
+            "192": 0,
+            "193": 0,
+            "195": 0,
+            "196": 0,
+            "197": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0,
+            "203": 0,
+            "204": 0,
+            "205": 0,
+            "206": 0
+          },
+          "Branches": [
+            {
+              "Line": 189,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 189,
+              "Offset": 24,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 189,
+              "Offset": 47,
+              "EndOffset": 49,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 189,
+              "Offset": 47,
+              "EndOffset": 83,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Pages\\Adventure.razor": {
+      "BlazorGame.Client.Pages.Adventure": {
+        "System.Void BlazorGame.Client.Pages.Adventure::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "15": 0,
+            "18": 0,
+            "19": 0,
+            "22": 0,
+            "25": 0,
+            "29": 0,
+            "32": 0,
+            "36": 0,
+            "37": 0,
+            "40": 0,
+            "41": 0,
+            "43": 0,
+            "48": 0,
+            "50": 0,
+            "53": 0,
+            "54": 0,
+            "56": 0,
+            "57": 0,
+            "59": 0,
+            "60": 0,
+            "62": 0,
+            "63": 0,
+            "65": 0,
+            "67": 0,
+            "68": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "78": 0,
+            "82": 0,
+            "83": 0,
+            "90": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "97": 0,
+            "99": 0,
+            "101": 0,
+            "106": 0,
+            "108": 0,
+            "110": 0,
+            "115": 0,
+            "118": 0,
+            "119": 0,
+            "121": 0,
+            "123": 0,
+            "129": 0,
+            "131": 0,
+            "137": 0
+          },
+          "Branches": [
+            {
+              "Line": 15,
+              "Offset": 98,
+              "EndOffset": 100,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 15,
+              "Offset": 98,
+              "EndOffset": 104,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 15,
+              "Offset": 110,
+              "EndOffset": 112,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 15,
+              "Offset": 110,
+              "EndOffset": 118,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 149,
+              "EndOffset": 154,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 736,
+              "EndOffset": 741,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 1057,
+              "EndOffset": 812,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 1057,
+              "EndOffset": 1062,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 736,
+              "EndOffset": 1087,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 1141,
+              "EndOffset": 1146,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 1311,
+              "EndOffset": 1316,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 1311,
+              "EndOffset": 1571,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 1596,
+              "EndOffset": 1601,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 1831,
+              "EndOffset": 1692,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 1831,
+              "EndOffset": 1836,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 1596,
+              "EndOffset": 1868,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 1923,
+              "EndOffset": 1928,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 1923,
+              "EndOffset": 2290,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 93,
+              "Offset": 2316,
+              "EndOffset": 2321,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 93,
+              "Offset": 2316,
+              "EndOffset": 2521,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 1141,
+              "EndOffset": 2852,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 118,
+              "Offset": 3027,
+              "EndOffset": 3029,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 119,
+              "Offset": 3069,
+              "EndOffset": 3071,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 119,
+              "Offset": 3069,
+              "EndOffset": 3078,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 118,
+              "Offset": 3027,
+              "EndOffset": 3120,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 149,
+              "EndOffset": 3140,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Nullable`1<System.Guid> BlazorGame.Client.Pages.Adventure::get_PlayerId()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::OnParametersSet()": {
+          "Lines": {
+            "146": 0,
+            "148": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "157": 0,
+            "158": 0,
+            "159": 0,
+            "160": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0
+          },
+          "Branches": [
+            {
+              "Line": 148,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 148,
+              "Offset": 17,
+              "EndOffset": 54,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 152,
+              "Offset": 70,
+              "EndOffset": 72,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 152,
+              "Offset": 70,
+              "EndOffset": 91,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 157,
+              "Offset": 102,
+              "EndOffset": 104,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 157,
+              "Offset": 102,
+              "EndOffset": 126,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::StartAdventure()": {
+          "Lines": {
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0
+          },
+          "Branches": [
+            {
+              "Line": 171,
+              "Offset": 12,
+              "EndOffset": 16,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 171,
+              "Offset": 12,
+              "EndOffset": 76,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::OnExplore()": {
+          "Lines": {
+            "179": 0,
+            "180": 0,
+            "181": 0,
+            "182": 0,
+            "183": 0,
+            "184": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::OnSearch()": {
+          "Lines": {
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "190": 0,
+            "191": 0,
+            "192": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::OnRest()": {
+          "Lines": {
+            "195": 0,
+            "196": 0,
+            "197": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::OnAttack()": {
+          "Lines": {
+            "203": 0,
+            "204": 0,
+            "205": 0,
+            "206": 0,
+            "207": 0,
+            "208": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::OnFlee()": {
+          "Lines": {
+            "211": 0,
+            "212": 0,
+            "213": 0,
+            "214": 0,
+            "215": 0,
+            "216": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::UseItem(SharedModels.Models.Item)": {
+          "Lines": {
+            "254": 0,
+            "255": 0,
+            "256": 0,
+            "257": 0,
+            "258": 0,
+            "259": 0,
+            "260": 0,
+            "261": 0
+          },
+          "Branches": [
+            {
+              "Line": 255,
+              "Offset": 12,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 255,
+              "Offset": 12,
+              "EndOffset": 220,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::RestartAdventure()": {
+          "Lines": {
+            "264": 0,
+            "265": 0,
+            "266": 0,
+            "267": 0,
+            "268": 0,
+            "269": 0
+          },
+          "Branches": [
+            {
+              "Line": 265,
+              "Offset": 12,
+              "EndOffset": 16,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 265,
+              "Offset": 12,
+              "EndOffset": 47,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::GoHome()": {
+          "Lines": {
+            "272": 0,
+            "273": 0,
+            "274": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::ViewScores()": {
+          "Lines": {
+            "277": 0,
+            "278": 0,
+            "279": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Adventure::.ctor()": {
+          "Lines": {
+            "142": 0,
+            "143": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Adventure/<>c__DisplayClass0_0": {
+        "System.Void BlazorGame.Client.Pages.Adventure/<>c__DisplayClass0_0::<BuildRenderTree>b__0()": {
+          "Lines": {
+            "44": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Pages\\Authentication.razor": {
+      "BlazorGame.Client.Pages.Authentication": {
+        "System.String BlazorGame.Client.Pages.Authentication::get_Action()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task BlazorGame.Client.Pages.Authentication::OnLoginSucceeded()": {
+          "Lines": {
+            "11": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 19,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Pages\\Index.razor": {
+      "BlazorGame.Client.Pages.Index": {
+        "System.Void BlazorGame.Client.Pages.Index::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "45": 0,
+            "47": 0,
+            "49": 0,
+            "53": 0,
+            "56": 0,
+            "60": 0,
+            "63": 0,
+            "67": 0,
+            "68": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "85": 0,
+            "87": 0,
+            "90": 0,
+            "91": 0,
+            "93": 0,
+            "99": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 175,
+              "EndOffset": 180,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 842,
+              "EndOffset": 844,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 842,
+              "EndOffset": 901,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 175,
+              "EndOffset": 921,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 1614,
+              "EndOffset": 1619,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 1875,
+              "EndOffset": 1877,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 1875,
+              "EndOffset": 1884,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1913,
+              "EndOffset": 1915,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1913,
+              "EndOffset": 1933,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1938,
+              "EndOffset": 1943,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 2057,
+              "EndOffset": 2007,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 2057,
+              "EndOffset": 2059,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1938,
+              "EndOffset": 2089,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 1614,
+              "EndOffset": 2097,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 2145,
+              "EndOffset": 2147,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 2145,
+              "EndOffset": 2163,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Index::<BuildRenderTree>b__0_6()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean BlazorGame.Client.Pages.Index::<LoadLatestSaveAsync>b__13_0(SharedModels.Models.AdventureResult)": {
+          "Lines": {
+            "251": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.Index::.ctor()": {
+          "Lines": {
+            "103": 0,
+            "104": 0,
+            "105": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<<OnInitializedAsync>b__6_0>d": {
+        "System.Void BlazorGame.Client.Pages.Index/<<OnInitializedAsync>b__6_0>d::MoveNext()": {
+          "Lines": {
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0
+          },
+          "Branches": [
+            {
+              "Line": 123,
+              "Offset": 158,
+              "EndOffset": 160,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 158,
+              "EndOffset": 164,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 170,
+              "EndOffset": 172,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 170,
+              "EndOffset": 185,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 206,
+              "EndOffset": 208,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 206,
+              "EndOffset": 327,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<>c": {
+        "System.DateTimeOffset BlazorGame.Client.Pages.Index/<>c::<LoadLatestSaveAsync>b__13_1(SharedModels.Models.AdventureResult)": {
+          "Lines": {
+            "252": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<>c__DisplayClass0_0": {
+        "System.Void BlazorGame.Client.Pages.Index/<>c__DisplayClass0_0::<BuildRenderTree>b__4(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": [
+            {
+              "Line": 14,
+              "Offset": 60,
+              "EndOffset": 62,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 60,
+              "EndOffset": 66,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<>c__DisplayClass7_0": {
+        "System.Boolean BlazorGame.Client.Pages.Index/<>c__DisplayClass7_0::<EnsurePlayerFromAuthAsync>b__0(SharedModels.Models.Player)": {
+          "Lines": {
+            "148": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<EnsurePlayerFromAuthAsync>d__7": {
+        "System.Void BlazorGame.Client.Pages.Index/<EnsurePlayerFromAuthAsync>d__7::MoveNext()": {
+          "Lines": {
+            "137": 0,
+            "138": 0,
+            "141": 0,
+            "142": 0,
+            "146": 0,
+            "147": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "158": 0
+          },
+          "Branches": [
+            {
+              "Line": 138,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 138,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 138,
+              "Offset": 35,
+              "EndOffset": 71,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 138,
+              "Offset": 48,
+              "EndOffset": 71,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 138,
+              "Offset": 74,
+              "EndOffset": 76,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 138,
+              "Offset": 74,
+              "EndOffset": 81,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 141,
+              "Offset": 99,
+              "EndOffset": 101,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 141,
+              "Offset": 99,
+              "EndOffset": 105,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 141,
+              "Offset": 111,
+              "EndOffset": 113,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 141,
+              "Offset": 131,
+              "EndOffset": 133,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 141,
+              "Offset": 131,
+              "EndOffset": 137,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 141,
+              "Offset": 111,
+              "EndOffset": 142,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 165,
+              "EndOffset": 167,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 165,
+              "EndOffset": 172,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 251,
+              "EndOffset": 256,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 251,
+              "EndOffset": 415,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<LoadLatestSaveAsync>d__13": {
+        "System.Void BlazorGame.Client.Pages.Index/<LoadLatestSaveAsync>d__13::MoveNext()": {
+          "Lines": {
+            "243": 0,
+            "244": 0,
+            "247": 0,
+            "248": 0,
+            "249": 0,
+            "250": 0,
+            "253": 0,
+            "254": 0,
+            "255": 0,
+            "256": 0,
+            "257": 0,
+            "259": 0,
+            "260": 0
+          },
+          "Branches": [
+            {
+              "Line": 244,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 244,
+              "Offset": 31,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 249,
+              "Offset": 198,
+              "EndOffset": 200,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 249,
+              "Offset": 198,
+              "EndOffset": 213,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 249,
+              "Offset": 218,
+              "EndOffset": 220,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 249,
+              "Offset": 218,
+              "EndOffset": 302,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<Login>d__10": {
+        "System.Void BlazorGame.Client.Pages.Index/<Login>d__10::MoveNext()": {
+          "Lines": {
+            "171": 0,
+            "172": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "180": 0,
+            "181": 0,
+            "182": 0,
+            "183": 0,
+            "184": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "190": 0,
+            "193": 0,
+            "194": 0,
+            "197": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0,
+            "201": 0,
+            "203": 0,
+            "204": 0,
+            "205": 0
+          },
+          "Branches": [
+            {
+              "Line": 174,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 174,
+              "Offset": 50,
+              "EndOffset": 70,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 174,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 174,
+              "Offset": 73,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 181,
+              "Offset": 152,
+              "EndOffset": 154,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 181,
+              "Offset": 152,
+              "EndOffset": 176,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 187,
+              "Offset": 182,
+              "EndOffset": 184,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 187,
+              "Offset": 182,
+              "EndOffset": 200,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 187,
+              "Offset": 203,
+              "EndOffset": 205,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 187,
+              "Offset": 203,
+              "EndOffset": 227,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<LoginAsAdmin>d__9": {
+        "System.Void BlazorGame.Client.Pages.Index/<LoginAsAdmin>d__9::MoveNext()": {
+          "Lines": {
+            "166": 0,
+            "167": 0,
+            "168": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<LoginAsPlayer>d__8": {
+        "System.Void BlazorGame.Client.Pages.Index/<LoginAsPlayer>d__8::MoveNext()": {
+          "Lines": {
+            "161": 0,
+            "162": 0,
+            "163": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<Logout>d__11": {
+        "System.Void BlazorGame.Client.Pages.Index/<Logout>d__11::MoveNext()": {
+          "Lines": {
+            "208": 0,
+            "209": 0,
+            "210": 0,
+            "212": 0,
+            "213": 0,
+            "214": 0,
+            "215": 0,
+            "216": 0,
+            "217": 0,
+            "218": 0,
+            "220": 0,
+            "221": 0,
+            "222": 0,
+            "223": 0,
+            "224": 0,
+            "225": 0
+          },
+          "Branches": [
+            {
+              "Line": 220,
+              "Offset": 271,
+              "EndOffset": 273,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 220,
+              "Offset": 271,
+              "EndOffset": 279,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 221,
+              "Offset": 314,
+              "EndOffset": 316,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 221,
+              "Offset": 314,
+              "EndOffset": 322,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<LogoutToKeycloak>d__12": {
+        "System.Void BlazorGame.Client.Pages.Index/<LogoutToKeycloak>d__12::MoveNext()": {
+          "Lines": {
+            "228": 0,
+            "230": 0,
+            "231": 0,
+            "232": 0,
+            "233": 0,
+            "234": 0,
+            "235": 0,
+            "236": 0,
+            "237": 0,
+            "238": 0,
+            "239": 0,
+            "240": 0
+          },
+          "Branches": [
+            {
+              "Line": 235,
+              "Offset": 118,
+              "EndOffset": 120,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 235,
+              "Offset": 118,
+              "EndOffset": 126,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 236,
+              "Offset": 161,
+              "EndOffset": 163,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 236,
+              "Offset": 161,
+              "EndOffset": 169,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Index/<OnInitializedAsync>d__6": {
+        "System.Void BlazorGame.Client.Pages.Index/<OnInitializedAsync>d__6::MoveNext()": {
+          "Lines": {
+            "110": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "120": 0,
+            "127": 0,
+            "134": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Pages\\KeycloakLogin.razor": {
+      "BlazorGame.Client.Pages.KeycloakLogin": {
+        "Microsoft.JSInterop.IJSRuntime BlazorGame.Client.Pages.KeycloakLogin::get_Js()": {
+          "Lines": {
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Pages.KeycloakLogin::LoginToKeycloak()": {
+          "Lines": {
+            "45": 0,
+            "47": 0,
+            "48": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.KeycloakLogin/<>c__DisplayClass0_0": {
+        "System.Void BlazorGame.Client.Pages.KeycloakLogin/<>c__DisplayClass0_0::<BuildRenderTree>b__4(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 78,
+              "EndOffset": 80,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 78,
+              "EndOffset": 84,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.KeycloakLogin/<LogoutToKeycloak>d__6": {
+        "System.Void BlazorGame.Client.Pages.KeycloakLogin/<LogoutToKeycloak>d__6::MoveNext()": {
+          "Lines": {
+            "51": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": [
+            {
+              "Line": 53,
+              "Offset": 41,
+              "EndOffset": 43,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 41,
+              "EndOffset": 49,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 54,
+              "Offset": 84,
+              "EndOffset": 86,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 54,
+              "Offset": 84,
+              "EndOffset": 92,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Pages\\LoggedOut.razor": {
+      "BlazorGame.Client.Pages.LoggedOut/<OnInitializedAsync>d__1": {
+        "System.Void BlazorGame.Client.Pages.LoggedOut/<OnInitializedAsync>d__1::MoveNext()": {
+          "Lines": {
+            "14": 0,
+            "16": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Pages\\Scores.razor": {
+      "BlazorGame.Client.Pages.Scores": {
+        "System.Void BlazorGame.Client.Pages.Scores::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "19": 0,
+            "23": 0,
+            "27": 0,
+            "35": 0,
+            "36": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "61": 0,
+            "62": 0,
+            "69": 0,
+            "70": 0,
+            "72": 0,
+            "75": 0,
+            "77": 0,
+            "82": 0,
+            "88": 0,
+            "89": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "101": 0,
+            "111": 0,
+            "112": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "118": 0,
+            "121": 0
+          },
+          "Branches": [
+            {
+              "Line": 35,
+              "Offset": 608,
+              "EndOffset": 613,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 1236,
+              "EndOffset": 682,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 790,
+              "EndOffset": 792,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 790,
+              "EndOffset": 810,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 56,
+              "Offset": 818,
+              "EndOffset": 820,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 56,
+              "Offset": 818,
+              "EndOffset": 838,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 846,
+              "EndOffset": 848,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 846,
+              "EndOffset": 866,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 62,
+              "Offset": 1013,
+              "EndOffset": 1015,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 62,
+              "Offset": 1013,
+              "EndOffset": 1022,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 1222,
+              "EndOffset": 1224,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 1222,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 1236,
+              "EndOffset": 1241,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 608,
+              "EndOffset": 1258,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 88,
+              "Offset": 1355,
+              "EndOffset": 1357,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 88,
+              "Offset": 1355,
+              "EndOffset": 1378,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 92,
+              "Offset": 1388,
+              "EndOffset": 1390,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 92,
+              "Offset": 1388,
+              "EndOffset": 1411,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 96,
+              "Offset": 1429,
+              "EndOffset": 1431,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 96,
+              "Offset": 1429,
+              "EndOffset": 1528,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 1872,
+              "EndOffset": 1609,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 111,
+              "Offset": 1872,
+              "EndOffset": 1877,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String BlazorGame.Client.Pages.Scores::GetRankClass(System.Int32)": {
+          "Lines": {
+            "206": 0,
+            "207": 0,
+            "208": 0,
+            "209": 0,
+            "210": 0,
+            "211": 0,
+            "212": 0
+          },
+          "Branches": [
+            {
+              "Line": 206,
+              "Offset": 7,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 206,
+              "Offset": 7,
+              "EndOffset": 34,
+              "Path": 2,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 206,
+              "Offset": 7,
+              "EndOffset": 42,
+              "Path": 3,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 206,
+              "Offset": 7,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String BlazorGame.Client.Pages.Scores::GetPlayerTitle(System.Int32)": {
+          "Lines": {
+            "215": 0,
+            "216": 0,
+            "217": 0,
+            "218": 0,
+            "219": 0,
+            "220": 0,
+            "221": 0,
+            "222": 0,
+            "223": 0,
+            "224": 0
+          },
+          "Branches": [
+            {
+              "Line": 215,
+              "Offset": 10,
+              "EndOffset": 12,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 10,
+              "EndOffset": 30,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 33,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 18,
+              "EndOffset": 49,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 26,
+              "EndOffset": 57,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 26,
+              "EndOffset": 65,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 38,
+              "EndOffset": 73,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 38,
+              "EndOffset": 81,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 45,
+              "EndOffset": 89,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 215,
+              "Offset": 45,
+              "EndOffset": 97,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Pages.Scores::.ctor()": {
+          "Lines": {
+            "141": 0,
+            "142": 0,
+            "143": 0,
+            "144": 0,
+            "148": 0,
+            "149": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Scores/PlayerScoreViewModel": {
+        "SharedModels.Models.Player BlazorGame.Client.Pages.Scores/PlayerScoreViewModel::get_Player()": {
+          "Lines": {
+            "136": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 BlazorGame.Client.Pages.Scores/PlayerScoreViewModel::get_BestScore()": {
+          "Lines": {
+            "137": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Scores/<>c": {
+        "System.Nullable`1<System.Int32> BlazorGame.Client.Pages.Scores/<>c::<LoadGeneralScoreboardAsync>b__10_6(SharedModels.Models.AdventureResult)": {
+          "Lines": {
+            "168": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 BlazorGame.Client.Pages.Scores/<>c::<LoadGeneralScoreboardAsync>b__10_1(BlazorGame.Client.Pages.Scores/PlayerScoreViewModel)": {
+          "Lines": {
+            "172": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 BlazorGame.Client.Pages.Scores/<>c::<LoadGeneralScoreboardAsync>b__10_2(SharedModels.Models.Player)": {
+          "Lines": {
+            "176": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 BlazorGame.Client.Pages.Scores/<>c::<LoadGeneralScoreboardAsync>b__10_3(SharedModels.Models.Player)": {
+          "Lines": {
+            "177": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Scores/<>c__DisplayClass10_0": {
+        "System.Collections.Generic.IReadOnlyList`1<SharedModels.Models.Player> BlazorGame.Client.Pages.Scores/<>c__DisplayClass10_0::<LoadGeneralScoreboardAsync>b__4()": {
+          "Lines": {
+            "160": 0
+          },
+          "Branches": []
+        },
+        "BlazorGame.Client.Pages.Scores/PlayerScoreViewModel BlazorGame.Client.Pages.Scores/<>c__DisplayClass10_0::<LoadGeneralScoreboardAsync>b__0(SharedModels.Models.Player)": {
+          "Lines": {
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "169": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Scores/<LoadGeneralScoreboardAsync>d__10": {
+        "System.Void BlazorGame.Client.Pages.Scores/<LoadGeneralScoreboardAsync>d__10::MoveNext()": {
+          "Lines": {
+            "158": 0,
+            "161": 0,
+            "175": 0,
+            "178": 0
+          },
+          "Branches": [
+            {
+              "Line": 177,
+              "Offset": 514,
+              "EndOffset": 516,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 177,
+              "Offset": 514,
+              "EndOffset": 527,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Scores/<LoadPlayerHistoryAsync>d__11": {
+        "System.Void BlazorGame.Client.Pages.Scores/<LoadPlayerHistoryAsync>d__11::MoveNext()": {
+          "Lines": {
+            "182": 0,
+            "183": 0,
+            "186": 0,
+            "188": 0,
+            "189": 0,
+            "191": 0,
+            "192": 0,
+            "193": 0,
+            "195": 0,
+            "196": 0
+          },
+          "Branches": [
+            {
+              "Line": 188,
+              "Offset": 73,
+              "EndOffset": 78,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 188,
+              "Offset": 73,
+              "EndOffset": 255,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Pages.Scores/<OnInitializedAsync>d__9": {
+        "System.Void BlazorGame.Client.Pages.Scores/<OnInitializedAsync>d__9::MoveNext()": {
+          "Lines": {
+            "152": 0,
+            "153": 0,
+            "154": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Pages.Scores/<Reload>d__12": {
+        "System.Void BlazorGame.Client.Pages.Scores/<Reload>d__12::MoveNext()": {
+          "Lines": {
+            "199": 0,
+            "200": 0,
+            "201": 0,
+            "202": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Pages\\Unauthorized.razor": {
+      "BlazorGame.Client.Pages.Unauthorized": {
+        "System.Void BlazorGame.Client.Pages.Unauthorized::GoHome()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Services\\AdventureService.cs": {
+      "BlazorGame.Client.Services.AdventureService": {
+        "SharedModels.Models.Player BlazorGame.Client.Services.AdventureService::get_CurrentPlayer()": {
+          "Lines": {
+            "34": 7
+          },
+          "Branches": []
+        },
+        "SharedModels.Models.Salle BlazorGame.Client.Services.AdventureService::get_CurrentRoom()": {
+          "Lines": {
+            "36": 2
+          },
+          "Branches": [
+            {
+              "Line": 36,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 36,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.String BlazorGame.Client.Services.AdventureService::get_LastEvent()": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean BlazorGame.Client.Services.AdventureService::get_IsFinished()": {
+          "Lines": {
+            "40": 2
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.AdventureService::StartAdventure(SharedModels.Models.Player,System.Int32)": {
+          "Lines": {
+            "43": 1,
+            "44": 1,
+            "45": 1,
+            "46": 1,
+            "47": 1,
+            "48": 1,
+            "49": 1
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.AdventureService::AddEvent(System.String)": {
+          "Lines": {
+            "51": 9
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.AdventureService::Explore()": {
+          "Lines": {
+            "54": 0,
+            "55": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0
+          },
+          "Branches": [
+            {
+              "Line": 55,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 7,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 23,
+              "EndOffset": 30,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 58,
+              "EndOffset": 60,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 58,
+              "EndOffset": 127,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 23,
+              "EndOffset": 188,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.AdventureService::Search()": {
+          "Lines": {
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "112": 0,
+            "113": 0
+          },
+          "Branches": [
+            {
+              "Line": 79,
+              "Offset": 14,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 83,
+              "Offset": 41,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 83,
+              "Offset": 41,
+              "EndOffset": 226,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 246,
+              "EndOffset": 251,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 246,
+              "EndOffset": 418,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 104,
+              "Offset": 443,
+              "EndOffset": 445,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 104,
+              "Offset": 443,
+              "EndOffset": 547,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 14,
+              "EndOffset": 559,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.AdventureService::Rest()": {
+          "Lines": {
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.AdventureService::Attack()": {
+          "Lines": {
+            "122": 1,
+            "123": 1,
+            "124": 1,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "130": 1,
+            "133": 1,
+            "134": 1,
+            "135": 1,
+            "137": 1,
+            "138": 1,
+            "139": 1,
+            "141": 1,
+            "142": 1,
+            "143": 1,
+            "144": 1,
+            "145": 1,
+            "146": 1,
+            "147": 1,
+            "150": 1,
+            "151": 1,
+            "152": 1,
+            "155": 1,
+            "156": 1,
+            "157": 1,
+            "158": 1,
+            "159": 1,
+            "160": 1,
+            "161": 1,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0,
+            "179": 0,
+            "180": 0,
+            "181": 1
+          },
+          "Branches": [
+            {
+              "Line": 124,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 124,
+              "Offset": 9,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 32,
+              "EndOffset": 34,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 32,
+              "EndOffset": 52,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 137,
+              "Offset": 198,
+              "EndOffset": 203,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 141,
+              "Offset": 242,
+              "EndOffset": 244,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 141,
+              "Offset": 242,
+              "EndOffset": 303,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            },
+            {
+              "Line": 150,
+              "Offset": 400,
+              "EndOffset": 402,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 1
+            },
+            {
+              "Line": 150,
+              "Offset": 413,
+              "EndOffset": 415,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 1
+            },
+            {
+              "Line": 150,
+              "Offset": 400,
+              "EndOffset": 443,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 150,
+              "Offset": 413,
+              "EndOffset": 443,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 150,
+              "Offset": 448,
+              "EndOffset": 450,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 1
+            },
+            {
+              "Line": 137,
+              "Offset": 198,
+              "EndOffset": 504,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 169,
+              "Offset": 644,
+              "EndOffset": 646,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 150,
+              "Offset": 448,
+              "EndOffset": 707,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 1
+            },
+            {
+              "Line": 169,
+              "Offset": 644,
+              "EndOffset": 707,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.AdventureService::Flee()": {
+          "Lines": {
+            "184": 0,
+            "186": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "190": 0,
+            "191": 0,
+            "193": 0,
+            "194": 0,
+            "195": 0,
+            "196": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0,
+            "201": 0,
+            "204": 0,
+            "205": 0,
+            "206": 0,
+            "207": 0,
+            "208": 0,
+            "209": 0,
+            "210": 0
+          },
+          "Branches": [
+            {
+              "Line": 186,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 190,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 190,
+              "Offset": 62,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 186,
+              "Offset": 12,
+              "EndOffset": 108,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 198,
+              "Offset": 162,
+              "EndOffset": 164,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 198,
+              "Offset": 162,
+              "EndOffset": 225,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.AdventureService::.ctor(BlazorGame.Client.Services.IDungeonGenerator,System.Net.Http.HttpClient,BlazorGame.Client.Services.IItemService,BlazorGame.Client.Services.IPlayerService,BlazorGame.Client.Services.IPlayerStateService)": {
+          "Lines": {
+            "17": 1,
+            "18": 1,
+            "20": 1,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "24": 1,
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Services\\ApiLoggingHandler.cs": {
+      "BlazorGame.Client.Services.ApiLoggingHandler/<SendAsync>d__0": {
+        "System.Void BlazorGame.Client.Services.ApiLoggingHandler/<SendAsync>d__0::MoveNext()": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 125,
+              "EndOffset": 127,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 12,
+              "Offset": 125,
+              "EndOffset": 142,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Services\\DungeonGeneratorService.cs": {
+      "BlazorGame.Client.Services.DungeonGeneratorService": {
+        "SharedModels.Models.Donjon BlazorGame.Client.Services.DungeonGeneratorService::Generate(System.Int32,System.String)": {
+          "Lines": {
+            "26": 1,
+            "27": 1,
+            "30": 14,
+            "31": 6,
+            "32": 6,
+            "33": 6,
+            "34": 6,
+            "35": 6,
+            "36": 6,
+            "39": 6,
+            "40": 3,
+            "41": 3,
+            "42": 3,
+            "43": 3,
+            "44": 3,
+            "45": 3,
+            "46": 3,
+            "47": 3,
+            "48": 3,
+            "51": 6,
+            "52": 4,
+            "53": 4,
+            "54": 4,
+            "55": 4,
+            "56": 4,
+            "57": 4,
+            "58": 4,
+            "59": 4,
+            "60": 4,
+            "61": 4,
+            "62": 4,
+            "64": 6,
+            "65": 6,
+            "68": 14,
+            "69": 6,
+            "70": 11,
+            "71": 11,
+            "72": 6,
+            "74": 1,
+            "75": 1
+          },
+          "Branches": [
+            {
+              "Line": 27,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 9,
+              "EndOffset": 70,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 30,
+              "Offset": 544,
+              "EndOffset": 84,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 6
+            },
+            {
+              "Line": 32,
+              "Offset": 116,
+              "EndOffset": 118,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 5
+            },
+            {
+              "Line": 32,
+              "Offset": 122,
+              "EndOffset": 124,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 4
+            },
+            {
+              "Line": 32,
+              "Offset": 122,
+              "EndOffset": 131,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 32,
+              "Offset": 116,
+              "EndOffset": 138,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 39,
+              "Offset": 212,
+              "EndOffset": 214,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 3
+            },
+            {
+              "Line": 39,
+              "Offset": 212,
+              "EndOffset": 274,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 6
+            },
+            {
+              "Line": 51,
+              "Offset": 294,
+              "EndOffset": 296,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 2
+            },
+            {
+              "Line": 51,
+              "Offset": 294,
+              "EndOffset": 304,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 4
+            },
+            {
+              "Line": 51,
+              "Offset": 309,
+              "EndOffset": 314,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 4
+            },
+            {
+              "Line": 53,
+              "Offset": 331,
+              "EndOffset": 333,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 3
+            },
+            {
+              "Line": 53,
+              "Offset": 331,
+              "EndOffset": 368,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 1
+            },
+            {
+              "Line": 53,
+              "Offset": 384,
+              "EndOffset": 386,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 3
+            },
+            {
+              "Line": 53,
+              "Offset": 384,
+              "EndOffset": 405,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 1
+            },
+            {
+              "Line": 53,
+              "Offset": 466,
+              "EndOffset": 468,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 3
+            },
+            {
+              "Line": 53,
+              "Offset": 466,
+              "EndOffset": 487,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 1
+            },
+            {
+              "Line": 51,
+              "Offset": 309,
+              "EndOffset": 518,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 6
+            },
+            {
+              "Line": 30,
+              "Offset": 544,
+              "EndOffset": 549,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 1
+            },
+            {
+              "Line": 68,
+              "Offset": 693,
+              "EndOffset": 554,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 6
+            },
+            {
+              "Line": 70,
+              "Offset": 564,
+              "EndOffset": 566,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 5
+            },
+            {
+              "Line": 70,
+              "Offset": 564,
+              "EndOffset": 605,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 6
+            },
+            {
+              "Line": 71,
+              "Offset": 626,
+              "EndOffset": 628,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 5
+            },
+            {
+              "Line": 71,
+              "Offset": 626,
+              "EndOffset": 667,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 6
+            },
+            {
+              "Line": 68,
+              "Offset": 693,
+              "EndOffset": 698,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.DungeonGeneratorService::.ctor()": {
+          "Lines": {
+            "23": 1
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.DungeonGeneratorService::.cctor()": {
+          "Lines": {
+            "7": 1,
+            "8": 1,
+            "9": 1,
+            "10": 1,
+            "12": 1,
+            "13": 1,
+            "14": 1,
+            "15": 1,
+            "16": 1,
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "21": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Services\\EFItemService.cs": {
+      "BlazorGame.Client.Services.EFItemService": {
+        "System.Collections.Generic.IReadOnlyList`1<SharedModels.Models.Item> BlazorGame.Client.Services.EFItemService::GetAllItems()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        },
+        "SharedModels.Models.Item BlazorGame.Client.Services.EFItemService::GetById(System.Guid)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "SharedModels.Models.Item BlazorGame.Client.Services.EFItemService::AddItem(SharedModels.Models.Item)": {
+          "Lines": {
+            "34": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean BlazorGame.Client.Services.EFItemService::RemoveItem(System.Guid)": {
+          "Lines": {
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 46,
+              "EndOffset": 48,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 46,
+              "EndOffset": 52,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "SharedModels.Models.Item BlazorGame.Client.Services.EFItemService::TakeRandomItem()": {
+          "Lines": {
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0
+          },
+          "Branches": [
+            {
+              "Line": 78,
+              "Offset": 36,
+              "EndOffset": 38,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 78,
+              "Offset": 36,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.EFItemService::.ctor(Microsoft.EntityFrameworkCore.IDbContextFactory`1<BlazorGame.Client.Data.GameDbContext>,System.Net.Http.IHttpClientFactory)": {
+          "Lines": {
+            "13": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Services\\EFPlayerService.cs": {
+      "BlazorGame.Client.Services.EFPlayerService": {
+        "System.Collections.Generic.IReadOnlyList`1<SharedModels.Models.Player> BlazorGame.Client.Services.EFPlayerService::GetAllPlayers()": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        },
+        "SharedModels.Models.Player BlazorGame.Client.Services.EFPlayerService::GetPlayerById(System.Guid)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        },
+        "SharedModels.Models.Player BlazorGame.Client.Services.EFPlayerService::CreatePlayer(System.String,System.String)": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean BlazorGame.Client.Services.EFPlayerService::DeletePlayer(System.Guid)": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0
+          },
+          "Branches": [
+            {
+              "Line": 48,
+              "Offset": 46,
+              "EndOffset": 48,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 46,
+              "EndOffset": 52,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "SharedModels.Models.Player BlazorGame.Client.Services.EFPlayerService::Authenticate(System.String,System.String)": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.EFPlayerService::AddOrUpdate(SharedModels.Models.Player)": {
+          "Lines": {
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "78": 0,
+            "79": 0
+          },
+          "Branches": [
+            {
+              "Line": 68,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 51,
+              "EndOffset": 70,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.EFPlayerService::.ctor(Microsoft.EntityFrameworkCore.IDbContextFactory`1<BlazorGame.Client.Data.GameDbContext>)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Services.EFPlayerService/<EndAndSaveAsync>d__10": {
+        "System.Void BlazorGame.Client.Services.EFPlayerService/<EndAndSaveAsync>d__10::MoveNext()": {
+          "Lines": {
+            "98": 0,
+            "99": 0,
+            "101": 0,
+            "102": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0
+          },
+          "Branches": [
+            {
+              "Line": 102,
+              "Offset": 223,
+              "EndOffset": 225,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 223,
+              "EndOffset": 230,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Services.EFPlayerService/<GetAllGameResultsAsync>d__9": {
+        "System.Void BlazorGame.Client.Services.EFPlayerService/<GetAllGameResultsAsync>d__9::MoveNext()": {
+          "Lines": {
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Services.EFPlayerService/<GetGameResultsForPlayerAsync>d__8": {
+        "System.Void BlazorGame.Client.Services.EFPlayerService/<GetGameResultsForPlayerAsync>d__8::MoveNext()": {
+          "Lines": {
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Services\\InMemoryPlayerService.cs": {
+      "BlazorGame.Client.Services.InMemoryPlayerService": {
+        "SharedModels.Models.Player BlazorGame.Client.Services.InMemoryPlayerService::CreatePlayer(System.String,System.String)": {
+          "Lines": {
+            "34": 11,
+            "35": 11,
+            "36": 11,
+            "37": 11,
+            "38": 11
+          },
+          "Branches": []
+        },
+        "System.Boolean BlazorGame.Client.Services.InMemoryPlayerService::DeletePlayer(System.Guid)": {
+          "Lines": {
+            "41": 2,
+            "42": 3,
+            "43": 3,
+            "44": 1,
+            "45": 1,
+            "46": 1,
+            "47": 1,
+            "48": 2
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 43,
+              "Offset": 44,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Collections.Generic.IReadOnlyList`1<SharedModels.Models.Player> BlazorGame.Client.Services.InMemoryPlayerService::GetAllPlayers()": {
+          "Lines": {
+            "50": 1
+          },
+          "Branches": []
+        },
+        "SharedModels.Models.Player BlazorGame.Client.Services.InMemoryPlayerService::GetPlayerById(System.Guid)": {
+          "Lines": {
+            "52": 8
+          },
+          "Branches": []
+        },
+        "SharedModels.Models.Player BlazorGame.Client.Services.InMemoryPlayerService::Authenticate(System.String,System.String)": {
+          "Lines": {
+            "55": 3,
+            "56": 5,
+            "57": 3
+          },
+          "Branches": [
+            {
+              "Line": 56,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 56,
+              "Offset": 18,
+              "EndOffset": 39,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.InMemoryPlayerService::AddOrUpdate(SharedModels.Models.Player)": {
+          "Lines": {
+            "60": 2,
+            "61": 3,
+            "62": 5,
+            "63": 1,
+            "64": 1,
+            "65": 1,
+            "66": 1,
+            "67": 1,
+            "68": 1,
+            "69": 2
+          },
+          "Branches": [
+            {
+              "Line": 62,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 62,
+              "Offset": 44,
+              "EndOffset": 67,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void BlazorGame.Client.Services.InMemoryPlayerService::.ctor(Microsoft.JSInterop.IJSRuntime)": {
+          "Lines": {
+            "13": 16,
+            "14": 16,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.InMemoryPlayerService::.ctor()": {
+          "Lines": {
+            "29": 16,
+            "30": 16,
+            "31": 16
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Services.InMemoryPlayerService/<>c": {
+        "System.DateTime BlazorGame.Client.Services.InMemoryPlayerService/<>c::<GetGameResultsForPlayerAsync>b__12_1(SharedModels.Models.AdventureResult)": {
+          "Lines": {
+            "82": 2
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Services.InMemoryPlayerService/<>c__DisplayClass12_0": {
+        "System.Boolean BlazorGame.Client.Services.InMemoryPlayerService/<>c__DisplayClass12_0::<GetGameResultsForPlayerAsync>b__0(SharedModels.Models.AdventureResult)": {
+          "Lines": {
+            "81": 3
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Services.InMemoryPlayerService/<>c__DisplayClass15_0": {
+        "System.Boolean BlazorGame.Client.Services.InMemoryPlayerService/<>c__DisplayClass15_0::<EndAndSaveAsync>b__0(SharedModels.Models.Player)": {
+          "Lines": {
+            "128": 12
+          },
+          "Branches": []
+        }
+      },
+      "BlazorGame.Client.Services.InMemoryPlayerService/<EndAndSaveAsync>d__15": {
+        "System.Void BlazorGame.Client.Services.InMemoryPlayerService/<EndAndSaveAsync>d__15::MoveNext()": {
+          "Lines": {
+            "127": 6,
+            "129": 7,
+            "131": 5,
+            "132": 5,
+            "133": 5,
+            "134": 5,
+            "135": 5,
+            "136": 5,
+            "137": 5,
+            "138": 5,
+            "140": 5,
+            "141": 5,
+            "142": 6
+          },
+          "Branches": [
+            {
+              "Line": 129,
+              "Offset": 96,
+              "EndOffset": 98,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 129,
+              "Offset": 96,
+              "EndOffset": 103,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Services.InMemoryPlayerService/<GetAllGameResultsAsync>d__16": {
+        "System.Void BlazorGame.Client.Services.InMemoryPlayerService/<GetAllGameResultsAsync>d__16::MoveNext()": {
+          "Lines": {
+            "145": 1,
+            "146": 1,
+            "147": 0,
+            "148": 0,
+            "149": 0,
+            "150": 1,
+            "151": 1
+          },
+          "Branches": [
+            {
+              "Line": 146,
+              "Offset": 47,
+              "EndOffset": 49,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 146,
+              "Offset": 47,
+              "EndOffset": 153,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Services.InMemoryPlayerService/<GetGameResultsForPlayerAsync>d__12": {
+        "System.Void BlazorGame.Client.Services.InMemoryPlayerService/<GetGameResultsForPlayerAsync>d__12::MoveNext()": {
+          "Lines": {
+            "74": 2,
+            "75": 2,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "80": 2,
+            "83": 2,
+            "85": 2,
+            "86": 2
+          },
+          "Branches": [
+            {
+              "Line": 75,
+              "Offset": 75,
+              "EndOffset": 77,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 75,
+              "EndOffset": 181,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Services.InMemoryPlayerService/<LoadAllAsync>d__14": {
+        "System.Void BlazorGame.Client.Services.InMemoryPlayerService/<LoadAllAsync>d__14::MoveNext()": {
+          "Lines": {
+            "105": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "123": 0,
+            "124": 0
+          },
+          "Branches": [
+            {
+              "Line": 108,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 108,
+              "Offset": 40,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 218,
+              "EndOffset": 220,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 252,
+              "EndOffset": 254,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 252,
+              "EndOffset": 296,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 218,
+              "EndOffset": 304,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "BlazorGame.Client.Services.InMemoryPlayerService/<PersistAllAsync>d__13": {
+        "System.Void BlazorGame.Client.Services.InMemoryPlayerService/<PersistAllAsync>d__13::MoveNext()": {
+          "Lines": {
+            "90": 6,
+            "92": 6,
+            "93": 12,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "100": 0,
+            "101": 6
+          },
+          "Branches": [
+            {
+              "Line": 93,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 93,
+              "Offset": 43,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Services\\PlayerStateService.cs": {
+      "BlazorGame.Client.Services.PlayerStateService": {
+        "SharedModels.Models.Player BlazorGame.Client.Services.PlayerStateService::get_CurrentPlayer()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.PlayerStateService::SetCurrent(SharedModels.Models.Player)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Services.PlayerStateService::Clear()": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\BlazorGame.Client\\Data\\GameDbContext.cs": {
+      "BlazorGame.Client.Data.GameDbContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.Player> BlazorGame.Client.Data.GameDbContext::get_Players()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.Item> BlazorGame.Client.Data.GameDbContext::get_Items()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<SharedModels.Models.AdventureResult> BlazorGame.Client.Data.GameDbContext::get_AdventureResults()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Data.GameDbContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Void BlazorGame.Client.Data.GameDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<BlazorGame.Client.Data.GameDbContext>)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "SharedModels.dll": {
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\SharedModels\\Models\\AdventureResult.cs": {
+      "SharedModels.Models.AdventureResult": {
+        "System.Guid SharedModels.Models.AdventureResult::get_Id()": {
+          "Lines": {
+            "7": 24
+          },
+          "Branches": []
+        },
+        "System.Guid SharedModels.Models.AdventureResult::get_PlayerId()": {
+          "Lines": {
+            "8": 17
+          },
+          "Branches": []
+        },
+        "System.DateTime SharedModels.Models.AdventureResult::get_Date()": {
+          "Lines": {
+            "11": 16
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.AdventureResult::get_Details()": {
+          "Lines": {
+            "12": 5
+          },
+          "Branches": []
+        },
+        "System.DateTimeOffset SharedModels.Models.AdventureResult::get_PlayedAt()": {
+          "Lines": {
+            "13": 14
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.AdventureResult::get_Score()": {
+          "Lines": {
+            "14": 19
+          },
+          "Branches": []
+        },
+        "System.Boolean SharedModels.Models.AdventureResult::get_IsDead()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<System.String> SharedModels.Models.AdventureResult::get_Events()": {
+          "Lines": {
+            "16": 14
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\SharedModels\\Models\\Donjon.cs": {
+      "SharedModels.Models.Donjon": {
+        "System.Guid SharedModels.Models.Donjon::get_Id()": {
+          "Lines": {
+            "5": 25
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.Donjon::get_Name()": {
+          "Lines": {
+            "6": 26
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<SharedModels.Models.Salle> SharedModels.Models.Donjon::get_Salles()": {
+          "Lines": {
+            "7": 61
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\SharedModels\\Models\\Item.cs": {
+      "SharedModels.Models.Item": {
+        "System.Guid SharedModels.Models.Item::get_Id()": {
+          "Lines": {
+            "5": 40
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.Item::get_Name()": {
+          "Lines": {
+            "6": 47
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.Item::get_Description()": {
+          "Lines": {
+            "7": 37
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.Item::get_HealthEffect()": {
+          "Lines": {
+            "8": 6
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.Item::get_ScoreEffect()": {
+          "Lines": {
+            "9": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\SharedModels\\Models\\Monster.cs": {
+      "SharedModels.Models.Monstre": {
+        "System.Guid SharedModels.Models.Monstre::get_Id()": {
+          "Lines": {
+            "5": 27
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.Monstre::get_Name()": {
+          "Lines": {
+            "6": 34
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.Monstre::get_Health()": {
+          "Lines": {
+            "7": 27
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.Monstre::get_AttackPower()": {
+          "Lines": {
+            "8": 20
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.Monstre::get_Defense()": {
+          "Lines": {
+            "9": 18
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.Monstre::get_ScoreValue()": {
+          "Lines": {
+            "10": 21
+          },
+          "Branches": []
+        },
+        "SharedModels.Models.Item SharedModels.Models.Monstre::get_droppedItem()": {
+          "Lines": {
+            "11": 17
+          },
+          "Branches": []
+        },
+        "System.Boolean SharedModels.Models.Monstre::get_isBoss()": {
+          "Lines": {
+            "12": 18
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\SharedModels\\Models\\Player.cs": {
+      "SharedModels.Models.Player": {
+        "System.Guid SharedModels.Models.Player::get_Id()": {
+          "Lines": {
+            "6": 57
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.Player::get_Username()": {
+          "Lines": {
+            "7": 59
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.Player::get_Password()": {
+          "Lines": {
+            "9": 49
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.Player::get_TotalScore()": {
+          "Lines": {
+            "10": 33
+          },
+          "Branches": []
+        },
+        "System.Int32 SharedModels.Models.Player::get_Health()": {
+          "Lines": {
+            "11": 42
+          },
+          "Branches": []
+        },
+        "System.Boolean SharedModels.Models.Player::get_IsAdmin()": {
+          "Lines": {
+            "12": 38
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<SharedModels.Models.Item> SharedModels.Models.Player::get_Inventory()": {
+          "Lines": {
+            "13": 31
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\supra\\Desktop\\ING2\\DotNET\\Projet\\blazorgamequest_VW_LSI2_EF\\SharedModels\\Models\\Salle.cs": {
+      "SharedModels.Models.Salle": {
+        "System.Guid SharedModels.Models.Salle::get_Id()": {
+          "Lines": {
+            "5": 37
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.Salle::get_Name()": {
+          "Lines": {
+            "6": 41
+          },
+          "Branches": []
+        },
+        "System.String SharedModels.Models.Salle::get_Description()": {
+          "Lines": {
+            "7": 27
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<SharedModels.Models.Item> SharedModels.Models.Salle::get_Items()": {
+          "Lines": {
+            "8": 22
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<SharedModels.Models.Monstre> SharedModels.Models.Salle::get_Monstres()": {
+          "Lines": {
+            "9": 32
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<SharedModels.Models.Salle> SharedModels.Models.Salle::get_ConnectedRooms()": {
+          "Lines": {
+            "10": 40
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}
