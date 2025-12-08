@@ -499,6 +499,42 @@ namespace BlazorGame.Tests
         }
 
         [Fact]
+        public async Task PlayersController_GetPlayerScores_ReturnsScores()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var playerId = Guid.NewGuid();
+            ctx.Players.Add(new Player { Id = playerId, Username = "test", Password = "pwd" });
+            ctx.AdventureResults.AddRange(
+                new AdventureResult { PlayerId = playerId, Score = 100, Date = DateTime.UtcNow },
+                new AdventureResult { PlayerId = playerId, Score = 200, Date = DateTime.UtcNow }
+            );
+            await ctx.SaveChangesAsync();
+            var controller = new PlayersController(ctx);
+
+            var result = await controller.GetPlayerScores(playerId);
+
+            var actionResult = Assert.IsType<ActionResult<IEnumerable<AdventureResult>>>(result);
+            var okResult = Assert.IsType<OkObjectResult>(actionResult.Result);
+            var scores = Assert.IsAssignableFrom<IEnumerable<AdventureResult>>(okResult.Value);
+            Assert.Equal(2, scores.Count());
+        }
+
+        [Fact]
+        public async Task PlayersController_GetPlayerScores_ReturnsEmptyForNoResults()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var playerId = Guid.NewGuid();
+            ctx.Players.Add(new Player { Id = playerId, Username = "test", Password = "pwd" });
+            await ctx.SaveChangesAsync();
+            var controller = new PlayersController(ctx);
+
+            var result = await controller.GetPlayerScores(playerId);
+
+            var actionResult = Assert.IsType<ActionResult<IEnumerable<AdventureResult>>>(result);
+            Assert.IsType<NotFoundResult>(actionResult.Result);
+        }
+
+        [Fact]
         public async Task PlayersController_PutScore_UpdatesValue()
         {
             var ctx = CreateContext(Guid.NewGuid().ToString());
@@ -1085,5 +1121,573 @@ namespace BlazorGame.Tests
                 return true;
             }
         }
+
+        // ===== Tests supplémentaires pour atteindre 80% de couverture =====
+
+        // Tests de validation des modèles
+        [Fact]
+        public void Player_DefaultValues_AreCorrect()
+        {
+            var player = new Player();
+
+            Assert.NotEqual(Guid.Empty, player.Id);
+            Assert.Equal(string.Empty, player.Username);
+            Assert.Equal(string.Empty, player.Password);
+            Assert.Equal(0, player.TotalScore);
+            Assert.Equal(100, player.Health);
+            Assert.False(player.IsAdmin);
+            Assert.NotNull(player.Inventory);
+        }
+
+        [Fact]
+        public void Item_DefaultValues_AreCorrect()
+        {
+            var item = new Item();
+
+            Assert.NotEqual(Guid.Empty, item.Id);
+            Assert.Equal(string.Empty, item.Name);
+            Assert.Equal(string.Empty, item.Description);
+            Assert.Equal(0, item.HealthEffect);
+            Assert.Equal(0, item.ScoreEffect);
+        }
+
+        [Fact]
+        public void Monstre_DefaultValues_AreCorrect()
+        {
+            var monstre = new Monstre();
+
+            Assert.NotEqual(Guid.Empty, monstre.Id);
+            Assert.Equal(string.Empty, monstre.Name);
+            Assert.Equal(100, monstre.Health);
+            Assert.Equal(10, monstre.AttackPower);
+            Assert.Equal(5, monstre.Defense);
+            Assert.Equal(50, monstre.ScoreValue);
+            Assert.NotNull(monstre.droppedItem);
+            Assert.False(monstre.isBoss);
+        }
+
+        [Fact]
+        public void Donjon_DefaultValues_AreCorrect()
+        {
+            var donjon = new Donjon();
+
+            Assert.NotEqual(Guid.Empty, donjon.Id);
+            Assert.Equal(string.Empty, donjon.Name);
+            Assert.NotNull(donjon.Salles);
+            Assert.Empty(donjon.Salles);
+        }
+
+        [Fact]
+        public void Salle_DefaultValues_AreCorrect()
+        {
+            var salle = new Salle();
+
+            Assert.NotEqual(Guid.Empty, salle.Id);
+            Assert.Equal(string.Empty, salle.Name);
+            Assert.Equal(string.Empty, salle.Description);
+            Assert.NotNull(salle.Items);
+            Assert.Empty(salle.Items);
+            Assert.NotNull(salle.Monstres);
+            Assert.Empty(salle.Monstres);
+            Assert.NotNull(salle.ConnectedRooms);
+            Assert.Empty(salle.ConnectedRooms);
+        }
+
+        [Fact]
+        public void AdventureResult_DefaultValues_AreCorrect()
+        {
+            var result = new AdventureResult();
+
+            Assert.NotEqual(Guid.Empty, result.Id);
+            Assert.Equal(Guid.Empty, result.PlayerId);
+            Assert.Equal(0, result.Score);
+            Assert.False(result.IsDead);
+            Assert.NotNull(result.Events);
+            Assert.Empty(result.Events);
+        }
+
+        [Fact]
+        public void Player_CanSetAllProperties()
+        {
+            var player = new Player
+            {
+                Username = "testuser",
+                Password = "testpass",
+                TotalScore = 500,
+                Health = 80,
+                IsAdmin = true
+            };
+
+            Assert.Equal("testuser", player.Username);
+            Assert.Equal("testpass", player.Password);
+            Assert.Equal(500, player.TotalScore);
+            Assert.Equal(80, player.Health);
+            Assert.True(player.IsAdmin);
+        }
+
+        [Fact]
+        public void Item_CanSetAllProperties()
+        {
+            var item = new Item
+            {
+                Name = "Health Potion",
+                Description = "Restores 50 HP",
+                HealthEffect = 50,
+                ScoreEffect = 10
+            };
+
+            Assert.Equal("Health Potion", item.Name);
+            Assert.Equal("Restores 50 HP", item.Description);
+            Assert.Equal(50, item.HealthEffect);
+            Assert.Equal(10, item.ScoreEffect);
+        }
+
+        [Fact]
+        public void Monstre_CanSetAllProperties()
+        {
+            var item = new Item { Name = "Gold" };
+            var monstre = new Monstre
+            {
+                Name = "Dragon",
+                Health = 500,
+                AttackPower = 50,
+                Defense = 30,
+                ScoreValue = 1000,
+                droppedItem = item,
+                isBoss = true
+            };
+
+            Assert.Equal("Dragon", monstre.Name);
+            Assert.Equal(500, monstre.Health);
+            Assert.Equal(50, monstre.AttackPower);
+            Assert.Equal(30, monstre.Defense);
+            Assert.Equal(1000, monstre.ScoreValue);
+            Assert.Equal(item, monstre.droppedItem);
+            Assert.True(monstre.isBoss);
+        }
+
+        [Fact]
+        public void AdventureResult_CanSetAllProperties()
+        {
+            var playerId = Guid.NewGuid();
+            var date = DateTime.UtcNow;
+            var playedAt = DateTimeOffset.UtcNow;
+            var events = new[] { "Started", "Killed monster", "Found treasure" };
+
+            var result = new AdventureResult
+            {
+                PlayerId = playerId,
+                Date = date,
+                Details = "Great adventure",
+                PlayedAt = playedAt,
+                Score = 250,
+                IsDead = true,
+                Events = events
+            };
+
+            Assert.Equal(playerId, result.PlayerId);
+            Assert.Equal(date, result.Date);
+            Assert.Equal("Great adventure", result.Details);
+            Assert.Equal(playedAt, result.PlayedAt);
+            Assert.Equal(250, result.Score);
+            Assert.True(result.IsDead);
+            Assert.Equal(events, result.Events);
+        }
+
+        // Tests edge cases et scénarios complexes pour controllers
+        [Fact]
+        public async Task ItemsController_Get_ReturnsItem()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var item = new Item { Name = "Sword", Description = "Sharp" };
+            ctx.Items.Add(item);
+            await ctx.SaveChangesAsync();
+            var controller = new ItemsController(ctx);
+
+            var result = await controller.Get(item.Id);
+
+            var ok = Assert.IsType<OkObjectResult>(result);
+            var returned = Assert.IsType<Item>(ok.Value);
+            Assert.Equal("Sword", returned.Name);
+        }
+
+        [Fact]
+        public async Task ItemsController_Get_ReturnsNotFound()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new ItemsController(ctx);
+
+            var result = await controller.Get(Guid.NewGuid());
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task ItemsController_Update_ReturnsBadRequest_WhenIdMismatch()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new ItemsController(ctx);
+            var item = new Item { Id = Guid.NewGuid(), Name = "Test" };
+
+            var result = await controller.Update(Guid.NewGuid(), item);
+
+            Assert.IsType<BadRequestResult>(result);
+        }
+
+        [Fact]
+        public async Task ItemsController_Update_ReturnsNotFound_WhenItemDoesNotExist()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new ItemsController(ctx);
+            var id = Guid.NewGuid();
+            var item = new Item { Id = id, Name = "Test" };
+
+            var result = await controller.Update(id, item);
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task ItemsController_Update_UpdatesItem()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var item = new Item { Name = "Old", Description = "Desc" };
+            ctx.Items.Add(item);
+            await ctx.SaveChangesAsync();
+            var controller = new ItemsController(ctx);
+
+            item.Name = "New";
+            var result = await controller.Update(item.Id, item);
+
+            Assert.IsType<NoContentResult>(result);
+            var updated = await ctx.Items.FindAsync(item.Id);
+            Assert.Equal("New", updated?.Name);
+        }
+
+        [Fact]
+        public async Task MonstersController_Get_ReturnsNotFound()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new MonstersController(ctx);
+
+            var result = await controller.Get(Guid.NewGuid());
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task MonstersController_Update_ReturnsBadRequest_WhenIdMismatch()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new MonstersController(ctx);
+            var monster = new Monstre { Id = Guid.NewGuid(), Name = "Test" };
+
+            var result = await controller.Update(Guid.NewGuid(), monster);
+
+            Assert.IsType<BadRequestResult>(result);
+        }
+
+        [Fact]
+        public async Task MonstersController_Update_ReturnsNotFound_WhenMonsterDoesNotExist()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new MonstersController(ctx);
+            var id = Guid.NewGuid();
+            var monster = new Monstre { Id = id, Name = "Test" };
+
+            var result = await controller.Update(id, monster);
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task MonstersController_Update_UpdatesMonster()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var monster = new Monstre { Name = "Old", Health = 50 };
+            ctx.Monsters.Add(monster);
+            await ctx.SaveChangesAsync();
+            var controller = new MonstersController(ctx);
+
+            monster.Name = "New";
+            var result = await controller.Update(monster.Id, monster);
+
+            Assert.IsType<NoContentResult>(result);
+            var updated = await ctx.Monsters.FindAsync(monster.Id);
+            Assert.Equal("New", updated?.Name);
+        }
+
+        [Fact]
+        public async Task DonjonsController_Get_ReturnsDonjonWithSalles()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var salle = new Salle { Name = "Room1" };
+            var donjon = new Donjon { Name = "Castle", Salles = new() { salle } };
+            ctx.Donjons.Add(donjon);
+            await ctx.SaveChangesAsync();
+            var controller = new DonjonsController(ctx);
+
+            var result = await controller.Get(donjon.Id);
+
+            var ok = Assert.IsType<OkObjectResult>(result);
+            var returned = Assert.IsType<Donjon>(ok.Value);
+            Assert.Equal("Castle", returned.Name);
+            Assert.Single(returned.Salles);
+        }
+
+        [Fact]
+        public async Task DonjonsController_Get_ReturnsNotFound()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new DonjonsController(ctx);
+
+            var result = await controller.Get(Guid.NewGuid());
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task DonjonsController_Update_ReturnsBadRequest_WhenIdMismatch()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new DonjonsController(ctx);
+            var donjon = new Donjon { Id = Guid.NewGuid(), Name = "Test" };
+
+            var result = await controller.Update(Guid.NewGuid(), donjon);
+
+            Assert.IsType<BadRequestResult>(result);
+        }
+
+        [Fact]
+        public async Task DonjonsController_Update_ReturnsNotFound_WhenDonjonDoesNotExist()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new DonjonsController(ctx);
+            var id = Guid.NewGuid();
+            var donjon = new Donjon { Id = id, Name = "Test" };
+
+            var result = await controller.Update(id, donjon);
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task DonjonsController_Update_UpdatesDonjon()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var donjon = new Donjon { Name = "Old" };
+            ctx.Donjons.Add(donjon);
+            await ctx.SaveChangesAsync();
+            var controller = new DonjonsController(ctx);
+
+            donjon.Name = "New";
+            var result = await controller.Update(donjon.Id, donjon);
+
+            Assert.IsType<NoContentResult>(result);
+            var updated = await ctx.Donjons.FindAsync(donjon.Id);
+            Assert.Equal("New", updated?.Name);
+        }
+
+        [Fact]
+        public async Task SallesController_Get_ReturnsNotFound()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new SallesController(ctx);
+
+            var result = await controller.Get(Guid.NewGuid());
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task SallesController_Update_ReturnsBadRequest_WhenIdMismatch()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new SallesController(ctx);
+            var salle = new Salle { Id = Guid.NewGuid(), Name = "Test" };
+
+            var result = await controller.Update(Guid.NewGuid(), salle);
+
+            Assert.IsType<BadRequestResult>(result);
+        }
+
+        [Fact]
+        public async Task SallesController_Update_ReturnsNotFound_WhenSalleDoesNotExist()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new SallesController(ctx);
+            var id = Guid.NewGuid();
+            var salle = new Salle { Id = id, Name = "Test" };
+
+            var result = await controller.Update(id, salle);
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task SallesController_Update_UpdatesSalle()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var salle = new Salle { Name = "Old", Description = "Desc" };
+            ctx.Salles.Add(salle);
+            await ctx.SaveChangesAsync();
+            var controller = new SallesController(ctx);
+
+            salle.Name = "New";
+            var result = await controller.Update(salle.Id, salle);
+
+            Assert.IsType<NoContentResult>(result);
+            var updated = await ctx.Salles.FindAsync(salle.Id);
+            Assert.Equal("New", updated?.Name);
+        }
+
+        [Fact]
+        public async Task ItemsController_GetAll_ReturnsMultipleItems()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            ctx.Items.AddRange(
+                new Item { Name = "Item1" },
+                new Item { Name = "Item2" },
+                new Item { Name = "Item3" }
+            );
+            await ctx.SaveChangesAsync();
+            var controller = new ItemsController(ctx);
+
+            var result = await controller.GetAll();
+
+            var ok = Assert.IsType<OkObjectResult>(result);
+            var items = Assert.IsAssignableFrom<IEnumerable<Item>>(ok.Value);
+            Assert.Equal(3, items.Count());
+        }
+
+        [Fact]
+        public async Task MonstersController_GetAll_ReturnsMultipleMonsters()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            ctx.Monsters.AddRange(
+                new Monstre { Name = "Monster1" },
+                new Monstre { Name = "Monster2" },
+                new Monstre { Name = "Monster3" }
+            );
+            await ctx.SaveChangesAsync();
+            var controller = new MonstersController(ctx);
+
+            var result = await controller.GetAll();
+
+            var ok = Assert.IsType<OkObjectResult>(result);
+            var monsters = Assert.IsAssignableFrom<IEnumerable<Monstre>>(ok.Value);
+            Assert.Equal(3, monsters.Count());
+        }
+
+        [Fact]
+        public async Task DonjonsController_GetAll_ReturnsMultipleDonjons()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            ctx.Donjons.AddRange(
+                new Donjon { Name = "Dungeon1" },
+                new Donjon { Name = "Dungeon2" }
+            );
+            await ctx.SaveChangesAsync();
+            var controller = new DonjonsController(ctx);
+
+            var result = await controller.GetAll();
+
+            var ok = Assert.IsType<OkObjectResult>(result);
+            var donjons = Assert.IsAssignableFrom<IEnumerable<Donjon>>(ok.Value);
+            Assert.Equal(2, donjons.Count());
+        }
+
+        [Fact]
+        public async Task SallesController_GetAll_ReturnsMultipleSalles()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            ctx.Salles.AddRange(
+                new Salle { Name = "Room1" },
+                new Salle { Name = "Room2" },
+                new Salle { Name = "Room3" }
+            );
+            await ctx.SaveChangesAsync();
+            var controller = new SallesController(ctx);
+
+            var result = await controller.GetAll();
+
+            var ok = Assert.IsType<OkObjectResult>(result);
+            var salles = Assert.IsAssignableFrom<IEnumerable<Salle>>(ok.Value);
+            Assert.Equal(3, salles.Count());
+        }
+
+        [Fact]
+        public async Task PlayersController_GetPlayers_ReturnsEmptyList()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new PlayersController(ctx);
+
+            var result = await controller.GetPlayers();
+
+            var actionResult = Assert.IsType<ActionResult<IEnumerable<Player>>>(result);
+            var players = Assert.IsAssignableFrom<IEnumerable<Player>>(actionResult.Value);
+            Assert.Empty(players);
+        }
+
+        [Fact]
+        public async Task ItemsController_Create_AddsNewItem()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new ItemsController(ctx);
+            var item = new Item { Name = "New Item", Description = "Test" };
+
+            var result = await controller.Create(item);
+
+            var created = Assert.IsType<CreatedAtActionResult>(result);
+            var stored = Assert.IsType<Item>(created.Value);
+            Assert.Equal("New Item", stored.Name);
+            Assert.Equal(1, ctx.Items.Count());
+        }
+
+        [Fact]
+        public async Task MonstersController_Create_AddsNewMonster()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new MonstersController(ctx);
+            var monster = new Monstre { Name = "New Monster", Health = 75 };
+
+            var result = await controller.Create(monster);
+
+            var created = Assert.IsType<CreatedAtActionResult>(result);
+            var stored = Assert.IsType<Monstre>(created.Value);
+            Assert.Equal("New Monster", stored.Name);
+            Assert.Equal(1, ctx.Monsters.Count());
+        }
+
+        [Fact]
+        public async Task DonjonsController_Create_AddsNewDonjon()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new DonjonsController(ctx);
+            var donjon = new Donjon { Name = "New Dungeon" };
+
+            var result = await controller.Create(donjon);
+
+            var created = Assert.IsType<CreatedAtActionResult>(result);
+            var stored = Assert.IsType<Donjon>(created.Value);
+            Assert.Equal("New Dungeon", stored.Name);
+            Assert.Equal(1, ctx.Donjons.Count());
+        }
+
+        [Fact]
+        public async Task SallesController_Create_AddsNewSalle()
+        {
+            var ctx = CreateContext(Guid.NewGuid().ToString());
+            var controller = new SallesController(ctx);
+            var salle = new Salle { Name = "New Room", Description = "Test" };
+
+            var result = await controller.Create(salle);
+
+            var created = Assert.IsType<CreatedAtActionResult>(result);
+            var stored = Assert.IsType<Salle>(created.Value);
+            Assert.Equal("New Room", stored.Name);
+            Assert.Equal(1, ctx.Salles.Count());
+        }
+
     }
 }
