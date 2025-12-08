@@ -26,6 +26,35 @@
         <a href="." class="reload">Reload</a>
         <span class="dismiss">🗙</span>
     </div>
+    <!-- Blazor WebAssembly Authentication JS (required for OIDC) -->
+    <script src="/_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication/AuthenticationService.js"></script>
+    <script>
+        // Helper to perform a browser POST to Keycloak logout endpoint.
+        // This creates a form and submits it so the request is a full navigation (not XHR).
+        window.keycloakPostLogout = function (url, postLogoutRedirectUri, clientId) {
+            try {
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = url;
+                var input1 = document.createElement('input');
+                input1.type = 'hidden';
+                input1.name = 'post_logout_redirect_uri';
+                input1.value = postLogoutRedirectUri;
+                form.appendChild(input1);
+                var input2 = document.createElement('input');
+                input2.type = 'hidden';
+                input2.name = 'client_id';
+                input2.value = clientId;
+                form.appendChild(input2);
+                document.body.appendChild(form);
+                form.submit();
+            } catch (e) {
+                console.error('keycloakPostLogout failed', e);
+                // fallback to a GET redirect if POST fails
+                window.location.href = url + '?post_logout_redirect_uri=' + encodeURIComponent(postLogoutRedirectUri) + '&client_id=' + encodeURIComponent(clientId);
+            }
+        };
+    </script>
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 

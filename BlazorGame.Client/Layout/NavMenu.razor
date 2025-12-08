@@ -10,24 +10,50 @@
 <div class="@NavMenuCssClass pixel-nav-menu">
     <nav class="pixel-nav">
         <div class="nav-section">
-            <NavLink class="pixel-nav-link" href="" Match="NavLinkMatch.All">
-                Accueil
-            </NavLink>
-        </div>
-        <div class="nav-section">
             <NavLink class="pixel-nav-link" href="/adventure">
                 Aventure
             </NavLink>
         </div>
-        <div class="nav-section">
-            <NavLink class="pixel-nav-link" href="/scores">
-                Scores
-            </NavLink>
-        </div>
-        <div class="nav-section">
-            <NavLink class="pixel-nav-link" href="/admin">
-                Admin
-            </NavLink>
+        <AuthorizeView>
+            <Authorized>
+                <div class="nav-section">
+                    <NavLink class="pixel-nav-link" href="/scores">
+                        Scores
+                    </NavLink>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+        <AuthorizeView Roles="admin">
+            <Authorized>
+                <div class="nav-section">
+                    <NavLink class="pixel-nav-link" href="/admin">
+                        Admin
+                    </NavLink>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+        <!-- Check if username is admin as fallback -->
+        <AuthorizeView>
+            <Authorized>
+                @if (context.User?.Identity?.Name == "admin")
+                {
+                    <div class="nav-section">
+                        <NavLink class="pixel-nav-link" href="/admin">
+                            Admin
+                        </NavLink>
+                    </div>
+                }
+            </Authorized>
+        </AuthorizeView>
+        <div class="nav-section" style="margin-left:auto">
+            <AuthorizeView>
+                <Authorized>
+                    <span class="pixel-nav-link">@context.User.Identity?.Name</span>
+                </Authorized>
+                <NotAuthorized>
+                    <button class="pixel-nav-link" @onclick="LoginToKeycloak">Se connecter</button>
+                </NotAuthorized>
+            </AuthorizeView>
         </div>
     </nav>
 </div>
@@ -40,5 +66,14 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    [Inject] private Microsoft.Extensions.Configuration.IConfiguration Config { get; set; } = default!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = default!;
+    [Inject] private IJSRuntime Js { get; set; } = default!;
+
+    private void LoginToKeycloak()
+    {
+        NavigationManager.NavigateTo("authentication/login");
     }
 }

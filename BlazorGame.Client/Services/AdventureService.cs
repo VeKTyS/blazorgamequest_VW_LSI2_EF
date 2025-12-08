@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using BlazorGame.Client.Services;
 using SharedModels.Models;
 
 namespace BlazorGame.Client.Services;
@@ -10,15 +11,24 @@ public class AdventureService : IAdventureService
     private readonly IDungeonGenerator _generator;
     private readonly HttpClient _http;
     private readonly IItemService _itemService;
+    private readonly IPlayerService _playerService;
+    private readonly IPlayerStateService _playerStateService;  
     private Donjon? _currentDonjon;
     private int _currentIndex = 0;
     private string _lastEvent = string.Empty;
 
-    public AdventureService(IDungeonGenerator generator, HttpClient http, IItemService itemService)
+    public AdventureService(
+        IDungeonGenerator generator, 
+        HttpClient http, 
+        IItemService itemService, 
+        IPlayerService playerService,
+        IPlayerStateService playerStateService)  
     {
         _generator = generator;
         _http = http;
         _itemService = itemService;
+        _playerService = playerService;
+        _playerStateService = playerStateService;  
     }
 
     public Player CurrentPlayer { get; private set; } = new Player();
@@ -53,6 +63,13 @@ public class AdventureService : IAdventureService
         {
             AddEvent("Vous atteignez la fin du donjon.");
             IsFinished = true;
+
+            // Enregistrer automatiquement le score via IPlayerService
+            _ = _playerService.EndAndSaveAsync(
+                CurrentPlayer.Id,
+                CurrentPlayer.TotalScore,
+                "Partie terminée"
+            );
         }
     }
 
@@ -128,6 +145,19 @@ public class AdventureService : IAdventureService
             }
             room.Monstres.Remove(monster);
             AddEvent($"{monster.Name} vaincu ! +{monster.ScoreValue} pts.");
+
+            // a tester ------------------------------------------------------------------------
+            if (_currentDonjon != null && !room.Monstres.Any() && _currentIndex == _currentDonjon.Salles.Count - 1)
+            {
+                IsFinished = true;
+
+                // Enregistrer automatiquement le score via IPlayerService
+                _ = _playerService.EndAndSaveAsync(
+                    CurrentPlayer.Id,
+                    CurrentPlayer.TotalScore,
+                    "Partie terminée"
+                );
+            }
             return;
         }
 
@@ -140,6 +170,13 @@ public class AdventureService : IAdventureService
         {
             AddEvent("Vous êtes mort...");
             IsFinished = true;
+
+            // Enregistrer automatiquement le score via IPlayerService
+            _ = _playerService.EndAndSaveAsync(
+                CurrentPlayer.Id,
+                CurrentPlayer.TotalScore,
+                "Vous êtes mort"
+            );
         }
     }
 
@@ -162,83 +199,118 @@ public class AdventureService : IAdventureService
         {
             IsFinished = true;
             AddEvent("Vous êtes mort en fuyant...");
+
+            // Enregistrer automatiquement le score via IPlayerService
+            _ = _playerService.EndAndSaveAsync(
+                CurrentPlayer.Id,
+                CurrentPlayer.TotalScore,
+                "Vous êtes mort"
+            );       
         }
     }
 
-    public async Task<(AdventureResult result, bool saved)> EndAndSaveAsync()
-    {
-        IsFinished = true;
+    // public async Task<(AdventureResult result, bool saved)> EndAndSaveAsync()
+    // {
+    //     IsFinished = true;
 
-        var result = new AdventureResult
-        {
-            PlayerId = CurrentPlayer.Id,
-            Score = CurrentPlayer.TotalScore,
-            IsDead = CurrentPlayer.Health <= 0,
-            Events = new[] { LastEvent }
-        };
+    //     try
+    //     {
+    //         var result = new AdventureResult
+    //         {
+    //             PlayerId = CurrentPlayer.Id,
+    //             Score = CurrentPlayer.TotalScore,
+    //             Date = DateTime.UtcNow,
+    //             Details = "Partie terminée",
+    //         };
 
-        bool saved = false;
+    //         await _playerService.EndAndSaveAsync(CurrentPlayer.Id, CurrentPlayer.TotalScore, result.Details);
 
-        try
-        {
-            // Post adventure result
-            var options = new JsonSerializerOptions
-            {
-                ReferenceHandler = ReferenceHandler.Preserve,
-                MaxDepth = 128,
-                WriteIndented = false
-            };
+    //         Console.WriteLine($"Partie sauvegardée pour {CurrentPlayer.Username}: {CurrentPlayer.TotalScore}");
+    //         return (result, true);
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         AddEvent($"Échec de la sauvegarde: {ex.Message}");
+    //         Console.WriteLine($"EndAndSaveAsync exception: {ex}");
+    //         return (new AdventureResult(), false);
+    //     }
+    // }
 
-            var content = JsonContent.Create(result, options: options);
-            var resp = await _http.PostAsync("api/AdventureResults", content);
-            saved = resp.IsSuccessStatusCode;
 
-            // Optionally save dungeon
-            if (_currentDonjon != null)
-            {
-                var content2 = JsonContent.Create(_currentDonjon, options: options);
-                var resp2 = await _http.PostAsync("api/Donjons", content2);
-                saved = saved && resp2.IsSuccessStatusCode;
-            }
-        }
-        catch (Exception ex)
-        {
-            // surface the error in LastEvent so UI can display it
-            AddEvent($"Échec de la sauvegarde: {ex.Message}");
-            saved = false;
-        }
+    // public async Task<(AdventureResult result, bool saved)> EndAndSaveAsync()
+    // {
+    //     IsFinished = true;
 
-        return (result, saved);
-    }
+    //     var result = new AdventureResult
+    //     {
+    //         PlayerId = CurrentPlayer.Id,
+    //         Score = CurrentPlayer.TotalScore,
+    //         IsDead = CurrentPlayer.Health <= 0,
+    //         Events = new[] { LastEvent }
+    //     };
 
-    // Save only the AdventureResult (no Donjon) and return success flag
-    public async Task<bool> SaveResultAsync()
-    {
-        var result = new AdventureResult
-        {
-            PlayerId = CurrentPlayer.Id,
-            Score = CurrentPlayer.TotalScore,
-            IsDead = CurrentPlayer.Health <= 0,
-            Events = new[] { LastEvent }
-        };
+    //     bool saved = false;
 
-        try
-        {
-            var options = new JsonSerializerOptions
-            {
-                ReferenceHandler = ReferenceHandler.Preserve,
-                MaxDepth = 128,
-                WriteIndented = false
-            };
+    //     try
+    //     {
+    //         // Post adventure result
+    //         var options = new JsonSerializerOptions
+    //         {
+    //             ReferenceHandler = ReferenceHandler.Preserve,
+    //             MaxDepth = 128,
+    //             WriteIndented = false
+    //         };
 
-            var content = JsonContent.Create(result, options: options);
-            var resp = await _http.PostAsync("api/AdventureResults", content);
-            return resp.IsSuccessStatusCode;
-        }
-        catch (Exception ex)
-        {
-            AddEvent($"Échec de la sauvegarde: {ex.Message}");
-            return false;
-        }
-    }
+    //         var content = JsonContent.Create(result, options: options);
+    //         var resp = await _http.PostAsync("api/AdventureResults", content);
+    //         saved = resp.IsSuccessStatusCode;
+
+    //         // Optionally save dungeon
+    //         if (_currentDonjon != null)
+    //         {
+    //             var content2 = JsonContent.Create(_currentDonjon, options: options);
+    //             var resp2 = await _http.PostAsync("api/Donjons", content2);
+    //             saved = saved && resp2.IsSuccessStatusCode;
+    //         }
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         // surface the error in LastEvent so UI can display it
+    //         AddEvent($"Échec de la sauvegarde: {ex.Message}");
+    //         saved = false;
+    //     }
+
+    //     return (result, saved);
+    // }
+
+    // // Save only the AdventureResult (no Donjon) and return success flag
+    // public async Task<bool> SaveResultAsync()
+    // {
+    //     var result = new AdventureResult
+    //     {
+    //         PlayerId = CurrentPlayer.Id,
+    //         Score = CurrentPlayer.TotalScore,
+    //         IsDead = CurrentPlayer.Health <= 0,
+    //         Events = new[] { LastEvent }
+    //     };
+
+    //     try
+    //     {
+    //         var options = new JsonSerializerOptions
+    //         {
+    //             ReferenceHandler = ReferenceHandler.Preserve,
+    //             MaxDepth = 128,
+    //             WriteIndented = false
+    //         };
+
+    //         var content = JsonContent.Create(result, options: options);
+    //         var resp = await _http.PostAsync("api/AdventureResults", content);
+    //         return resp.IsSuccessStatusCode;
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         AddEvent($"Échec de la sauvegarde: {ex.Message}");
+    //         return false;
+    //     }
+    // }
 }

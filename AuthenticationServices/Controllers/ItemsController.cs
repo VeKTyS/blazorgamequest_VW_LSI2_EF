@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using AuthenticationServices.Data;
 using SharedModels.Models;
@@ -7,6 +8,7 @@ namespace AuthenticationServices.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ItemsController : ControllerBase
 {
     private readonly ApplicationDbContext _db;
@@ -22,6 +24,7 @@ public class ItemsController : ControllerBase
         return item == null ? NotFound() : Ok(item);
     }
 
+    [Authorize(Policy = "AdminOnly")]
     [HttpPost]
     public async Task<IActionResult> Create(Item model)
     {
@@ -30,6 +33,7 @@ public class ItemsController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = model.Id }, model);
     }
 
+    [Authorize(Policy = "AdminOnly")]
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, Item model)
     {
@@ -41,6 +45,7 @@ public class ItemsController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Policy = "AdminOnly")]
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {

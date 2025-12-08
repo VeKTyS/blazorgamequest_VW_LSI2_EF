@@ -1,11 +1,25 @@
-@page "/"
+@page "/home"
 @inject BlazorGame.Client.Services.IPlayerService PlayerService
 @inject BlazorGame.Client.Services.IPlayerStateService PlayerState
 @inject NavigationManager Nav
+@inject Microsoft.Extensions.Configuration.IConfiguration Config
 @inject IJSRuntime JS
 @inject HttpClient Http
+@inject AuthenticationStateProvider AuthStateProvider
 
 <div class="pixel-container">
+    <div class="auth-banner">
+        <AuthorizeView>
+            <Authorized>
+                <span>Connecté<strong>@context.User.Identity?.Name</strong></span>
+                <button class="pixel-btn danger" style="margin-left:10px" @onclick="LogoutToKeycloak">Se déconnecter</button>
+            </Authorized>
+            <NotAuthorized>
+                <span>Non connecté</span>
+                <button class="pixel-btn primary" style="margin-left:10px" @onclick="@(() => Nav.NavigateTo("authentication/login"))">Se connecter</button>
+            </NotAuthorized>
+        </AuthorizeView>
+    </div>
     <div class="pixel-header">
         <h1>BlazorGameQuest</h1>
         <p>Bienvenue dans votre aventure pixelisée !</p>
@@ -15,35 +29,17 @@
     {
         <div class="login-section">
             <h3>Connexion</h3>
-            
             <div class="login-form">
-                <input class="pixel-input" placeholder="Nom d'utilisateur" @bind="username" />
-                <input class="pixel-input" placeholder="Mot de passe" type="password" @bind="password" />
-                
+                <input class="form-control" placeholder="Nom d'utilisateur" @bind="username" />
+                <input class="form-control" placeholder="Mot de passe" type="password" @bind="password" />
                 <div class="button-group">
-                    <button class="pixel-btn primary" @onclick="LoginAsPlayer">
-                        Connexion Joueur
-                    </button>
-                    <button class="pixel-btn gold" @onclick="LoginAsAdmin">
-                        Connexion Admin
-                    </button>
+                    <button class="pixel-btn primary" @onclick="LoginAsPlayer">Connexion joueur</button>
+                    <button class="pixel-btn gold" @onclick="LoginAsAdmin">Connexion admin</button>
                 </div>
-            </div>
-
-            @if (!string.IsNullOrEmpty(loginMessage))
-            {
-                <div class="status-message @(loginSuccess ? "success" : "error")">
-                    @loginMessage
-                </div>
-            }
-
-            <div class="demo-info">
-                <h4>Comptes de démonstration :</h4>
-                <p>Utilisez les comptes suivants :</p>
-                <ul>
-                    <li>Admin: <b>admin</b> / <b>admin123</b></li>
-                    <li>Joueur: <b>player1</b> / <b>password123</b></li>
-                </ul>
+                @if (!string.IsNullOrEmpty(loginMessage))
+                {
+                    <div class="demo-info">@loginMessage</div>
+                }
             </div>
         </div>
     }
@@ -107,31 +103,58 @@
     private string username = string.Empty;
     private string password = string.Empty;
     private string loginMessage = string.Empty;
-    private bool loginSuccess = false;
     private SharedModels.Models.Player? currentPlayer;
     private SharedModels.Models.AdventureResult? latestSave;
 
     protected override async Task OnInitializedAsync()
     {
-        // Try to restore session from localStorage
+        // If the user already authenticated via OIDC, map them to a local Player
         try
         {
-            var idStr = await JS.InvokeAsync<string>("localStorage.getItem", "bg_currentPlayerId");
-            if (!string.IsNullOrEmpty(idStr) && Guid.TryParse(idStr, out var id))
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            await EnsurePlayerFromAuthAsync(authState.User);
+        }
+        catch { }
+
+        // Listen for future auth state changes (login/logout) and react accordingly
+        AuthStateProvider.AuthenticationStateChanged += async task =>
+        {
+            var state = await task;
+            if (state.User?.Identity?.IsAuthenticated == true)
             {
-                var p = PlayerService.GetPlayerById(id);
-                    if (p != null)
-                    {
-                        currentPlayer = p;
-                        PlayerState.SetCurrent(p);
-                        await LoadLatestSaveAsync();
-                    }
+                await EnsurePlayerFromAuthAsync(state.User);
+            }
+            else
+            {
+                currentPlayer = null;
+                PlayerState.Clear();
+                StateHasChanged();
+            }
+        };
+    }
+
+    private async Task EnsurePlayerFromAuthAsync(System.Security.Claims.ClaimsPrincipal? user)
+    {
+        if (user == null || user.Identity == null || !user.Identity.IsAuthenticated) return;
+
+        // Preferred username is often present in 'preferred_username' claim, fall back to Identity.Name
+        var name = user.Identity?.Name ?? user.FindFirst("preferred_username")?.Value;
+        if (string.IsNullOrWhiteSpace(name)) return;
+
+        // Try to find an existing local player with that username
+        try
+        {
+            var players = PlayerService.GetAllPlayers();
+            var found = players.FirstOrDefault(p => string.Equals(p.Username, name, StringComparison.OrdinalIgnoreCase));
+            if (found != null)
+            {
+                currentPlayer = found;
+                PlayerState.SetCurrent(found);
+                await LoadLatestSaveAsync();
+                StateHasChanged();
             }
         }
-        catch
-        {
-            // ignore JS errors
-        }
+        catch { }
     }
 
     async Task LoginAsPlayer()
@@ -147,7 +170,6 @@
     async Task Login(bool requireAdmin)
     {
         loginMessage = string.Empty;
-        loginSuccess = false;
 
         if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
         {
@@ -180,7 +202,6 @@
             // ignore
         }
         loginMessage = "Connexion réussie !";
-        loginSuccess = true;
     }
 
     async Task Logout()
@@ -195,6 +216,27 @@
         loginMessage = string.Empty;
         username = string.Empty;
         password = string.Empty;
+        // Build Keycloak logout URL and perform browser POST using JS helper
+        var authority = (Config["Oidc:Authority"] ?? string.Empty).TrimEnd('/');
+        var clientId = Config["Oidc:ClientId"] ?? string.Empty;
+        var postLogout = Nav.BaseUri.TrimEnd('/') + "/";
+        var logoutUrl = $"{authority}/protocol/openid-connect/logout";
+        await JS.InvokeVoidAsync("keycloakPostLogout", logoutUrl, postLogout, clientId);
+    }
+
+    private async Task LogoutToKeycloak()
+    {
+        // perform same steps as Logout but keep local cleanup synchronous
+        currentPlayer = null;
+        PlayerState.Clear();
+        loginMessage = string.Empty;
+        username = string.Empty;
+        password = string.Empty;
+        var authority = (Config["Oidc:Authority"] ?? string.Empty).TrimEnd('/');
+        var clientId = Config["Oidc:ClientId"] ?? string.Empty;
+        var postLogout = Nav.BaseUri.TrimEnd('/') + "/";
+        var logoutUrl = $"{authority}/protocol/openid-connect/logout";
+        await JS.InvokeVoidAsync("keycloakPostLogout", logoutUrl, postLogout, clientId);
     }
 
     private async Task LoadLatestSaveAsync()
@@ -247,5 +289,11 @@
 
     .action-buttons {
         margin: 20px 0;
+    }
+    .auth-banner {
+        padding: 10px;
+        border: 2px solid var(--pixel-dark);
+        background: var(--pixel-light);
+        margin-bottom: 10px;
     }
 </style>

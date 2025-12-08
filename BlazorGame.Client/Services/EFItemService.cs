@@ -1,4 +1,6 @@
 using BlazorGame.Client.Data;
+using System.Net.Http;
+using System.Net.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using SharedModels.Models;
 
@@ -7,11 +9,13 @@ namespace BlazorGame.Client.Services;
 public class EFItemService : IItemService
 {
     private readonly IDbContextFactory<GameDbContext> _factory;
+    private readonly IHttpClientFactory _httpFactory;
     private readonly Random _rnd = new();
 
-    public EFItemService(IDbContextFactory<GameDbContext> factory)
+    public EFItemService(IDbContextFactory<GameDbContext> factory, IHttpClientFactory httpFactory)
     {
         _factory = factory;
+        _httpFactory = httpFactory;
     }
 
     public IReadOnlyList<Item> GetAllItems()
@@ -28,9 +32,21 @@ public class EFItemService : IItemService
 
     public Item AddItem(Item item)
     {
+        // Add to local database
         using var ctx = _factory.CreateDbContext();
         ctx.Items.Add(item);
         ctx.SaveChanges();
+        
+        // Try to call API without blocking (fire and forget)
+        try
+        {
+            var client = _httpFactory.CreateClient("api");
+            _ = client.PostAsJsonAsync("api/Items", item); // Fire and forget
+        }
+        catch
+        {
+            // Ignore API errors, local copy is saved
+        }
         return item;
     }
 
@@ -41,6 +57,17 @@ public class EFItemService : IItemService
         if (it == null) return false;
         ctx.Items.Remove(it);
         ctx.SaveChanges();
+        
+        // Try to call API without blocking (fire and forget)
+        try
+        {
+            var client = _httpFactory.CreateClient("api");
+            _ = client.DeleteAsync($"api/Items/{id}"); // Fire and forget
+        }
+        catch
+        {
+            // Ignore API errors, local deletion is done
+        }
         return true;
     }
 

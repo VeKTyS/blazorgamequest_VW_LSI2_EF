@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using AuthenticationServices.Data;
 using SharedModels.Models;
@@ -7,6 +8,7 @@ namespace AuthenticationServices.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class AdventureResultsController : ControllerBase
 {
     private readonly ApplicationDbContext _db;
@@ -22,6 +24,7 @@ public class AdventureResultsController : ControllerBase
         return r == null ? NotFound() : Ok(r);
     }
 
+    [Authorize(Policy = "PlayerOnly")]
     [HttpPost]
     public async Task<IActionResult> Create(AdventureResult model)
     {

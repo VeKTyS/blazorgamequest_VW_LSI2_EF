@@ -1,0 +1,29 @@
+@page "/loggedout"
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+
+<h3>Déconnexion réussie</h3>
+<p>Vous avez été déconnecté.</p>
+
+<div class="button-group">
+    <a class="pixel-btn" href="/">Retour à l'accueil</a>
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Clear any local player id and other local cleanup
+            await JS.InvokeVoidAsync("localStorage.removeItem", "bg_currentPlayerId");
+        }
+        catch
+        {
+            // ignore
+        }
+    }
+}
+
+<style>
+    .button-group { margin-top: 20px; }
+</style>

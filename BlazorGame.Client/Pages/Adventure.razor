@@ -102,7 +102,7 @@
 
                         <button class="pixel-btn gold" @onclick="OnSearch">Fouiller</button>
                         <button class="pixel-btn danger" @onclick="OnRest">Se reposer</button>
-                        <button class="pixel-btn" @onclick="OnEnd">Sauvegarder</button>
+                        <button class="pixel-btn">Sauvegarder</button>
                     }
                 </div>
             }
@@ -215,31 +215,40 @@
         actionSuccess = !AdventureService.IsFinished;
     }
 
-    async Task OnEnd()
+    @* async Task OnEnd()
     {
-        if (AdventureService.IsFinished)
-        {
-            actionMessage = "Aventure terminée. Sauvegarde en cours...";
-        }
+        if (currentPlayer == null) return;
 
-        // Save only the result and then go home
-        var saved = await AdventureService.SaveResultAsync();
-        currentPlayer = AdventureService.CurrentPlayer;
+        actionMessage = "Aventure terminée. Sauvegarde en cours...";
+        StateHasChanged();
+
+        // appeler FinishAdventure au lieu de SaveResultAsync
+        await FinishAdventure();
+    } *@
+
+    @* private async Task FinishAdventure()
+    {
+        // appeler EndAndSaveAsync (qui persiste le score via SaveScoreAsync)
+        var (result, saved) = await AdventureService.EndAndSaveAsync();
+
         if (saved)
         {
-            actionMessage = "Partie sauvegardée. Retour à l'accueil...";
+            actionMessage = "Partie sauvegardée avec succès!";
             actionSuccess = true;
+
+            // recharger le joueur courant pour refléter le score mis à jour
+            currentPlayer = PlayerState?.CurrentPlayer;
+
+            // attendre un peu puis rediriger vers scores
+            await Task.Delay(1500);
+            Nav.NavigateTo("/scores", forceLoad: true);
         }
         else
         {
-            actionMessage = $"Échec de la sauvegarde. Détail: {AdventureService.LastEvent}";
+            actionMessage = "Erreur lors de la sauvegarde.";
             actionSuccess = false;
         }
-
-        // redirect home after short pause
-        await Task.Delay(500);
-        Nav.NavigateTo("/");
-    }
+    } *@
 
     void UseItem(SharedModels.Models.Item item)
     {
