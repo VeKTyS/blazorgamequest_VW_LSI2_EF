@@ -151,3 +151,12 @@ Comment lancer le projet (développement local)
 ```bash
 docker compose up --build
 ```
+3) Authentification
+
+- Accès Admin :
+Username : Admin
+Pwd : admin123
+
+- Accès Joueur :
+Username : Player1
+Pwd : password123
